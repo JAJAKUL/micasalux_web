@@ -1,0 +1,89 @@
+<section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-details-banner.png');">
+    <div class="container">
+        <h1 *ngIf="propertyDetails">{{propertyDetails.property_name}}</h1>
+    </div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container" *ngIf="propertyDetails">
+        <owl-carousel-o [options]="customOptions" class="property-detsils-slides" *ngIf="propertyDetails && propertyDetails.property_image">
+            <ng-template carouselSlide *ngFor="let item of propertyDetails.property_image">
+                <!-- <div class="item" style="background-image:url(item.url);"></div> -->
+                <div class="item" [ngStyle]="item.url | backgroundImage : item.url : 'assets/images/property-img-1.png' : 'small'"></div>
+            </ng-template>  
+            <!-- <ng-template carouselSlide>
+                <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
+            </ng-template>  
+            <ng-template carouselSlide>
+                <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
+            </ng-template>   -->
+        </owl-carousel-o>
+        <div class="property-details-info" *ngIf="propertyDetails">
+            <h3>{{propertyDetails.property_name}}</h3>
+            <p>{{propertyDetails.property_description}}</p>
+            <h4>Details</h4>
+            <p>{{propertyDetails.property_details}}</p>
+            <!-- <p>2 and 3 Bedroom Town-houses</p>
+            <p>3 and 4 Bedroom Town-houses with Study</p> -->
+            <h4>Niceties</h4>
+            <p>{{propertyDetails.property_niceties}}</p>
+            <h4>Services</h4>
+            <p>{{propertyDetails.property_services}}</p>
+            <h4>Fiduciary Contact</h4>
+            <p>Call : {{propertyDetails.create_by.Phone}}</p>
+            <p>Email : {{propertyDetails.create_by.Email}}</p>
+        </div>
+        <div class="pd-bottom-section">
+            <div class="">
+                <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-color" (click)="property_doc_upload()">Download Property Document</a>
+                <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-gray-color" download="" (click)="viewPropertyAgentDetails()">View Property Agent's Detail</a>
+            </div>
+            <div class="btn-circleicons">
+                <a href="javascript:void(0);" mat-button class="btn-circleicon-cmn calculator-icon calculator-btn"></a>
+                <a href="javascript:void(0);" mat-button class="btn-circleicon-cmn comment-icon comment-btn"></a>
+                <div class="popbox-cmn" id="calculate-form">
+                    <i class="x-mark-icon calculate-close"></i>
+                    <div class="form-input-fields row">
+                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                            <mat-label>Property Cost</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                            <mat-label>Interest Rate</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                            <mat-label>Duration</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <div class="col-lg-12">
+                            <button mat-button class="btn-submit btn-color btn-color-1">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="popbox-cmn" id="comment-form">
+                    <i class="x-mark-icon comment-close"></i>
+                    <div class="form-input-fields row">
+                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                            <mat-label>Name</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                            <mat-label>Email</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                            <mat-label>Message</mat-label>
+                            <textarea rows="4" matInput></textarea>
+                        </mat-form-field>
+                        <div class="col-lg-12">
+                            <button mat-button class="btn-submit btn-color btn-color-2">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    

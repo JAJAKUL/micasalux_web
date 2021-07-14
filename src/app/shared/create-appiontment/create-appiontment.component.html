@@ -1,0 +1,54 @@
+<div class="task-header">
+    <button class="close-btn" mat-dialog-close></button>
+</div>
+<mat-dialog-content>
+    <h2 class="modal-title">Create Appiontment</h2>
+    <form [formGroup]="createAppoinmentForm">
+        <div class="form-input-fields row">
+            <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="customer_name">
+            </mat-form-field>
+            <!-- <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                <mat-label>Address</mat-label>
+                <input type="text"  matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" formControlName="property_location" formControlName="booking_Address">
+            </mat-form-field> -->
+            <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="booking_phone">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                <mat-label>Property Category</mat-label>
+                <mat-select disabled formControlName="property_category">
+                    <mat-option *ngFor="let item of propertyCategoryList" [value]="item._id">{{item.property_category_name}}</mat-option>
+                    <!-- <mat-option value="rent">Rent</mat-option>
+                    <mat-option value="sale">Sale</mat-option> -->
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                <mat-label>Property Name</mat-label>
+                <input matInput readonly formControlName="property_name">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="customer_email">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="myPicker" (dateChange)="addEvent($event)"  placeholder="date">
+                <mat-datepicker-toggle class="date-icon-btn" matSuffix [for]="myPicker"></mat-datepicker-toggle>
+                <mat-datepicker #myPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-lg-12 custom-form-field time-field">
+                <mat-label>Time</mat-label>
+                <input matInput [ngxTimepicker]="timePicker">
+                <ngx-material-timepicker-toggle class="time-icon-btn" matSuffix [for]="timePicker"></ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #timePicker (timeSet)="timeChangeData($event)"></ngx-material-timepicker>
+            </mat-form-field>
+            <div class="col-lg-12 text-center">
+                <button mat-button class="btn-submit btn-color" (click)="submitCreateAppoinmentForm()">Submit</button>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+    

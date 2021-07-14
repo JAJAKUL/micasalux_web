@@ -1,0 +1,93 @@
+@import "./src/styles.scss";
+.property-agent-item {
+    position: relative;
+    padding:30px;
+    margin-bottom: 30px;
+    background-color: #F8F8F8;
+    border: 1px solid #E1E1E1;
+    @include border-radius(5px);
+    display: flex;
+    align-items: flex-start;
+    &:last-child{
+        margin-bottom: 0;
+    }
+    .property-agent-item-img {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; //cover
+        height: 180px;
+        width: 180px;
+        @include border-radius(5px);
+        position: relative;
+       
+    }
+    .property-agent-item-info {
+        width: calc(100% - 200px);
+        padding-left: 20px;
+        .title {
+            margin-bottom: 15px;
+            color: #4E4D4D;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        p {
+            color: #717171;
+            font-size: 17px;
+            font-weight: 400;
+            margin-top: 7px;
+            word-break: break-word;
+            strong{
+                color:#000000;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 991px) {
+    .property-agent-item {
+        .property-agent-item-img {
+            height: 160px;
+            width: 160px;
+        }
+        .property-agent-item-info {
+            width: calc(100% - 160px);
+            .title {
+                font-size: 24px;
+            }
+            p {
+                font-size: 15px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    .property-agent-item {
+        display: block;
+        padding: 16px;
+        margin-bottom: 16px;
+        text-align: center;
+        .property-agent-item-img {
+            margin: 0 auto;
+            height: 120px;
+            width: 120px;
+        }
+        .property-agent-item-info {
+            width: inherit;
+            display: inline-block;
+            text-align: left;
+            padding-left: 0;
+            padding-top: 16px;
+            .title {
+                font-size: 20px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+  
+}
+@media only screen and (max-width: 575px) {
+ 
+}

@@ -1,0 +1,43 @@
+<section class="inner-banner-wrap">
+    <div class="container"></div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container" *ngIf="appoinmentList">
+        <div class="property-agent-item" *ngFor="let item of appoinmentList" >
+            <div class="property-agent-item-img" style="background-image:url('{{item.HairUser.profile}}')">
+            </div>
+            <div class="property-agent-item-info">
+                <h5 class="title">{{item.HairUser.FullName}}</h5>
+                <p><strong>Email:&nbsp;</strong>{{item.HairUser.Email}}</p>
+                <p><strong>Phone:&nbsp;</strong>{{item.HairUser.Phone}}</p>
+                <p><strong>Metting Date:&nbsp;</strong>{{item.bookingDate | date:'dd/MM/yyyy'}}</p>
+                <p><strong>Metting Time:&nbsp;</strong>{{item.bookingDate | date: 'h:mm a'}}</p>
+            </div>
+        </div>
+        <!-- <div class="property-agent-item">
+            <div class="property-agent-item-img" style="background-image:url('../assets/images/agent-person.png')">
+            </div>
+            <div class="property-agent-item-info">
+                <h5 class="title">John Cole</h5>
+                <p><strong>Email:&nbsp;</strong>Propertysupport@gmail.com</p>
+                <p><strong>Phone:&nbsp;</strong>+123 569 6987 /+123 769 8987</p>
+                <p><strong>Metting Date:&nbsp;</strong>4/12/20</p>
+                <p><strong>Metting Time:&nbsp;</strong>12:30PM</p>
+            </div>
+        </div>
+        <div class="property-agent-item">
+            <div class="property-agent-item-img" style="background-image:url('../assets/images/agent-person.png')">
+            </div>
+            <div class="property-agent-item-info">
+                <h5 class="title">John Cole</h5>
+                <p><strong>Email:&nbsp;</strong>Propertysupport@gmail.com</p>
+                <p><strong>Phone:&nbsp;</strong>+123 569 6987 /+123 769 8987</p>
+                <p><strong>Metting Date:&nbsp;</strong>4/12/20</p>
+                <p><strong>Metting Time:&nbsp;</strong>12:30PM</p>
+            </div>
+        </div> -->
+    </div>
+</section>
+
+

@@ -1,0 +1,52 @@
+<section class="inner-banner-wrap">
+    <div class="container"></div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container">
+        <form [formGroup]="signInForm">
+            <div class="cmn-form-wrapper">
+                <h2>Login</h2>
+                <mat-radio-group class="button-group-custom signin-radio-btn" formControlName="UserType" >
+                    <mat-radio-button value="1" checked>Customer</mat-radio-button>
+                    <mat-radio-button value="2">Property Agent</mat-radio-button>
+                </mat-radio-group>
+                <div class="row">
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="Email">
+                        <mat-icon matSuffix class="email-icon icon"></mat-icon>
+
+                        <mat-error *ngIf="submitted && f.Email.errors">
+                            <mat-error *ngIf="f.Email.errors.required">Email is required</mat-error>
+                            <mat-error *ngIf="f.Email.errors.email">Email must be a valid email address</mat-error>
+                        </mat-error>
+
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="Password">
+                        <mat-icon matSuffix class="lock-icon icon"></mat-icon>
+
+                        <mat-error *ngIf="submitted && f.Password.errors">
+                            <mat-error *ngIf="f.Password.errors.required">Password is required</mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="remenberForgot">
+                    <mat-checkbox class="check-box-item" [checked]="remberValue"  [value]="remberValue" (change)="rememberMe($event)">Remember Password</mat-checkbox>
+                    <p [routerLink]="['/forget-password']" routerLinkActive="active">Forgot password?</p>
+                </div>
+
+                <button button mat-button class="submit-btn" (click)="doLogin()">Login</button>
+                <p class="dontHaveAccount">Not a member? <span [routerLink]="['/signup']" routerLinkActive="active">Sign up</span></p>
+                <div class="login-social-icons">
+                    <button class="facebook" mat-button (click)="signInWithFB()"><i class="fa fa-facebook" aria-hidden="true"></i></button>
+                    <button class="googleplus" mat-button (click)="signInWithGoogle()"><i class="fa fa-google-plus" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+

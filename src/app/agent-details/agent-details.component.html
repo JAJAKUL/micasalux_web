@@ -1,0 +1,79 @@
+<section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-agents-banner.png');">
+    <div class="container">
+        <h1>Property Agents</h1>
+    </div>
+</section>
+
+<section class="paddtb-80" *ngIf="propertyDetails && propertyDetails.create_by">
+    <div class="container">
+            <div class="property-agent-item">
+                
+                <div class="property-agent-item-img" [ngStyle]="propertyDetails.create_by.profile | backgroundImage : propertyDetails.create_by.profile : 'assets/images/agent-person.png' : 'small'"></div>
+                <!-- <div class="property-agent-item-img" style="background-image:url('../assets/images/agent-person.png')"> -->
+                <!-- </div> -->
+                <div class="property-agent-item-info">
+                    <h5 class="title">{{propertyDetails.create_by.FullName}}</h5>
+                    <p class="location pin-gray">{{propertyDetails.create_by.Address}}</p>
+                    <p>{{propertyDetails.create_by.description}}</p>
+                    <a href="javascript:void(0);" data-toggle="modal" *ngIf="userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a>
+                    <a href="javascript:void(0);" data-toggle="modal" *ngIf="!userData" mat-button class="btn-viewdetails btn-color" (click)="createAppionment()">Create Appiontment</a>
+                </div>
+            </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<!-- <div class="modal fade Propertysearchalert-bx" id="PropertysearchalertModal" tabindex="-1" role="dialog" aria-labelledby="PropertysearchalertModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="x-icon-medium" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h1>Create Appiontment</h1>
+            <form [formGroup]="createAppoinmentForm">
+                <div class="form-input-fields row">
+                    <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="customer_name">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="booking_Address">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                        <mat-label>Phone</mat-label>
+                        <input matInput formControlName="booking_phone">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Property Category</mat-label>
+                        <mat-select disabled formControlName="property_category">
+                            <mat-option value="rent">Rent</mat-option>
+                            <mat-option value="sale">Sale</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Property Name</mat-label>
+                        <input matInput disabled formControlName="property_name">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="customer_email">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                        <mat-label>Date</mat-label>
+                        <input matInput [matDatepicker]="myPicker" formControlName="booking_date"  placeholder="date">
+                        <mat-datepicker-toggle  matSuffix [for]="myPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #myPicker></mat-datepicker>
+                    </mat-form-field>
+                    <div class="col-lg-12 text-center">
+                        <button mat-button class="btn-submit btn-color" (click)="submitCreateAppoinmentForm()">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div> -->

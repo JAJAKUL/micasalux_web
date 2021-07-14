@@ -1,0 +1,38 @@
+<section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-banner.png');">
+    <div class="container">
+        <h1>Properties</h1>
+    </div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container">
+        <h2 class="p-header-title">Wish List Property</h2>
+        <ul class="property-item-ul" *ngIf="propertyList">
+            <li *ngFor="let item of propertyList;let i=index">
+                <div class="property-item">
+                    <div class="fav-icon fav-redicon" (click)="removeWishBtnClick(item._id,i)"></div>
+                    <div class="property-item-img" [ngStyle]="item.wishProperty.property_image | backgroundImage : item.wishProperty.property_image : 'assets/images/property-img-1.png' : 'small'">
+                        <div class="hover-effect">
+                            <span class="plus-icon">+</span>
+                        </div>
+                    </div>
+                    <div class="property-item-info">
+                        <h5 class="title">{{item.wishProperty.property_name}}</h5>
+                        <p class="price">${{item.wishProperty.property_price}}</p>
+                        <div class="description-info">
+                            <p>{{(item.wishProperty.property_description.length > 75) ? (item.wishProperty.property_description | slice:0:75)+'...' : item.wishProperty.property_description}} </p>
+                        </div>
+                        <div class="property-icons">
+                            <div class="property-icons-item"><i class="icon bed-icon"></i><span>{{item.wishProperty.room_number}}</span></div>
+                            <div class="property-icons-item"><i class="icon bathtub-icon"></i><span>{{item.wishProperty.bed_room_number}}</span></div>
+                            <div class="property-icons-item"><i class="icon squre-icon"></i><span>{{item.wishProperty.property_sqft}} sqft</span></div>
+                        </div>
+                        <a href="javascript:void(0);" mat-button class="btn-viewdetails btn-color" (click)="gotoPropertyDetails(item.wishProperty._id)">View Details</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+    
+    

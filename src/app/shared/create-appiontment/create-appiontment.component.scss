@@ -1,0 +1,66 @@
+@import "./src/styles.scss";
+
+.btn-submit{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: $font-stack;
+    text-align: center;
+    @include border-radius(5px);
+    line-height: 60px;
+    min-width: 240px;
+    display: inline-block;
+    margin-top: 15px;
+}
+h2.modal-title{
+    text-align: center;
+    font-size: 30px;
+    font-weight:700;
+    color: #000000;
+    margin-bottom: 30px;
+}
+.task-header{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    top: -10px;
+    .close-btn{
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border: 0;;
+        border-radius: 50%;
+        background-color: transparent;
+        background-image: url('../../../assets/images/x-mark-medium-icon.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #DCDCDC;
+        &:focus{
+            outline: none;
+        }
+    }
+}
+.date-icon-btn{
+    color: #DCDCDC;
+}
+
+
+@media(max-width:1024px){
+
+}
+@media(max-width:767px){
+    .btn-submit{
+        font-size: 16px;
+        line-height: 52px;
+        min-width: 180px;
+        margin-top: 8px;
+    }
+    h2.modal-title{
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+}
+@media(max-width:575px){
+    h2.modal-title{
+        font-size: 22px;
+    }
+}

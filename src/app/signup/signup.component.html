@@ -1,0 +1,102 @@
+<section class="inner-banner-wrap">
+    <div class="container"></div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container">
+        <form [formGroup]="signUpForm" (ngSubmit)="doSignUp()">
+            <div class="cmn-form-wrapper">
+                <h2>SIGN UP</h2>
+                <mat-radio-group class="button-group-custom signin-radio-btn" formControlName="UserType">
+                    <mat-radio-button (click)="clickRadio1()" value="1" checked>Customer</mat-radio-button>
+                    <mat-radio-button (click)="clickRadio2()" value="2">Property Agent</mat-radio-button>
+                </mat-radio-group>
+                <div class="row">
+                    <mat-form-field *ngIf="showcontent" appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Choose an option</mat-label>
+                        <mat-select formControlName="AgentType" (selectionChange)="selectAgentType($event.value)">
+                            <mat-option *ngFor="let item of agentTypeList" [value]="item._id">{{item.agent_type_name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf=" showcontent && signUpForm.get('AgentType').errors && hasError('AgentType', 'required')">Please Select Property Agent Type</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field *ngIf="showcontent && subAgentTypeList" appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Choose an option</mat-label>
+                        <mat-select formControlName="subAgentType">
+                            <mat-option *ngFor="let item of subAgentTypeList" [value]="item._id">{{item.sub_agent_type_name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf=" showcontent && signUpForm.get('subAgentType').errors && hasError('subAgentType', 'required')">Please Select Property Sub Agent Type</mat-error>
+                    </mat-form-field>
+
+                    <!-- <mat-form-field *ngIf="showcontent" appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Select your account type</mat-label>
+                        <mat-select formControlName="AgentType" (selectionChange)="selectAgentType($event.value)">
+                            <mat-option value="Agences">Agences</mat-option>
+                            <mat-option value="Companies">Companies</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf=" showcontent && signUpForm.get('AgentType').errors && hasError('AgentType', 'required')">Please Select Property Agent Type</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field *ngIf="showcontent" appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Select your account type</mat-label>
+                        <mat-select formControlName="subAgentType">
+                            <mat-option *ngIf="signUpForm.controls.AgentType.value == 'Agences'" value="Realtors">Realtors</mat-option>
+                            <mat-option *ngIf="signUpForm.controls.AgentType.value == 'Agences'" value="Architects">Architects</mat-option>
+                            <mat-option *ngIf="signUpForm.controls.AgentType.value == 'Companies'" value="Construction">Construction</mat-option>
+                            <mat-option *ngIf="signUpForm.controls.AgentType.value == 'Companies'" value="Renovation">Renovation</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf=" showcontent && signUpForm.get('subAgentType').errors && hasError('subAgentType', 'required')">Please Select Property Sub Agent Type</mat-error>
+                    </mat-form-field> -->
+
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Full Name</mat-label>
+                        <input matInput formControlName="FullName">
+                        <mat-error *ngIf="hasError('FullName', 'required')">Full Name is required</mat-error>
+                    </mat-form-field>
+                    <!-- <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>User Name</mat-label>
+                        <input matInput formControlName="UserName">
+                        <mat-error *ngIf="hasError('UserName', 'required')">User Name is required</mat-error>
+                    </mat-form-field> -->
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Email ID</mat-label>
+                        <input matInput formControlName="Email">
+                        <mat-error *ngIf="hasError('Email', 'required')">Email is required</mat-error>
+                        <mat-error *ngIf="hasError('Email', 'pattern')">Please enter a valid email address</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field phone-field">
+                        <mat-label>Phone</mat-label>
+                        <!-- <mat-label>Phone</mat-label> -->
+                        <!-- <input type="tel" matInput formControlName="Phone"> -->
+                        <input type="tel"
+                            matInput
+                            ng2TelInput
+                            formControlName="Phone"
+                            [ng2TelInputOptions]="{initialCountry: 'us'}"
+                            (ng2TelOutput)="getNumber($event)"
+                            (intlTelInputObject)="telInputObject($event)"
+                            (countryChange)="onCountryChange($event)"
+                        />
+                        <mat-error *ngIf="hasError('Phone', 'required')">Phone Number is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="Password" (keyup)="onPasswordValidation($event)">
+                        <mat-error *ngIf="hasError('Password', 'required')">Password is required</mat-error>
+                        <mat-error *ngIf="hasError('Password', 'pattern')">Password at least 6 char's with alphabet, special char and number</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-12 custom-form-field" >
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" matInput formControlName="Confirm_Password">
+                        <mat-error *ngIf="signUpForm.get('Confirm_Password').errors && hasError('Confirm_Password', 'required')"> Confirm Password is required</mat-error>
+                        <mat-error *ngIf=" signUpForm.get('Confirm_Password').errors && signUpForm.get('Confirm_Password').errors.confirmPasswordValidator" >Confirm password and Password dont match</mat-error>
+                    </mat-form-field>
+                </div>
+                <button button mat-button class="submit-btn">CREATE ACCOUNT</button>
+                <p class="dontHaveAccount">Already have an account? <span [routerLink]="['/login']" routerLinkActive="active">Log in</span></p>
+            </div>
+        </form>
+    </div>
+</section>
+    
+    

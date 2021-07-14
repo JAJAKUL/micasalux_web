@@ -1,0 +1,29 @@
+<section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-agents-banner.png');">
+    <div class="container">
+        <h1>Property Agents</h1>
+    </div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container">
+        <div class="property-agent-title">
+            <h2>Our Agents</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu orci id justo vulputate dictum eget vel nisi.</p>
+        </div>
+        <ul class="property-agent-item-ul">
+            <li *ngFor="let agent of agents">
+                <div class="property-agent-item">
+                    <div class="property-agent-item-img" style="background-image:url('{{agent.imageUrl}}')">
+                    </div>
+                    <div class="property-agent-item-info">
+                        <h5 class="title">{{agent.name}}</h5>
+                        <p>{{agent.description}}</p>
+                        <a href="javascript:void(0);" mat-button class="btn-viewdetails btn-color" (click)="gotoAgentDetails()">View Details</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+    
+    

@@ -1,0 +1,216 @@
+<section class="inner-banner-wrap">
+    <div class="container"></div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container">
+        <div class="cmn-form-wrapper">
+            <mat-tab-group mat-align-tabs="center" animationDuration="0ms" *ngIf="ownDetails">
+                <mat-tab label="My Account"> 
+                    <form [formGroup]="editDetailsForm">
+                        <div>
+                            <!-- <mat-form-field appearance="outline" class="custom-form-field form-padd-top">
+                                <mat-label>Choose an option</mat-label>
+                                <mat-select formControlName="AgentType">
+                                    <mat-option value="1">Private</mat-option>
+                                    <mat-option value="2">Public</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('AgentType', 'required')">Please Select Property Agent Type</mat-error>
+                            </mat-form-field> -->
+
+                            <div class="profile-img-box" style="background-image:url('{{imageSrc}}');">
+                                <span class="plus-icon" (click)="uploadEl.click()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                            </div>
+
+                            <input hidden type="file" #uploadEl class="custom-file-input" id="customFile" name="filename"
+                                (change)="onSelectedProfileImage($event)"  accept="image/x-png,image/gif,image/jpeg" >
+
+                            <mat-form-field appearance="outline" class="custom-form-field mrttp-3">
+                                <mat-label>Choose an option</mat-label>
+                                <mat-select formControlName="AgentType" (selectionChange)="selectAgentType($event.value)">
+                                    <mat-option *ngFor="let item of agentTypeList" [value]="item._id">{{item.agent_type_name}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('AgentType', 'required')">Please Select Property Agent Type</mat-error>
+                            </mat-form-field>
+        
+                            <mat-form-field *ngIf="subAgentTypeList" appearance="outline" class="custom-form-field">
+                                <mat-label>Choose an option</mat-label>
+                                <mat-select formControlName="subAgentType">
+                                    <mat-option *ngFor="let item of subAgentTypeList" [value]="item._id">{{item.sub_agent_type_name}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('subAgentType', 'required')">Please Select Property Sub Agent Type</mat-error>
+                            </mat-form-field>
+
+                            <!-- <mat-form-field  appearance="outline" class="custom-form-field mrttp-3">
+                                <mat-label>Choose an option</mat-label>
+                                <mat-select formControlName="AgentType" (selectionChange)="selectAgentType($event.value)">
+                                    <mat-option value="Agences">Agences</mat-option>
+                                    <mat-option value="Companies">Companies</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('AgentType', 'required')">Please Select Property Agent Type</mat-error>
+                            </mat-form-field>
+        
+                            <mat-form-field  appearance="outline" class="custom-form-field">
+                                <mat-label>Choose an option</mat-label>
+                                <mat-select formControlName="subAgentType">
+                                    <mat-option *ngIf="editDetailsForm.controls.AgentType.value == 'Agences'" value="Realtors">Realtors</mat-option>
+                                    <mat-option *ngIf="editDetailsForm.controls.AgentType.value == 'Agences'" value="Architects">Architects</mat-option>
+                                    <mat-option *ngIf="editDetailsForm.controls.AgentType.value == 'Companies'" value="Construction">Construction</mat-option>
+                                    <mat-option *ngIf="editDetailsForm.controls.AgentType.value == 'Companies'" value="Renovation">Renovation</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('subAgentType', 'required')">Please Select Property Sub Agent Type</mat-error>
+                            </mat-form-field> -->
+
+                            
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="FullName">
+                                <mat-error *ngIf="hasError('FullName', 'required')">Full Name is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                                <mat-label>Email ID</mat-label>
+                                <input matInput formControlName="Email">
+                                <mat-error *ngIf="hasError('Email', 'required')">Email is required</mat-error>
+                                <mat-error *ngIf="hasError('Email', 'pattern')">Please enter a valid email address</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field phone-field">
+                                <mat-label>Phone</mat-label>
+                                <!-- <input type="tel" matInput formControlName="Phone"> -->
+                                <input type="tel"
+                                    matInput
+                                    ng2TelInput
+                                    formControlName="Phone"
+                                    [ng2TelInputOptions]="{initialCountry: 'us'}"
+                                    (ng2TelOutput)="getNumber($event)"
+                                    (intlTelInputObject)="telInputObject($event)"
+                                    (countryChange)="onCountryChange($event)"
+                                />
+
+                                <mat-error *ngIf="hasError('Phone', 'required')">Phone is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                                <mat-label>Address</mat-label>
+                                <!-- <textarea rows="8" matInput formControlName="Address"></textarea> -->
+                                <input type="text" matInput  ngx-google-places-autocomplete #placesRef="ngx-places" formControlName="Address" (onAddressChange)="handleAddressChange($event)" placeholder="Address"/>
+                                <mat-error *ngIf="hasError('Address', 'required')">Address is required</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                                <mat-label>Description</mat-label>
+                                <textarea rows="8" matInput formControlName="description"></textarea>
+                            </mat-form-field>
+                        </div>
+
+                        <button button mat-button class="submit-btn gray-btn-bg" (click)="addProperty()">ADD PROPERTY</button>
+                        <div class="property-row">
+                            <div class="property-col" *ngFor="let propertyItem of propertyList">
+                                <div class="news-item">
+                                    <!-- <div class="news-item-img" style="background-image:url('assets/images/property-img-1.png')"></div> -->
+                                    <div class="news-item-img" [ngStyle]="propertyItem.property_image | backgroundImage : propertyItem.property_image : 'assets/images/property-img-1.png' : 'small'"></div>
+
+                                    <div class="news-item-info">
+                                        <h5>{{propertyItem.property_name}}</h5>
+                                        <p>{{propertyItem.property_description}}</p>
+                                        <p class="price">${{propertyItem.property_price}}</p>
+                                        <p class="pin-icon">{{propertyItem.property_location}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="property-col">
+                                <div class="news-item">
+                                    <div class="news-item-img" style="background-image:url('assets/images/property-img-1.png')"></div>
+                                    <div class="news-item-info">
+                                        <h5>New York studio apartment</h5>
+                                        <p>2 and 3 Bedroom Town-houses</p>
+                                        <p>Swimming pool, Gazebo, Pool Lounge, Pool Bar, Gymnasium, Children Play Ground, Gardens</p>
+                                        <p class="price">$5520.00</p>
+                                        <p class="pin-icon">At victoria iceland, Lagos State, 21 Stand road</p>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div class="property-col">
+                                <div class="news-item">
+                                    <div class="news-item-img" style="background-image:url('assets/images/property-img-2.png')"></div>
+                                    <div class="news-item-info">
+                                        <h5>Alaska apartment</h5>
+                                        <p>2 and 3 Bedroom Town-houses</p>
+                                        <p>Swimming pool, Gazebo, Pool Lounge, Pool Bar, Gymnasium, Children Play Ground, Gardens</p>
+                                        <p class="price">$5520.00</p>
+                                        <p class="pin-icon">At victoria iceland, Lagos State, 21 Stand road</p>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="property-col">
+                                <div class="news-item">
+                                    <div class="news-item-img" style="background-image:url('assets/images/property-img-3.png')"></div>
+                                    <div class="news-item-info">
+                                        <h5>Rajwada apartment</h5>
+                                        <p>2 and 3 Bedroom Town-houses</p>
+                                        <p>Swimming pool, Gazebo, Pool Lounge, Pool Bar, Gymnasium, Children Play Ground, Gardens</p>
+                                        <p class="price">$5520.00</p>
+                                        <p class="pin-icon">At victoria iceland, Lagos State, 21 Stand road</p>
+                                    </div>
+                                </div>
+                            </div>     -->
+                        </div>
+                        <button button mat-button class="submit-btn" (click)="submitOwnDetails()">Submit</button>
+                    </form>
+                </mat-tab>
+                <mat-tab label="Change Password">
+                    <form [formGroup]="changePasswordForm">
+                        <div>
+                            <mat-form-field appearance="outline" class="custom-form-field form-padd-top">
+                                <mat-label>Current Password</mat-label>
+                                <input type="password" matInput formControlName="currentPassword">
+                                <mat-error *ngIf="hasPasswordError('currentPassword', 'required')">Current Password is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                                <mat-label>New Password</mat-label>
+                                <input type="password" matInput formControlName="newPassword">
+                                <mat-error *ngIf="hasPasswordError('newPassword', 'required')">New Password is required</mat-error>
+                                <mat-error *ngIf="hasPasswordError('newPassword', 'pattern')">New Password at least 6 char's with alphabet, special char and number</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                                <mat-label>Confirm Password</mat-label>
+                                <input type="password" matInput formControlName="confirmPassword">
+                                <mat-error *ngIf="changePasswordForm.get('confirmPassword').errors && hasPasswordError('confirmPassword', 'required')"> Confirm Password is required</mat-error>
+                                <mat-error *ngIf=" changePasswordForm.get('confirmPassword').errors && changePasswordForm.get('confirmPassword').errors.confirmPasswordValidator" >Confirm password and New Password dont match</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <button button mat-button class="submit-btn" (click)="submitChangePasswrdForm()">Submit</button>
+                    </form>
+                </mat-tab>
+                <mat-tab label="Card details" *ngIf="showCardDetails">
+                    <form [formGroup]="cardDetailsForm">
+                        <div>
+                            <mat-form-field appearance="outline" class="custom-form-field form-padd-top">
+                                <mat-label>Card Number</mat-label>
+                                <input matInput formControlName="CardNumber">
+                                <mat-error *ngIf="hasCardError('CardNumber', 'required')">Card Number is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                                <mat-label>Name On Card</mat-label>
+                                <input matInput formControlName="NameOnCard">
+                                <mat-error *ngIf="hasCardError('NameOnCard', 'required')">Name On Card is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field col-md-6 lf-15">
+                                <mat-label>Expiration Date</mat-label>
+                                <input matInput formControlName="ExpDate">
+                                <mat-error *ngIf="hasCardError('ExpDate', 'required')">Expiration Date is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="custom-form-field col-md-6 rh-15">
+                                <mat-label>CVV</mat-label>
+                                <input matInput formControlName="CVV">
+                                <mat-error *ngIf="hasCardError('CVV', 'required')">CVV is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <button button mat-button class="submit-btn" (click)="SubmitCardDetailsForm()">Submit</button>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</section>
+            
+            
+        

@@ -1,0 +1,132 @@
+@import "./src/styles.scss";
+.property-agent-title{
+    margin-bottom: 30px;
+    h2{
+        font-size: 42px;
+        font-weight: 700;
+        color: #000000; 
+    }
+    p{
+        color: #717171;
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 15px;
+        max-width: 50%;
+    }
+}
+
+.property-agent-item-ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    padding: 0;
+    list-style: none;
+    li {
+        padding:20px 15px;
+        width: 33.33333%;
+        .property-agent-item {
+            position: relative;
+            .property-agent-item-img {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover; //cover
+                height: 308px;
+                width: 100%;
+                @include border-radius(5px 5px 0 0);
+            }
+            .property-agent-item-info {
+                text-align: center;
+                padding: 15px;
+                border-top: 0;
+                @include border-radius(0 0 5px 5px);
+                .title {
+                    margin-top: 15px;
+                    margin-bottom: 12px;
+                    color: #4E4D4D;
+                    font-size: 24px;
+                    font-weight: 700;
+                }
+                p {
+                    color: #717171;
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+                .btn-viewdetails{
+                    font-size: 20px;
+                    font-weight: 600;
+                    font-family: $font-stack;
+                    min-width: 210px;
+                    text-align: center;
+                    @include border-radius(5px);
+                    line-height: 70px;
+                    display: inline-block;
+                    margin-top: 20px;
+                    display: inline-block;
+                }
+              
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .property-agent-item-ul {
+        li {
+            width: 50%;
+        }
+    }
+    .property-agent-title{
+        p{
+            max-width: inherit;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .p-header-title{
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .property-agent-title{
+        margin-bottom: 20px;
+        h2{
+            font-size: 28px;
+        }
+        p{
+            color: #717171;
+            font-size: 15px;
+        }
+    }
+    .property-agent-item-ul {
+        margin: 15px -8px 0 -8px;
+        li {
+            padding:12px 8px;
+            .property-agent-item {
+                .property-agent-item-img{
+                    height: 200px;
+                }
+                .property-agent-item-info {
+                    padding: 15px;
+                    .title {
+                        font-size: 18px;
+                    }
+                    p {
+                        font-size: 15px;
+                    }
+                    .btn-viewdetails{
+                        font-size: 15px;
+                        line-height: 52px;
+                        min-width: 160px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 575px) {
+    .property-agent-item-ul {
+        li {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,167 @@
+@import "./src/styles.scss";
+.property-agent-item {
+    position: relative;
+    padding:50px 30px;
+    background-color: #F8F8F8;
+    border: 1px solid #E1E1E1;
+    @include border-radius(5px);
+    display: flex;
+    align-items: flex-start;
+    .property-agent-item-img {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; //cover
+        height: 299px;
+        width: 304px;
+        @include border-radius(5px);
+        position: relative;
+       
+    }
+    .property-agent-item-info {
+        width: calc(100% - 299px);
+        padding-left: 30px;
+        .title {
+            margin-bottom: 15px;
+            color: #4E4D4D;
+            font-size: 40px;
+            font-weight: 700;
+        }
+        p {
+            color: #9D9D9D;
+            font-size: 15px;
+            font-weight: 400;
+            &.location {
+                color: #717171;
+                font-size: 16px;
+                margin-bottom: 10px;
+                background-position: left top;
+                background-repeat: no-repeat;
+                padding-left: 28px;
+                &.pin-gray{
+                    background-image: url("../../assets/images/pin-gray.png");
+                }
+            }
+        }
+        .btn-viewdetails{
+            font-size: 20px;
+            font-weight: 600;
+            font-family: $font-stack;
+            text-align: center;
+            @include border-radius(5px);
+            line-height: 70px;
+            display: inline-block;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 30px;
+        }
+    }
+}
+.Propertysearchalert-bx{
+    .modal-dialog {
+        max-width: 590px;
+    }
+    .modal-content{
+        border: 0;
+        @include border-radius(10px);
+        .modal-header{
+            border-bottom: 0;
+            .x-icon-medium{
+                background: url("../../assets/images/x-mark-medium-icon.png") center no-repeat;
+                width: 32px;
+                height: 32px;
+                display: block;
+            }
+        }
+        .modal-body{
+            padding:0 35px 50px 35px;
+            h1{
+                text-align: center;
+                font-size: 40px;
+                font-weight:700;
+                color: #000000;
+                margin-bottom: 30px;
+            }
+            .btn-submit{
+                font-size: 18px;
+                font-weight: 600;
+                font-family: $font-stack;
+                text-align: center;
+                @include border-radius(5px);
+                line-height: 60px;
+                min-width: 240px;
+                display: inline-block;
+                margin-top: 15px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 991px) {
+    .property-agent-item {
+        .property-agent-item-img {
+            height: 240px;
+            width: 240px;
+        }
+        .property-agent-item-info {
+            width: calc(100% - 240px);
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    .property-agent-item {
+        display: block;
+        padding: 25px 20px;
+        .property-agent-item-img {
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+        }
+        .property-agent-item-info {
+            width: inherit;
+            padding-left: 0;
+            padding-top: 20px;
+            .title {
+                font-size: 26px;
+            }
+            p {
+                font-size: 14px;
+                &.location {
+                    font-size: 15px;
+                }
+            }
+            .btn-viewdetails{
+                font-size: 16px;
+                line-height: 52px;
+                margin-top: 20px;
+            }
+        }
+    }
+    .Propertysearchalert-bx{
+        .modal-content{
+            .modal-body{
+                padding:0 20px 30px 20px;
+                h1{
+                    font-size: 28px;
+                    margin-bottom: 30px;
+                }
+                .btn-submit{
+                    font-size: 16px;
+                    line-height: 52px;
+                    min-width: 180px;
+                    margin-top: 8px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 575px) {
+    .Propertysearchalert-bx{
+        .modal-content{
+            .modal-body{
+                h1{
+                    font-size: 22px;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}

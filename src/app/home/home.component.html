@@ -1,0 +1,401 @@
+<section id="home-slider">
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+            <div class="item" style="background-image:url('assets/images/home-banner-img-1.png');">
+                <div class="home-slide-caption">
+                    <h4>FIND YOUR DREAM HOME</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel fringilla ex. Vivamus<br> aliquam augue id dolor cursus, eu vehicula eros ultrices. Praesent <br>ullamcorper
+                            ligula in diam semper, ac iaculis justos.</p>
+                    <a href="#" class="btn-view-more home-btn-cmn">View More <i class="arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div class="item" style="background-image:url('assets/images/home-banner-img-1.png');">
+                <div class="home-slide-caption">
+                    <h4>FIND YOUR DREAM HOME</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel fringilla ex. Vivamus<br> aliquam augue id dolor cursus, eu vehicula eros ultrices. Praesent <br>ullamcorper
+                            ligula in diam semper, ac iaculis justos.</p>
+                    <a href="#" class="btn-view-more home-btn-cmn">View More <i class="arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div class="item" style="background-image:url('assets/images/home-banner-img-1.png');">
+                <div class="home-slide-caption">
+                    <h4>FIND YOUR DREAM HOME</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel fringilla ex. Vivamus<br> aliquam augue id dolor cursus, eu vehicula eros ultrices. Praesent <br>ullamcorper
+                            ligula in diam semper, ac iaculis justos.</p>
+                    <a href="#" class="btn-view-more home-btn-cmn">View More <i class="arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </ng-template>
+    </owl-carousel-o>
+</section>
+
+<section class="container form-top-position">
+   <div class="home-top-form">
+        <div class="form-input-fields row">
+            <mat-form-field appearance="outline" class="col-md-3 custom-form-field">
+                <mat-label>Area</mat-label>
+                <input type="text" matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="searchData" appearance="outline" class="col-md-3 custom-form-field">
+                <mat-label>Categories</mat-label>
+                <mat-select [(ngModel)]="searchData.property_category">
+                    <mat-option *ngFor="let item of propertyCategoryList" [value]="item._id">{{item.property_category_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-md-3 custom-form-field">
+                <mat-label>Type</mat-label>
+                <mat-select [(ngModel)]="searchData.property_type">
+                    <mat-option *ngFor="let typeitem of propertyTypeList" [value]="typeitem._id">{{typeitem.property_type_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- <mat-form-field *ngIf="searchData" appearance="outline" class="col-md-3 custom-form-field">
+                <mat-label>Categories</mat-label>
+                <mat-select [(ngModel)]="searchData.property_category">
+                    <mat-option value="rent">Rent</mat-option>
+                    <mat-option value="sale">Sale</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="col-md-3 custom-form-field">
+                <mat-label>Type</mat-label>
+                <mat-select [(ngModel)]="searchData.property_type">
+                    <mat-option value="houses">Houses</mat-option>
+                    <mat-option value="apartements">Apartements</mat-option>
+                    <mat-option value="land(terraine)">Land(terraine)</mat-option>
+                    <mat-option value="commerce&office">Commerce / Office</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+
+
+            <mat-form-field appearance="outline" class="col-md-3 custom-form-field">
+                <mat-label>Room</mat-label>
+                <input matInput  [(ngModel)]="searchData.room_number"/>
+                <!-- <mat-select>
+                    <mat-option value="option1">1</mat-option>
+                    <mat-option value="option3">2</mat-option>
+                </mat-select> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-md-3 custom-form-field">
+                <mat-label>Bed Rooms</mat-label>
+                <input matInput [(ngModel)]="searchData.bed_room_number" />
+                <!-- <mat-select>
+                    <mat-option value="option1">1</mat-option>
+                    <mat-option value="option3">2</mat-option>
+                </mat-select> -->
+            </mat-form-field>
+            <div class="col-md-6 form-slider-field">
+                <mat-label>Price range: <span>$0 to $1,500,000</span></mat-label>
+                <!-- <mat-slider min="1" max="100"></mat-slider> -->
+                <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1" max="1500000" [(ngModel)]="searchData.property_price"></mat-slider>
+            </div>
+            <div class="col-md-3">
+                <button mat-button class="btn-search-p" (click)="searchProperty()">Search Properties</button>
+            </div>
+        </div>
+   </div>
+</section>
+
+<section class="paddtb-80 recent-project-bx">
+    <div class="container">
+        <div class="cmn-title">
+            <p>Lorem ipsum ipsum dollar</p>
+            <h2>Recent Projects</h2>
+        </div>
+        <div class="filtering-bx">
+            <a href="javascript:void(0);" class="active">All projects</a>
+            <a href="javascript:void(0);">Building</a>
+            <a href="javascript:void(0);">Artwork</a>
+            <a href="javascript:void(0);">Pakage</a>
+            <a href="javascript:void(0);">Architechture</a>
+        </div>
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            <div class="grid-item">
+                <div class="gallery-items">
+                    <div class="gallery-caption">
+                        <span class="category-txt">Artwork</span>
+                        <h5>Luxury Home</h5>
+                        <span class="plus-icon">+</span>
+                    </div>
+                    <img src="assets/images/gallery-img-1.png" />
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="gallery-items">
+                    <div class="gallery-caption">
+                        <span class="category-txt">Artwork</span>
+                        <h5>Luxury Home</h5>
+                        <span class="plus-icon">+</span>
+                    </div>
+                    <img src="assets/images/gallery-img-2.png" />
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="gallery-items">
+                    <div class="gallery-caption">
+                        <span class="category-txt">Artwork</span>
+                        <h5>Luxury Home</h5>
+                        <span class="plus-icon">+</span>
+                    </div>
+                    <img src="assets/images/gallery-img-3.png" />
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="gallery-items">
+                    <div class="gallery-caption">
+                        <span class="category-txt">Artwork</span>
+                        <h5>Luxury Home</h5>
+                        <span class="plus-icon">+</span>
+                    </div>
+                    <img src="assets/images/gallery-img-4.png" />
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="gallery-items">
+                    <div class="gallery-caption">
+                        <span class="category-txt">Artwork</span>
+                        <h5>Luxury Home</h5>
+                        <span class="plus-icon">+</span>
+                    </div>
+                    <img src="assets/images/gallery-img-5.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="marginb-80 our-services-bx">
+    <div class="container">
+        <div class="cmn-title">
+            <p>Lorem ipsum ipsum dollar</p>
+            <h2>Our Services</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 news-mrt-35">
+                <div class="services-item-info">
+                    <img class="services-item-icon" src="assets/images/service-icon-1.png">
+                    <h5>Property Administration</h5>
+                    <p>Lorem ipsum dolor sit amet, consecteturiyu adipiscing elit. Donec vel fringilla ex. Vivam
+                            us aliquam augue id dolor cursu.</p>
+                    <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-4 news-mrt-35">
+                <div class="services-item-info">
+                    <img class="services-item-icon" src="assets/images/service-icon-2.png">
+                    <h5>CRM & Marketing</h5>
+                    <p>Lorem ipsum dolor sit amet, consecteturiyu adipiscing elit. Donec vel fringilla ex. Vivam
+                            us aliquam augue id dolor cursu.</p>
+                    <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-4 news-mrt-35">
+                <div class="services-item-info">
+                    <img class="services-item-icon" src="assets/images/service-icon-3.png">
+                    <h5>Credit Management</h5>
+                    <p>Lorem ipsum dolor sit amet, consecteturiyu adipiscing elit. Donec vel fringilla ex. Vivam
+                            us aliquam augue id dolor cursu.</p>
+                    <a href="javascript:void(0);" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="marginb-80">
+    <div class="container">
+        <div class="ca-wrap">
+            <div class="ca-info">
+                <div class="cmn-title">
+                    <p>Lorem ipsum ipsum dollar</p>
+                    <h2>Micasalux</h2>
+                    <p> address</p>
+                    <p>+352 621 388 756</p>
+                    <p>luagarridoc@gmail.com</p>
+                </div>
+                <!-- <mat-accordion>
+                    <mat-expansion-panel [expanded]="step === 0">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Lorem ipsum Dollar
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Lorem ipsum dolor sit amet, consecteturiyu adipiscing elit Donec vel fringilla ex. Vivam us aliquam augue id dolor cursu lorem.</p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Lorem ipsum Dollar amet
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Lorem ipsum dolor sit amet, consecteturiyu adipiscing elit Donec vel fringilla ex. Vivam us aliquam augue id dolor cursu lorem.</p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Consecteturiyu adipiscing elit
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Lorem ipsum dolor sit amet, consecteturiyu adipiscing elit Donec vel fringilla ex. Vivam us aliquam augue id dolor cursu lorem.</p>
+                    </mat-expansion-panel>
+                </mat-accordion> -->
+                <button mat-button class="btn-sens-message">Read More <i class="arrow-right" aria-hidden="true"></i></button>
+            </div>
+            <!-- <div class="ca-bg-right" style="background-image:url('assets/images/creative-approach-bg.png')"></div> -->
+            <div class="ca-bg-right">
+                <owl-carousel-o [options]="caSlideOptions">
+                    <ng-template carouselSlide>
+                        <div class="item" style="background-image:url('assets/images/creative-approach-bg.png')">
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="item" style="background-image:url('assets/images/creative-approach-bg.png')">
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div class="item" style="background-image:url('assets/images/creative-approach-bg.png')">
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="paddtb-80 recent-news-bx" *ngIf="newsList">
+    <div class="container">
+        <div class="cmn-title">
+            <p>Lorem ipsum ipsum dollar</p>
+            <h2>Recent News</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 news-mrt-35" *ngFor="let item of newsList">
+                <div class="news-item">
+                    <div class="news-item-img" style="background-image:url('{{item.news_image}}')"></div>
+                    <div class="news-item-info">
+                        <h5>{{item.news_title}}</h5>
+                        <p>{{item.description | slice:0:30}}</p>
+                        <p>{{item.description | slice:30:60}}</p>
+                        <p>{{item.description | slice:60:80}}</p>
+                        <p class="name-txt"><span>{{item.creator_name}}</span> - ON {{item.publicist_date | date: 'longDate'}}</p>
+                        <a href="javascript:void(0);" class="more-btn">+</a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-6 news-mrt-35">
+                <div class="news-item">
+                    <div class="news-item-img" style="background-image:url('assets/images/news-img-2.png')"></div>
+                    <div class="news-item-info">
+                        <h5>Lorem Ipsum Dollar</h5>
+                        <p>Lorem ipsum dolor sit amet,amet consecteturiyu adipiscing elit. Donec vel fringilla ex.</p>
+                        <p class="name-txt"><span>SOFIA JAIN</span> - ON JULY 23 20120</p>
+                        <a href="javascript:void(0);" class="more-btn">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 news-mrt-35">
+                <div class="news-item">
+                    <div class="news-item-img" style="background-image:url('assets/images/news-img-3.png')"></div>
+                    <div class="news-item-info">
+                        <h5>Lorem Ipsum Dollar</h5>
+                        <p>Lorem ipsum dolor sit amet,amet consecteturiyu adipiscing elit. Donec vel fringilla ex.</p>
+                        <p class="name-txt"><span>SOFIA JAIN</span> - ON JULY 23 20120</p>
+                        <a href="javascript:void(0);" class="more-btn">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 news-mrt-35">
+                <div class="news-item">
+                    <div class="news-item-img" style="background-image:url('assets/images/news-img-4.png')"></div>
+                    <div class="news-item-info">
+                        <h5>Lorem Ipsum Dollar</h5>
+                        <p>Lorem ipsum dolor sit amet,amet consecteturiyu adipiscing elit. Donec vel fringilla ex.</p>
+                        <p class="name-txt"><span>SOFIA JAIN</span> - ON JULY 23 20120</p>
+                        <a href="javascript:void(0);" class="more-btn">+</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<section class="paddtb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="cmn-title">
+                    <p>Lorem ipsum ipsum dollar</p>
+                    <h2>Have a project</h2>
+                </div>
+                <div class="have-project-bx">
+                    <p>Lorem Ipsum Dollar amet ipsum dollar amet ipsum</p>
+                    <div class="form-input-fields row">
+                        <mat-form-field class="col-md-4 custom-form-field">
+                            <mat-label>Your name*</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-4 custom-form-field">
+                                <mat-label>Your email address*</mat-label>
+                                <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-4 custom-form-field">
+                            <mat-label>Your phone*</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-4 custom-form-field">
+                            <mat-label>Company name</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-4 custom-form-field">
+                            <mat-label>Select Services</mat-label>
+                            <mat-select>
+                                <mat-option value="option1">1</mat-option>
+                                <mat-option value="option3">2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-4 custom-form-field">
+                            <mat-label>Subject</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-12 custom-form-field">
+                            <mat-label>Your message*</mat-label>
+                            <textarea matInput></textarea>
+                        </mat-form-field>
+                        <div class="col-md-12">
+                            <button mat-button class="btn-sens-message">Send Message <i class="arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="map_div" id="map_canvas"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Subscribe to our newsletter start -->
+<section class="subscribe-wrap">
+    <div class="container">
+        <div class="subscribe-box">
+            <img class="s-mail-icon" src="assets/images/mail.png">
+            <h4 class="subscribe-title">Stay in Touch</h4>
+            <p>Subscribe to our newsletter so we can spam you<br>
+                    with offers and discounts.</p>
+            <div class="subscribe-input-field">
+                <div class="subscribe-input">
+                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Enter your email Id here">
+                </div>
+                <button class="btn-send-ft" type="submit"></button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Subscribe to our newsletter end -->

@@ -1,0 +1,165 @@
+@import "./src/styles.scss";
+.ft-hold-wrapper{
+    background-color: $ft-bg-color;
+}
+.ft-top{
+     padding: 70px 0;
+}
+.ft-logo{
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        left: -40px;
+        top: 0;
+        width: 200px;
+        height: 200px;
+        background: #130F17;
+        @include border-radius(50%);
+    }
+    a{
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        margin: 70px 0 0 55px;
+    }
+}
+.ft-title{
+    font-size: 20px;
+    font-weight: 300;
+    color: #FFFFFF;
+    margin-bottom:20px;  
+}
+.ft-info{
+    font-size: 16px;
+    color: #7F7F7F;
+}
+.ft-links{
+    li{
+        font-size: 16px;
+        color: #7F7F7F;
+        display: block;
+        margin-bottom: 10px;
+        a{
+            color: #7F7F7F;
+            &:hover{
+                color: $blue-color;
+            }
+        }
+    }
+    li:last-child{
+        margin-bottom: 0;
+    }
+}
+
+.ft-contact{
+    margin-top: 25px;
+    li{
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        color: #FFFFFF;
+        margin-bottom:15px;
+        padding-left: 35px;
+        display:block;
+        background-position: left center;
+        background-repeat: no-repeat;
+        line-height: 26px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    .message-icon{
+        background-image:url('../../assets/images/message-icon.png');
+    } 
+    .call-icon{
+        background-image:url('../../assets/images/call-icon.png');
+    }
+    .location-icon{
+        background-image: url('../../assets/images/location-icon.png');
+    }
+}
+
+.ft-bottom {
+    padding: 25px 0;
+    text-align: center;
+    border-top: 1px solid #393142;
+    .copyright-txt{
+        font-size: 15px;
+        color: #514F54;
+    }
+} 
+
+.ft-social-links {
+    margin-top: 85px;
+    a {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        color: $white-color;
+        border-radius: 5px;
+        margin-right: 10px;
+        border: 1px solid $white-color;
+        background-position: center center;
+        background-repeat: no-repeat;
+        line-height: 38px;
+        text-align: center;
+        &:hover{
+            border-color: $blue-color;
+            color: $blue-color;
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .mrt-m-30{
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width:767px){
+    .ft-top{
+        padding: 40px 0;
+    }
+    .ft-title{
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+    .mrt-m-30{
+        margin-top: 20px;
+    }
+    .ft-links{
+        li{
+            margin-bottom: 8px;
+            a{
+                font-size: 15px;
+            }
+        }
+    }
+    .ft-info{
+        font-size: 15px;
+    }
+    .ft-contact{
+        li{
+            font-size: 15px;
+        }
+    } 
+    .ft-logo{
+        &:before{
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+        }
+        a{
+            margin: 16px 0 0 24px;
+        }
+    }
+    .ft-social-links{
+        margin-top: 35px;
+    }
+}
+
+
+
