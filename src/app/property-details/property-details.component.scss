@@ -21,6 +21,45 @@
         margin-top: 7px;
     }
 }
+
+.sample-img {
+    width: 100%;
+    float: left;
+    ul{
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        float: left;
+        
+        li{
+            img{
+                width: 100%;
+                
+            }
+float: left;
+margin-bottom: 8px;
+        &:nth-child(1){
+            width: 70%;
+            margin-right: 8px;
+            img{
+                height: 400px;
+                object-fit: cover;
+                object-position: center center;
+            }
+
+        }
+        &:nth-child(2),  &:nth-child(3){
+            width: calc(30% - 8px);
+            img{
+                height: 196px;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+        
+    }
+    }
+}
 .pd-bottom-section{
     display: flex;
     align-items: center;
@@ -102,7 +141,70 @@
         }
     }
 }
-
+.cont-info-details {
+    border: 1px solid #f2f2f2;
+    padding: 50px 16px;
+    margin-top: 50px;
+    .contact-details {
+        text-align: center;
+        font-size: 18px;
+        p{
+            margin-bottom: 10px;
+            span{
+                color: #C9E265;
+                font-weight: 700;
+            }
+            a{
+                color: #004AAD;
+                font-weight: 700;
+                padding-left: 16px;
+            }
+        }
+    }
+    button.btn.btn-block.bt-con{
+        border: 2px solid #C9E265;
+        color: #C9E265;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px;
+        &:hover{
+            border: 2px solid #004AAD;
+            color: #004AAD;
+        }
+    }
+    button.btn.btn-block.bt-maa{
+        border: 2px solid #C9E265;
+        color: #fff;
+        background-color: #C9E265;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        &:hover{
+            border: 2px solid #004AAD;
+            color: #fff;
+            background-color: #004AAD;
+        }
+    }
+}
+.mark-comm-form{
+    .modal-content {
+        padding: 16px;
+        h5{
+            color: #004AAD;
+        }
+        .form-control {
+            min-height: 56px;
+            border-radius: 12px;
+        }
+        button.btn.btn-primary {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #C9E265;
+            background: #C9E265;
+        }
+    }
+}
 @media only screen and (max-width: 991px) {
     .pd-bottom-section{
         display: block;

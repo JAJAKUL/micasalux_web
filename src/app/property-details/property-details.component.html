@@ -6,33 +6,56 @@
 
 <section class="paddtb-80">
     <div class="container" *ngIf="propertyDetails">
-        <owl-carousel-o [options]="customOptions" class="property-detsils-slides" *ngIf="propertyDetails && propertyDetails.property_image">
-            <ng-template carouselSlide *ngFor="let item of propertyDetails.property_image">
+        <!-- <owl-carousel-o [options]="customOptions" class="property-detsils-slides" *ngIf="propertyDetails && propertyDetails.property_image">
+            <ng-template carouselSlide *ngFor="let item of propertyDetails.property_image"> -->
                 <!-- <div class="item" style="background-image:url(item.url);"></div> -->
-                <div class="item" [ngStyle]="item.url | backgroundImage : item.url : 'assets/images/property-img-1.png' : 'small'"></div>
-            </ng-template>  
+                <!-- <div class="item" [ngStyle]="item.url | backgroundImage : item.url : 'assets/images/property-img-1.png' : 'small'"></div>
+            </ng-template>   -->
             <!-- <ng-template carouselSlide>
                 <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
             </ng-template>  
             <ng-template carouselSlide>
                 <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
             </ng-template>   -->
-        </owl-carousel-o>
-        <div class="property-details-info" *ngIf="propertyDetails">
-            <h3>{{propertyDetails.property_name}}</h3>
-            <p>{{propertyDetails.property_description}}</p>
-            <h4>Details</h4>
-            <p>{{propertyDetails.property_details}}</p>
-            <!-- <p>2 and 3 Bedroom Town-houses</p>
-            <p>3 and 4 Bedroom Town-houses with Study</p> -->
-            <h4>Niceties</h4>
-            <p>{{propertyDetails.property_niceties}}</p>
-            <h4>Services</h4>
-            <p>{{propertyDetails.property_services}}</p>
-            <h4>Fiduciary Contact</h4>
-            <p>Call : {{propertyDetails.create_by.Phone}}</p>
-            <p>Email : {{propertyDetails.create_by.Email}}</p>
+        <!-- </owl-carousel-o> -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="sample-img">
+                    <ul>
+                        <li *ngFor="let item of propertyDetails.property_image"><img [src]="item.url" alt=""></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="property-details-info col-md-8" *ngIf="propertyDetails">
+                <h3>{{propertyDetails.property_name}}</h3>
+                <p>{{propertyDetails.property_description}}</p>
+                <h4>Details</h4>
+                <p>{{propertyDetails.property_details}}</p>
+                <!-- <p>2 and 3 Bedroom Town-houses</p>
+                <p>3 and 4 Bedroom Town-houses with Study</p> -->
+                <h4>Niceties</h4>
+                <p>{{propertyDetails.property_niceties}}</p>
+                <h4>Services</h4>
+                <p>{{propertyDetails.property_services}}</p>
+                <h4>Fiduciary Contact</h4>
+                <p>Call : {{propertyDetails.create_by.Phone}}</p>
+                <p>Email : {{propertyDetails.create_by.Email}}</p>
+            </div>
+            <div class="col-md-4">
+                <div class="cont-info-details">
+                    <div class="contact-details">
+                        <p>33, rue Abbé Henri Muller
+                            L-9065 Ettelbruck</p>
+                        <p><span>Phone</span> <a href="tel:+35227861657">+35227861657 </a></p>
+                    </div>
+                    <button class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
+                    <button class="btn btn-block bt-maa" data-toggle="modal" data-target="#Make-an-appointment">Make an appointment</button>
+                </div>
+            </div>
+        </div>
+        
         <div class="pd-bottom-section">
             <div class="">
                 <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-color" (click)="property_doc_upload()">Download Property Document</a>
@@ -87,3 +110,74 @@
 </section>
     
     
+
+  
+  <!-- Contact -->
+  <div class="modal fade mark-comm-form" id="Contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form class="">
+                <div class="form-group">
+                    <input type="text" class="form-control"  placeholder="Enter Name">
+                  </div>
+                <div class="form-group">
+                  <input type="email" class="form-control"  placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control"  placeholder="Subject">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="You message" rows="4"></textarea>
+                  </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Make-an-appointment  -->
+    <div class="modal fade mark-comm-form" id="Make-an-appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Make an appointment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form class="">
+                    <div class="form-group">
+                        <input type="text" class="form-control"  placeholder="Enter Name">
+                      </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control"  placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control"  placeholder="Subject">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Enter Date">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="Start time">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="End time">
+                      </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>

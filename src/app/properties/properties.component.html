@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="property-item-info">
-                        <h5 class="title">{{item.property_name}}</h5>
+                        <h5 class="title" (click)="gotoPropertyDetails(item._id)">{{item.property_name}}</h5>
                         <p class="price">${{item.property_price}}</p>
                         <!-- <p>{{(item.excerpt | limitTo: 100) + (item.excerpt.length > 100 ? '...' : '')}}</p> -->
                         <div class="description-info">

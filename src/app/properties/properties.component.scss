@@ -43,9 +43,9 @@
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover; //cover
-                height: 258px;
+                height: 200px;
                 width: 100%;
-                @include border-radius(5px 5px 0 0);
+                // @include border-radius(5px 5px 0 0);
                 position: relative;
                 .hover-effect{
                     position: absolute;		
@@ -56,7 +56,7 @@
                     z-index: 10;
                     opacity: 0;
                     transition: all 0.8s ease;		
-                    @include border-radius(5px 5px 0 0);
+                    // @include border-radius(5px 5px 0 0);
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -76,7 +76,7 @@
                 padding: 20px;
                 border: 1px solid #d7d7d7;
                 border-top: 0;
-                @include border-radius(0 0 5px 5px);
+                // @include border-radius(0 0 5px 5px);
                 .title {
                     white-space: nowrap;
                     text-overflow: ellipsis;
