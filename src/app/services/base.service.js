@@ -30,7 +30,8 @@ const apiEnd = {
   removewishproperty: "remove_wish_property",
   customerappoinmentlist: "customer_appoinment_list",
   newsList: "newsList",
-  searchPropertyAnyUser: "searchPropertyAnyUser"
+  searchPropertyAnyUser: "searchPropertyAnyUser",
+  contactToAgent: "contactToAgent",
 }
 
 exports.BaseUrl = {

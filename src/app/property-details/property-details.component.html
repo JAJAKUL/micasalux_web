@@ -23,15 +23,15 @@
                 <div class="sample-img">
                     <ul>
                         <li *ngFor="let item of propertyDetails.property_image; let i = index" class="for-count">
-                        
-                      
+
+
                         <a class="example-image-link" [href]="item.url" data-lightbox="example-set"><img class="example-image" [src]="item.url"  alt="" /></a>
                         <div class="count" *ngIf="i==2">
                             +{{propertyDetails.property_image.length - 3}}
                         </div>
-                       
+
                       </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -59,7 +59,11 @@
                         <p><span>Phone</span> <a href="tel:+{{propertyDetails.create_by.Phone}}">{{propertyDetails.create_by.Phone}}</a></p>
                     </div>
                     <button class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
-                    <button class="btn btn-block bt-maa" data-toggle="modal" data-target="#Make-an-appointment">Make an appointment</button>
+                    <button class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
+
+                    <!-- <a href="javascript:void(0);" data-toggle="modal" *ngIf="userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a>
+                    <a href="javascript:void(0);" data-toggle="modal" *ngIf="!userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a> -->
+
                 </div>
             </div>
         </div>
@@ -131,21 +135,40 @@
           </button>
         </div>
         <div class="modal-body">
-            <form class="">
+            <form class="" [formGroup]="contactForm">
                 <div class="form-group">
-                    <input type="text" class="form-control"  placeholder="Enter Name">
+                    <input type="text" class="form-control" formControlName="name"  [(ngModel)]="getData.name" placeholder="Enter Name">
+                    <p style="color: #e80358" *ngIf=" !contactForm.controls['name'].valid &&
+                      contactForm.controls['name'].touched " >
+                    This field is required.
+                  </p>
                   </div>
                 <div class="form-group">
-                  <input type="email" class="form-control"  placeholder="Enter email">
+                  <input type="email" class="form-control" formControlName="email"  [(ngModel)]="getData.email" placeholder="Enter email">
+                  <p style="color: #e80358" *ngIf=" !contactForm.controls['email'].valid &&
+                  contactForm.controls['email'].touched " >
+                This field is required.
+              </p>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control"  placeholder="Subject">
+                  <input type="text" class="form-control" formControlName="phone"  [(ngModel)]="getData.phone" placeholder="Enter phone number">
+                  <p style="color: #e80358" *ngIf=" !contactForm.controls['phone'].valid &&
+                    contactForm.controls['phone'].touched " >
+                  This field is required.
+                </p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="getData.subject" placeholder="Subject">
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control" placeholder="You message" rows="4"></textarea>
+                    <textarea class="form-control" formControlName="message" [(ngModel)]="getData.message" placeholder="You message" rows="4"></textarea>
+                    <p style="color: #e80358" *ngIf=" !contactForm.controls['message'].valid &&
+                    contactForm.controls['message'].touched " >
+                  This field is required.
+                </p>
                   </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid" (click)="addContact()">Submit</button>
               </form>
         </div>
       </div>

@@ -8,7 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { CustomPipeModule } from '../custom/custom-pipe/custom-pipe.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [PropertyDetailsComponent],
   imports: [
@@ -18,7 +18,9 @@ import { CustomPipeModule } from '../custom/custom-pipe/custom-pipe.module';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    CustomPipeModule
+    CustomPipeModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PropertyDetailsModule { }

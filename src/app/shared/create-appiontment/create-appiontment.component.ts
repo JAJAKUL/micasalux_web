@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { WebService } from 'src/app/services/web.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
-import { BaseUrl } from 'src/app/services/base.service'; 
+import { BaseUrl } from 'src/app/services/base.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -61,7 +61,10 @@ export class CreateAppiontmentComponent implements OnInit {
       if (res["status"]) {
         this.toastr.success(res["message"],"Success");
         this.dialogRef.close({result: true});
-        this.router.navigate(["/view-appointments-by-customer"]);
+        if(this.userData){
+
+          this.router.navigate(["/view-appointments-by-customer"]);
+        }
       }else{
         console.log("res error");
         this.toastr.error(res["message"],"Error")
