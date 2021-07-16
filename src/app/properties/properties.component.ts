@@ -24,7 +24,7 @@ export class PropertiesComponent implements OnInit {
     private activeRoute : ActivatedRoute,
     private webService: WebService,
     private toastr: ToastrService
-    ) { 
+    ) {
       this.searchData = {
         longitude: decodeURIComponent(this.activeRoute.snapshot.queryParams['longitude']),
         latitude: decodeURIComponent(this.activeRoute.snapshot.queryParams['latitude']),
@@ -76,25 +76,41 @@ export class PropertiesComponent implements OnInit {
    console.log("this.searchData===",this.searchData)
    if(this.userData) {
      this.userLoginStatus = true;
+     this.webService.createPost({ url: BaseUrl.apiUrl("searchProperty")+"?userOnline="+this.userLoginStatus, body:this.searchData, contentType: true, loading: true }).then(res => {
+      if (res["status"]) {
+        this.propertyList = res["data"];
+        this.propertyList.forEach(element => {
+          if(element.property_image) {
+            element.property_image = BaseUrl.baseUrl+'/'+element.property_image[0].url
+          } else{
+            element.property_image = 'assets/images/image-not-available.png'
+          }
+        });
+        // console.log("propertyCategoryList[0]===", this.propertyList[0].wishProperty);
+        // console.log("propertyCategoryList===", this.propertyList);
+      }else{
+        this.toastr.error(res["message"],"Error")
+      }
+    })
    } else {
     this.userLoginStatus = false;
+    this.webService.createPost({ url: BaseUrl.apiUrl("searchPropertyAnyUser")+"?userOnline="+this.userLoginStatus, body:this.searchData, contentType: true, loading: true }).then(res => {
+      if (res["status"]) {
+        this.propertyList = res["data"];
+        this.propertyList.forEach(element => {
+          if(element.property_image) {
+            element.property_image = BaseUrl.baseUrl+'/'+element.property_image[0].url
+          } else{
+            element.property_image = 'assets/images/image-not-available.png'
+          }
+        });
+        // console.log("propertyCategoryList[0]===", this.propertyList[0].wishProperty);
+        // console.log("propertyCategoryList===", this.propertyList);
+      }else{
+        this.toastr.error(res["message"],"Error")
+      }
+    })
    }
-  this.webService.createPost({ url: BaseUrl.apiUrl("searchProperty")+"?userOnline="+this.userLoginStatus, body:this.searchData, contentType: true, loading: true }).then(res => {
-    if (res["status"]) {
-      this.propertyList = res["data"];
-      this.propertyList.forEach(element => {
-        if(element.property_image) {
-          element.property_image = BaseUrl.baseUrl+'/'+element.property_image[0].url
-        } else{
-          element.property_image = 'assets/images/image-not-available.png'
-        }
-      });
-      console.log("propertyCategoryList[0]===", this.propertyList[0].wishProperty);
-      console.log("propertyCategoryList===", this.propertyList);
-    }else{
-      this.toastr.error(res["message"],"Error")
-    }
-  })
  }
 
  handleAddressChange(address: Address) {

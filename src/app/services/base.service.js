@@ -28,7 +28,8 @@ const apiEnd = {
   wishPropertyList: "wishPropertyList",
   removewishproperty: "remove_wish_property",
   customerappoinmentlist: "customer_appoinment_list",
-  newsList: "newsList"
+  newsList: "newsList",
+  searchPropertyAnyUser: "searchPropertyAnyUser"
 }
 
 exports.BaseUrl = {
