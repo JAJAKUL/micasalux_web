@@ -13,7 +13,7 @@
             </ng-template>   -->
             <!-- <ng-template carouselSlide>
                 <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
-            </ng-template>  
+            </ng-template>
             <ng-template carouselSlide>
                 <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
             </ng-template>   -->
@@ -46,16 +46,15 @@
             <div class="col-md-4">
                 <div class="cont-info-details">
                     <div class="contact-details">
-                        <p>33, rue Abbé Henri Muller
-                            L-9065 Ettelbruck</p>
-                        <p><span>Phone</span> <a href="tel:+35227861657">+35227861657 </a></p>
+                        <p>{{propertyDetails.create_by.Address}}</p>
+                        <p><span>Phone</span> <a href="tel:+{{propertyDetails.create_by.Phone}}">{{propertyDetails.create_by.Phone}}</a></p>
                     </div>
                     <button class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
                     <button class="btn btn-block bt-maa" data-toggle="modal" data-target="#Make-an-appointment">Make an appointment</button>
                 </div>
             </div>
         </div>
-        
+
         <div class="pd-bottom-section">
             <div class="">
                 <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-color" (click)="property_doc_upload()">Download Property Document</a>
@@ -108,10 +107,10 @@
         </div>
     </div>
 </section>
-    
-    
 
-  
+
+
+
   <!-- Contact -->
   <div class="modal fade mark-comm-form" id="Contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -136,7 +135,7 @@
                   <div class="form-group">
                     <textarea class="form-control" placeholder="You message" rows="4"></textarea>
                   </div>
-                
+
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
         </div>
