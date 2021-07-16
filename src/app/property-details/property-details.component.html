@@ -1,6 +1,6 @@
 <section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-details-banner.png');">
     <div class="container">
-        <h1 *ngIf="propertyDetails">{{propertyDetails.property_name}}</h1>
+        <!-- <h1 *ngIf="propertyDetails">{{propertyDetails.property_name}}</h1> -->
     </div>
 </section>
 
@@ -22,7 +22,16 @@
             <div class="col-md-12">
                 <div class="sample-img">
                     <ul>
-                        <li *ngFor="let item of propertyDetails.property_image"><img [src]="item.url" alt=""></li>
+                        <li *ngFor="let item of propertyDetails.property_image; let i = index" class="for-count">
+                        
+                      
+                        <a class="example-image-link" [href]="item.url" data-lightbox="example-set"><img class="example-image" [src]="item.url"  alt="" /></a>
+                        <div class="count" *ngIf="i==2">
+                            +{{propertyDetails.property_image.length - 3}}
+                        </div>
+                       
+                      </li>
+                       
                     </ul>
                 </div>
             </div>
