@@ -76,7 +76,11 @@ export class PropertiesComponent implements OnInit {
    console.log("this.searchData===",this.searchData)
    if(this.userData) {
      this.userLoginStatus = true;
+   console.log("this.userData===")
+
      this.webService.createPost({ url: BaseUrl.apiUrl("searchProperty")+"?userOnline="+this.userLoginStatus, body:this.searchData, contentType: true, loading: true }).then(res => {
+      console.log('res==============', res)
+
       if (res["status"]) {
         this.propertyList = res["data"];
         this.propertyList.forEach(element => {
@@ -93,8 +97,11 @@ export class PropertiesComponent implements OnInit {
       }
     })
    } else {
+   console.log("this.userData===false")
+
     this.userLoginStatus = false;
     this.webService.createPost({ url: BaseUrl.apiUrl("searchPropertyAnyUser")+"?userOnline="+this.userLoginStatus, body:this.searchData, contentType: true, loading: true }).then(res => {
+      console.log('res==============', res)
       if (res["status"]) {
         this.propertyList = res["data"];
         this.propertyList.forEach(element => {

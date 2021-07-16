@@ -20,7 +20,7 @@ export class PropertyDetailsComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private activeRoute : ActivatedRoute,
-  ) { 
+  ) {
     this.propertyId = decodeURIComponent(this.activeRoute.snapshot.queryParams['propertyId']);
   }
 
@@ -43,6 +43,7 @@ export class PropertyDetailsComponent implements OnInit {
 
   getPropertyDetails() {
     this.webService.createGet({ url: BaseUrl.apiUrl("propertyDetails")+"?propertyId="+this.propertyId, contentType: true, loading: true }).then(res => {
+      console.log('response data ===================', res)
       if (res["status"]) {
         this.propertyDetails = res["data"];
         if(this.propertyDetails.property_image != null && this.propertyDetails.property_image != "" && this.propertyDetails.property_image != undefined && this.propertyDetails.property_image.length > 0) {
