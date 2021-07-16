@@ -248,6 +248,22 @@ section.inner-banner-2-wrap {
 }
 
 @media only screen and (max-width: 767px) {
+    .sample-img {
+        ul{
+            li{
+            &:nth-child(1){
+                img{
+                    height: 200px;
+                }
+            }
+            &:nth-child(2),  &:nth-child(3){
+                img{
+                    height: 96px;
+                }
+            }
+        }
+        }
+    }
     .pd-bottom-section{
         .btn-p-cmn{
             font-size: 16px;
