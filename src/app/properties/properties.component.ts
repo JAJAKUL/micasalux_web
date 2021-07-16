@@ -24,7 +24,7 @@ export class PropertiesComponent implements OnInit {
     private activeRoute : ActivatedRoute,
     private webService: WebService,
     private toastr: ToastrService
-    ) { 
+    ) {
       this.searchData = {
         longitude: decodeURIComponent(this.activeRoute.snapshot.queryParams['longitude']),
         latitude: decodeURIComponent(this.activeRoute.snapshot.queryParams['latitude']),
@@ -35,6 +35,7 @@ export class PropertiesComponent implements OnInit {
         property_location: decodeURIComponent(this.activeRoute.snapshot.queryParams['property_location']),
         property_category: decodeURIComponent(this.activeRoute.snapshot.queryParams['property_category']),
       }
+      console.log('searchData=========================', this.searchData)
       this.userData = JSON.parse(localStorage.getItem('userData'));
   }
 
@@ -80,6 +81,7 @@ export class PropertiesComponent implements OnInit {
     this.userLoginStatus = false;
    }
   this.webService.createPost({ url: BaseUrl.apiUrl("searchProperty")+"?userOnline="+this.userLoginStatus, body:this.searchData, contentType: true, loading: true }).then(res => {
+      console.log('response=================', res)
     if (res["status"]) {
       this.propertyList = res["data"];
       this.propertyList.forEach(element => {

@@ -1,4 +1,5 @@
- let baseUrl = "https://nodeserver.mydevfactory.com:4250";
+ let baseUrl = "https://nodeserver.mydevfactory.com:3301";
+//  let baseUrl = "https://nodeserver.mydevfactory.com:4250";
 // let baseUrl = "http://localhost:4250";
 let userUrl = baseUrl + "/user/";
 let appUrl = baseUrl + "/admin/";

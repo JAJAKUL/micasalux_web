@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     private webService: WebService,
     private toastr: ToastrService,
     private router: Router
-  ) { 
+  ) {
     this.getPropertyCategoryList();
     this.getPropertyTypeList();
     this.getNewsList();
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       disableDefaultUI: true,
       zoom: 20,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    } 
+    }
     var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
     var	latLng = new google.maps.LatLng(43.64344769999999, -79.380939);
     console.log('latlng', latLng);
@@ -105,6 +105,7 @@ export class HomeComponent implements OnInit {
 
   getPropertyTypeList() {
     this.webService.createGet({ url: BaseUrl.apiUrl("propertyTypeList"), contentType: true, loading: true }).then(res => {
+      console.log('response====================', res)
       if (res["status"]) {
         this.propertyTypeList = res["data"];
         console.log("categoryList===", this.propertyTypeList);

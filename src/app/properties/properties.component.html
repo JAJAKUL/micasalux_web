@@ -12,7 +12,7 @@
                 <mat-label>Location</mat-label>
                 <input type="text" [value]="searchData.property_location" matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
             </mat-form-field>
-            
+
             <mat-form-field appearance="outline" class="col-lg-3 col-md-4 custom-form-field">
                 <mat-label>Categories</mat-label>
                 <mat-select [(ngModel)]="searchData.property_category">
@@ -164,5 +164,5 @@
         </ul>
     </div>
 </section>
-    
-    
+
+
