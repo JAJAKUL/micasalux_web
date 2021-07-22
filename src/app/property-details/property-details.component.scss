@@ -226,8 +226,30 @@ section.inner-banner-2-wrap {
         font-size: 20px;
         pointer-events: none;
         display: flex;
+     
         align-items: center;
         justify-content: center;
+    }
+}
+.profile-details {
+    width: 100%;
+    float: left;
+    text-align: center;
+    .top-p-img{
+        text-align: center;
+        width: 100%;
+        float: left;
+        img{
+            width:120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+    p{
+        i.fa {
+            color: #c9e265;
+        }
     }
 }
 @media only screen and (max-width: 991px) {
