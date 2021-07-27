@@ -27,12 +27,18 @@ export class ProviderAppointmentListComponent implements OnInit {
       if (res["status"]) {
         this.appoinmentList = res["data"];
         this.appoinmentList.forEach(element => {
-          if(element.createdBy.profile != "" && element.createdBy.profile != undefined && element.createdBy.profile != null) {
+          if(element.createdBy){
+          if(element.createdBy.profile) {
+          // if(element.createdBy.profile != "" && element.createdBy.profile != undefined && element.createdBy.profile != null) {
             element.createdBy.profile = BaseUrl.baseUrl+'/'+element.createdBy.profile
             // element.createdBy.profile = BaseUrl.baseUrl+'/'+element.createdBy.profile
           } else{
             element.createdBy.profile = 'assets/images/image-not-available.png'
           }
+        }else{
+          element.createdBy = {}
+          element.createdBy.profile = 'assets/images/image-not-available.png'
+        }
         });
         console.log("propertyCategoryList===", this.appoinmentList);
       }else{

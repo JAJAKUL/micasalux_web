@@ -18,14 +18,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-import { ManagePropertyComponent } from './manage-property/manage-property.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ManagePropertyComponent
   ],
   imports: [
     BrowserModule,

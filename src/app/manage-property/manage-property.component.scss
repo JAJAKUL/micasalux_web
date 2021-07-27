@@ -1,0 +1,115 @@
+@import "./src/styles.scss";
+.lf-15{
+    padding-left: 0;
+    padding-right: 10px;
+}
+.rh-15{
+    padding-left: 10px;
+    padding-right: 0;
+}
+.property-row{
+    margin-top: 40px;
+    .property-col{
+        margin-bottom: 30px;
+    }
+}
+.news-item{
+    display: flex;
+    .news-item-img{
+        width: 260px;
+        height: 190px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 5px;
+    }
+    .news-item-info{
+        width: calc(100% - 265px);
+        padding-left: 24px;
+        text-align: left;
+        h5{
+            color: #4E4D4D;
+            font-weight: 700;
+            font-size: 30px;
+        }
+        p{
+            color: #717171;
+            font-size: 15px;
+            margin-top: 10px;
+            &.name-txt{
+                span{
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .price{
+            font-weight: 700;
+            color: #004AAD;
+            font-size: 26px;
+        }
+        .pin-icon{
+            background: url('../../assets/images/pin-icon.png') top left no-repeat;
+            padding-left: 20px;
+        }
+    }
+}
+.news-mrt-35{
+    margin-top: 35px;
+}
+.profile-img-box{
+    width: 170px;
+    height: 170px;
+    @include border-radius(50%);
+    @include box-shadow(0px 4px 4px 1px rgba(0, 0, 0, 0.07));
+    margin: 0 auto 30px auto;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .plus-icon{
+        width: 40px;
+        height: 40px;
+        @include border-radius(50%);
+        background-color: #C9E265;
+        position: absolute;
+        bottom: 13px;
+        right: 0;
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        line-height: 38px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .lf-15,
+    .rh-15{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .news-item{
+        display: block;
+        .news-item-img{
+            width: 100%;
+        }
+        .news-item-info{
+            width: inherit;
+            padding-left: 0;
+            margin-top: 15px;
+            h5{
+                font-size: 19px;
+            }
+            .price{
+                color: #004AAD;
+                font-size: 20px;
+            }
+        }
+    }
+    .profile-img-box{
+        width: 120px;
+        height: 120px;
+        .plus-icon{
+            bottom: 0;
+        }
+    }
+}

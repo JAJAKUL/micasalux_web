@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ManagePropertyComponent } from "./manage-property.component";
 
-const routes: Routes = [];
+const routes: Routes = [{
+  path:'',
+  component: ManagePropertyComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

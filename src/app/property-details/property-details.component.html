@@ -73,13 +73,16 @@
                 </div>
               </div>
                 <div class="cont-info-details">
-                 
+
                     <div class="contact-details">
                         <p>{{propertyDetails.create_by.Address}}</p>
                         <p><span>Phone</span> <a href="tel:+{{propertyDetails.create_by.Phone}}">{{propertyDetails.create_by.Phone}}</a></p>
                     </div>
-                    <button class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
-                    <button class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
+                    <div>
+
+                      <button class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
+                      <button class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
+                    </div>
 
                     <!-- <a href="javascript:void(0);" data-toggle="modal" *ngIf="userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a>
                     <a href="javascript:void(0);" data-toggle="modal" *ngIf="!userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a> -->

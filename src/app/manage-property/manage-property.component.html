@@ -1,1 +1,45 @@
-<p>manage-property works!</p>
+<section class="inner-banner-wrap">
+  <div class="container"></div>
+</section>
+
+<section class="paddtb-80">
+  <div class="container ">
+    <div class="cmn-form-wrapper" style="text-align: right; max-width: 851px;">
+      <button button mat-button class="submit-btn gray-btn-bg" (click)="addProperty()">ADD PROPERTY</button>
+    </div>
+  <div class="property-row " *ngIf="propertyList?.length">
+    <div class="property-col" *ngFor="let propertyItem of propertyList">
+        <div class="news-item">
+            <!-- <div class="news-item-img" style="background-image:url('assets/images/property-img-1.png')"></div> [ngStyle]="propertyItem.property_image | backgroundImage : propertyItem.property_image : './assets/images/property-img-1.png' : 'small'" -->
+            <div class="news-item-img" >
+            <img style="width: 241px;" src="{{propertyItem.property_image ? propertyItem.property_image : './assets/images/property-img-1.png'}}" alt="">
+            </div>
+
+            <div class="news-item-info">
+                <h5>{{propertyItem.property_name}}</h5>
+                <p>{{propertyItem.property_description}}</p>
+                <p class="price">${{propertyItem.property_price}}</p>
+                <p class="pin-icon">{{propertyItem.property_location}}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="property-col">
+      <div class="news-item">
+          <div class="news-item-img" style="background-image:url('assets/images/property-img-3.png')"></div>
+          <div class="news-item-info">
+              <h5>Rajwada apartment</h5>
+              <p>2 and 3 Bedroom Town-houses</p>
+              <p>Swimming pool, Gazebo, Pool Lounge, Pool Bar, Gymnasium, Children Play Ground, Gardens</p>
+              <p class="price">$5520.00</p>
+              <p class="pin-icon">At victoria iceland, Lagos State, 21 Stand road</p>
+          </div>
+      </div>
+  </div> -->
+</div>
+
+</div>
+  <div *ngIf="!propertyList?.length">
+    <h2 style="text-align: center;">No Data Found !!!</h2>
+  </div>
+</section>
