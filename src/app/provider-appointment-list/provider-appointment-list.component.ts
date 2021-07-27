@@ -23,11 +23,13 @@ export class ProviderAppointmentListComponent implements OnInit {
 
   getappoinmentList() {
     this.webService.createGet({ url: BaseUrl.apiUrl("customerappoinmentlist"), contentType: true, loading: true }).then(res => {
+      console.log('res======================', res)
       if (res["status"]) {
         this.appoinmentList = res["data"];
         this.appoinmentList.forEach(element => {
           if(element.createdBy.profile != "" && element.createdBy.profile != undefined && element.createdBy.profile != null) {
             element.createdBy.profile = BaseUrl.baseUrl+'/'+element.createdBy.profile
+            // element.createdBy.profile = BaseUrl.baseUrl+'/'+element.createdBy.profile
           } else{
             element.createdBy.profile = 'assets/images/image-not-available.png'
           }

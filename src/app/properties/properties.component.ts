@@ -131,6 +131,7 @@ export class PropertiesComponent implements OnInit {
 wishBtnClick(id,i) {
   if(this.userData == false) {
     this.toastr.error("Please Login Your Account","Error")
+    return;
   } else {
     this.webService.createGet({ url: BaseUrl.apiUrl("addInWishProperty")+"?propertyId="+id, contentType: true, loading: true }).then(res => {
       if (res["status"]) {

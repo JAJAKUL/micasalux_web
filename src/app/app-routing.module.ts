@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'property-agent', loadChildren: () => import('./property-agent/property-agent.module').then(m => m.PropertyAgentModule) },
   { path: 'view-appointments-by-customer', loadChildren: () => import('./view-appointments-by-customer/view-appointments-by-customer.module').then(m => m.ViewAppointmentsByCustomerModule) },
   { path: 'wish-list', loadChildren: () => import('./wish-list/wish-list.module').then(m => m.WishListModule) },
-  { path: 'view-appointments', loadChildren: () => import('./provider-appointment-list/provider-appointment-list.module').then(m => m.ProviderAppointmentListModule) }
+  { path: 'view-appointments', loadChildren: () => import('./provider-appointment-list/provider-appointment-list.module').then(m => m.ProviderAppointmentListModule) },
+  { path: 'manage-property', loadChildren: () => import('./provider-appointment-list/provider-appointment-list.module').then(m => m.ProviderAppointmentListModule) }
 
 ];
 

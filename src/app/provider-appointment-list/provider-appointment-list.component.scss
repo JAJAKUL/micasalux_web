@@ -9,7 +9,7 @@
     display: flex;
     align-items: flex-start;
     &:last-child{
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
     .property-agent-item-img {
         background-position: center;
@@ -19,7 +19,7 @@
         width: 180px;
         @include border-radius(5px);
         position: relative;
-       
+
     }
     .property-agent-item-info {
         width: calc(100% - 200px);
@@ -86,8 +86,8 @@
             }
         }
     }
-  
+
 }
 @media only screen and (max-width: 575px) {
- 
+
 }

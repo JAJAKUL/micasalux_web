@@ -20,7 +20,7 @@ export class CreateAppiontmentComponent implements OnInit {
   selecredDate: any;
   selectedTime: any;
   propertyCategoryList: any;
-
+  customerData:any
   constructor(
     private FB: FormBuilder,
     private webService: WebService,
@@ -34,6 +34,11 @@ export class CreateAppiontmentComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.customerData = JSON.parse(localStorage.getItem('userData'));
+    if(this.customerData != '' && this.customerData != null) {
+
+
+    }
     this.createAppionmentForm();
     this.getPropertyCategoryList();
   }
@@ -49,6 +54,7 @@ export class CreateAppiontmentComponent implements OnInit {
       property_name: [this.propertyDetails && this.propertyDetails.property_name != undefined ? this.propertyDetails.property_name: "",[Validators.required]],
       HairUser:[this.propertyDetails && this.propertyDetails.create_by != undefined ? this.propertyDetails.create_by._id: ""],
       bookingDate:["",[Validators.required]],
+      userId:[""],
       // booking_time:["",[Validators.required]],
       bookingProperty: [this.propertyDetails._id]
       // bookingProperty: ["",[Validators.required]]
@@ -57,6 +63,11 @@ export class CreateAppiontmentComponent implements OnInit {
 
   submitCreateAppoinmentForm(){
     console.log("createAppoinmentForm===",this.createAppoinmentForm.value);
+    if(this.customerData != '' && this.customerData != null) {
+
+      this.createAppoinmentForm.controls.userId.setValue(this.customerData._id);
+
+    }
     this.webService.createPost({ url: BaseUrl.apiUrl("bookingProperty"),  body: this.createAppoinmentForm.value, loading: true }).then(res => {
       if (res["status"]) {
         this.toastr.success(res["message"],"Success");

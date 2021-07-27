@@ -5,16 +5,16 @@
 <section class="paddtb-80">
     <div class="container">
             <div class="cmn-form-wrapper">
-            <mat-tab-group mat-align-tabs="center" animationDuration="0ms" *ngIf="ownDetails">
+            <mat-tab-group mat-align-tabs="center" [selectedIndex]=selectedTab animationDuration="0ms" *ngIf="ownDetails">
+              <mat-tab label="My Account">
                 <form [formGroup]="editDetailsForm">
-                    <mat-tab label="My Account"> 
                         <div>
                             <div class="profile-img-box" style="background-image:url('{{imageSrc}}');">
                                 <span class="plus-icon" (click)="uploadEl.click()"><i class="fa fa-pencil" aria-hidden="true"></i></span>
                             </div>
 
                             <input hidden type="file" #uploadEl class="custom-file-input" id="customFile" name="filename"
-                                (change)="onSelectedProfileImage($event)"  accept="image/x-png,image/gif,image/jpeg" > 
+                                (change)="onSelectedProfileImage($event)"  accept="image/x-png,image/gif,image/jpeg" >
 
                             <mat-form-field appearance="outline" class="custom-form-field form-padd-top">
                                 <mat-label>Name</mat-label>
@@ -50,36 +50,35 @@
                             </mat-form-field>
                         </div>
                         <button button mat-button class="submit-btn" (click)="submitOwnDetails()">Submit</button>
-                    </mat-tab>
-                </form>
-                <mat-tab label="Change Password">
-                    <form [formGroup]="changePasswordForm">
-                        <div>
-                            <mat-form-field appearance="outline" class="custom-form-field form-padd-top">
-                                <mat-label>Current Password</mat-label>
-                                <input type="password" matInput formControlName="currentPassword">
-                                <mat-error *ngIf="hasPasswordError('currentPassword', 'required')">Current Password is required</mat-error>
-                            </mat-form-field>
-                            <mat-form-field appearance="outline" class="custom-form-field">
-                                <mat-label>New Password</mat-label>
-                                <input type="password" matInput formControlName="newPassword">
-                                <mat-error *ngIf="hasPasswordError('newPassword', 'required')">New Password is required</mat-error>
-                                <mat-error *ngIf="hasPasswordError('newPassword', 'pattern')">New Password at least 6 char's with alphabet, special char and number</mat-error>
-                            </mat-form-field>
-                            <mat-form-field appearance="outline" class="custom-form-field">
-                                <mat-label>Confirm Password</mat-label>
-                                <input type="password" matInput formControlName="confirmPassword">
-                                <mat-error *ngIf="changePasswordForm.get('confirmPassword').errors && hasPasswordError('confirmPassword', 'required')"> Confirm Password is required</mat-error>
-                                <mat-error *ngIf="changePasswordForm.get('confirmPassword').errors && changePasswordForm.get('confirmPassword').errors.confirmPasswordValidator" >Confirm password and New Password dont match</mat-error>
-                            </mat-form-field>
-                        </div>
-                        <button button mat-button class="submit-btn" (click)="submitChangePasswrdForm()">Submit</button>
-                    </form>
-                </mat-tab>
+                      </form>
+              </mat-tab>
+              <mat-tab label="Change Password">
+                  <form [formGroup]="changePasswordForm">
+                      <div>
+                          <mat-form-field appearance="outline" class="custom-form-field form-padd-top">
+                              <mat-label>Current Password</mat-label>
+                              <input type="password" matInput formControlName="currentPassword">
+                              <mat-error *ngIf="hasPasswordError('currentPassword', 'required')">Current Password is required</mat-error>
+                          </mat-form-field>
+                          <mat-form-field appearance="outline" class="custom-form-field">
+                              <mat-label>New Password</mat-label>
+                              <input type="password" matInput formControlName="newPassword">
+                              <mat-error *ngIf="hasPasswordError('newPassword', 'required')">New Password is required</mat-error>
+                              <mat-error *ngIf="hasPasswordError('newPassword', 'pattern')">New Password at least 6 char's with alphabet, special char and number</mat-error>
+                          </mat-form-field>
+                          <mat-form-field appearance="outline" class="custom-form-field">
+                              <mat-label>Confirm Password</mat-label>
+                              <input type="password" matInput formControlName="confirmPassword">
+                              <mat-error *ngIf="changePasswordForm.get('confirmPassword').errors && hasPasswordError('confirmPassword', 'required')"> Confirm Password is required</mat-error>
+                              <mat-error *ngIf="changePasswordForm.get('confirmPassword').errors && changePasswordForm.get('confirmPassword').errors.confirmPasswordValidator" >Confirm password and New Password dont match</mat-error>
+                          </mat-form-field>
+                      </div>
+                      <button button mat-button class="submit-btn" (click)="submitChangePasswrdForm()">Submit</button>
+                  </form>
+              </mat-tab>
             </mat-tab-group>
         </div>
     </div>
 </section>
-        
-        
-    
+
+

@@ -12,7 +12,7 @@
                 <mat-label>Location</mat-label>
                 <input type="text" [value]="searchData.property_location" matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
             </mat-form-field>
-            
+
             <mat-form-field appearance="outline" class="col-lg-3 col-md-4 custom-form-field">
                 <mat-label>Categories</mat-label>
                 <mat-select [(ngModel)]="searchData.property_category">
@@ -25,7 +25,7 @@
                 <button mat-button class="btn-savesearch btn-color" (click)="getPropertyList()">Save search</button>
             </div>
         </div> -->
-        <ul class="property-item-ul" *ngIf="propertyList">
+        <ul class="property-item-ul" *ngIf="propertyList?.length">
             <li *ngFor="let item of propertyList;let i=index;">
                 <div class="property-item">
                     <div class="fav-icon" *ngIf="!item.wishProperty" (click)="wishBtnClick(item._id,i)"></div>
@@ -162,7 +162,11 @@
                 </div>
             </li> -->
         </ul>
+
+        <div *ngIf="!propertyList?.length">
+          <h2 style="text-align: center;">No Data Found !!!</h2>
+        </div>
     </div>
 </section>
-    
-    
+
+

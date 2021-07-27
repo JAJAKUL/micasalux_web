@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { WebService } from 'src/app/services/web.service';
-import { BaseUrl } from 'src/app/services/base.service'; 
+import { BaseUrl } from 'src/app/services/base.service';
 import { ConfirmPasswordValidator } from 'src/app/services/confirm-password.validator';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
@@ -23,13 +23,13 @@ export class MyAccountCustomerComponent implements OnInit {
   someRegex: String = "/^(?:\(\d{4}\)|\d{3}-)\d{3}-\d{4}$/";
   profileImage: any;
   imageSrc: any;
-
+  selectedTab = 0
   constructor(
     private FB: FormBuilder,
     private webService: WebService,
     private toastr: ToastrService,
     private router: Router,
-  ) { 
+  ) {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if(this.userData != '' && this.userData != null) {
       if( this.userData.UserType == '1') {
@@ -96,7 +96,9 @@ export class MyAccountCustomerComponent implements OnInit {
     if (this.changePasswordForm.invalid) return;
     this.webService.createPost({ url: BaseUrl.apiUrl("changePassword"), body: this.changePasswordForm.value, contentType: true, loading: true }).then(res => {
       if (res["status"]) {
+        this.selectedTab = 0
         this.changePasswordForm.reset();
+
         this.toastr.success(res["message"],"Success");
       }else{
         console.log("res error");
@@ -155,7 +157,7 @@ export class MyAccountCustomerComponent implements OnInit {
       reader.onload = (event) => {
         this.imageSrc = reader.result;
          console.log("this.imageSrc==", this.imageSrc);
-        
+
       }
     }
   }

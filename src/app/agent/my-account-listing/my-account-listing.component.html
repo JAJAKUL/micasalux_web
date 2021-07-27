@@ -6,7 +6,7 @@
     <div class="container">
         <div class="cmn-form-wrapper">
             <mat-tab-group mat-align-tabs="center" animationDuration="0ms" *ngIf="ownDetails">
-                <mat-tab label="My Account"> 
+                <mat-tab label="My Account">
                     <form [formGroup]="editDetailsForm">
                         <div>
                             <!-- <mat-form-field appearance="outline" class="custom-form-field form-padd-top">
@@ -32,7 +32,7 @@
                                 </mat-select>
                                 <mat-error *ngIf="hasError('AgentType', 'required')">Please Select Property Agent Type</mat-error>
                             </mat-form-field>
-        
+
                             <mat-form-field *ngIf="subAgentTypeList" appearance="outline" class="custom-form-field">
                                 <mat-label>Choose an option</mat-label>
                                 <mat-select formControlName="subAgentType">
@@ -49,7 +49,7 @@
                                 </mat-select>
                                 <mat-error *ngIf="hasError('AgentType', 'required')">Please Select Property Agent Type</mat-error>
                             </mat-form-field>
-        
+
                             <mat-form-field  appearance="outline" class="custom-form-field">
                                 <mat-label>Choose an option</mat-label>
                                 <mat-select formControlName="subAgentType">
@@ -61,7 +61,7 @@
                                 <mat-error *ngIf="hasError('subAgentType', 'required')">Please Select Property Sub Agent Type</mat-error>
                             </mat-form-field> -->
 
-                            
+
                             <mat-form-field appearance="outline" class="custom-form-field">
                                 <mat-label>Name</mat-label>
                                 <input matInput formControlName="FullName">
@@ -100,8 +100,7 @@
                                 <textarea rows="8" matInput formControlName="description"></textarea>
                             </mat-form-field>
                         </div>
-
-                        <button button mat-button class="submit-btn gray-btn-bg" (click)="addProperty()">ADD PROPERTY</button>
+                        <button button mat-button class="submit-btn" (click)="submitOwnDetails()">Submit</button>
                         <div class="property-row">
                             <div class="property-col" *ngFor="let propertyItem of propertyList">
                                 <div class="news-item">
@@ -139,7 +138,7 @@
                                         <p class="pin-icon">At victoria iceland, Lagos State, 21 Stand road</p>
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
                             <div class="property-col">
                                 <div class="news-item">
                                     <div class="news-item-img" style="background-image:url('assets/images/property-img-3.png')"></div>
@@ -153,7 +152,8 @@
                                 </div>
                             </div>     -->
                         </div>
-                        <button button mat-button class="submit-btn" (click)="submitOwnDetails()">Submit</button>
+                        <button button mat-button class="submit-btn gray-btn-bg" (click)="addProperty()">ADD PROPERTY</button>
+
                     </form>
                 </mat-tab>
                 <mat-tab label="Change Password">
@@ -211,6 +211,5 @@
         </div>
     </div>
 </section>
-            
-            
-        
+
+

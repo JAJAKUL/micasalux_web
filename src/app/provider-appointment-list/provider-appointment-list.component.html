@@ -3,17 +3,19 @@
 </section>
 
 <section class="paddtb-80">
-    <div class="container" *ngIf="appoinmentList">
-        <div class="property-agent-item" *ngFor="let item of appoinmentList" >
-            <div  *ngIf="item && item.createdBy"class="property-agent-item-img" style="background-image:url('{{item.createdBy.profile}}')">
+    <div class="container" *ngIf="appoinmentList?.length">
+        <div class="" *ngFor="let item of appoinmentList" >
+          <div class="property-agent-item" *ngIf="item?.createdBy">
+            <div  *ngIf="item && item?.createdBy"class="property-agent-item-img" style="background-image:url('{{item?.createdBy?.profile}}')">
             </div>
             <div class="property-agent-item-info">
-                <h5 class="title">{{item.customer_name}}</h5>
-                <p><strong>Email:&nbsp;</strong>{{item.customer_email}}</p>
-                <p><strong>Phone:&nbsp;</strong>{{item.booking_phone}}</p>
-                <p><strong>Metting Date:&nbsp;</strong>{{item.bookingDate | date:'dd/MM/yyyy'}}</p>
-                <p><strong>Metting Time:&nbsp;</strong>{{item.bookingDate | date: 'h:mm a'}}</p>
+                <h5 class="title">{{item?.customer_name}}</h5>
+                <p><strong>Email:&nbsp;</strong>{{item?.customer_email}}</p>
+                <p><strong>Phone:&nbsp;</strong>{{item?.booking_phone}}</p>
+                <p><strong>Metting Date:&nbsp;</strong>{{item?.bookingDate | date:'dd/MM/yyyy'}}</p>
+                <p><strong>Metting Time:&nbsp;</strong>{{item?.bookingDate | date: 'h:mm a'}}</p>
             </div>
+          </div>
         </div>
         <!-- <div class="property-agent-item">
             <div class="property-agent-item-img" style="background-image:url('../assets/images/agent-person.png')">
@@ -37,6 +39,9 @@
                 <p><strong>Metting Time:&nbsp;</strong>12:30PM</p>
             </div>
         </div> -->
+    </div>
+    <div *ngIf="!appoinmentList?.length">
+      <h2 style="text-align: center;">No Data Found !!!</h2>
     </div>
 </section>
 

@@ -24,6 +24,7 @@
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 2" href="javascript:void(0);" [routerLink]="['/users/manage-account']">My Profile</a>
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 1" href="javascript:void(0);" [routerLink]="['view-appointments-by-customer']">Appointment List</a>
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 2" href="javascript:void(0);" [routerLink]="['view-appointments']">Appointment List</a>
+                            <a class="dropdown-item" *ngIf="userData && userData.UserType == 2" href="javascript:void(0);" [routerLink]="['manage-property']">Manage Property</a>
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 1" href="javascript:void(0);" [routerLink]="['wish-list']">Wish List</a>
                             <a class="dropdown-item" href="javascript:void(0);" (click)="logOut()">Logout</a>
                         </div>
@@ -57,7 +58,7 @@
                             <a class="dropdown-item" routerLinkActive="active">Renovation</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown"> 
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" routerLinkActive="active" data-toggle="dropdown">New Projects</a>
                         <div class="dropdown-menu">
                             <!-- <a class="dropdown-item" routerLinkActive="active" *ngFor="let item of propertyTypeList"  (click)="newProjectList(item._id)">{{item.property_type_name}}</a> -->

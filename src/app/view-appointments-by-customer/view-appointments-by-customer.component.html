@@ -3,7 +3,7 @@
 </section>
 
 <section class="paddtb-80">
-    <div class="container" *ngIf="appoinmentList">
+    <div class="container" *ngIf="appoinmentList?.length">
         <div class="property-agent-item" *ngFor="let item of appoinmentList" >
             <div class="property-agent-item-img" style="background-image:url('{{item.HairUser.profile}}')">
             </div>
@@ -37,6 +37,9 @@
                 <p><strong>Metting Time:&nbsp;</strong>12:30PM</p>
             </div>
         </div> -->
+    </div>
+    <div *ngIf="!appoinmentList?.length">
+      <h2 style="text-align: center;">No Data Found !!!</h2>
     </div>
 </section>
 

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { WebService } from 'src/app/services/web.service';
-import { BaseUrl } from 'src/app/services/base.service'; 
+import { BaseUrl } from 'src/app/services/base.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
@@ -20,6 +20,7 @@ export class AddPropertyComponent implements OnInit {
   myFiles:string [] = [];
   imageLength: any;
   rationBtnShow: boolean = false;
+  getDoc:any
 
   constructor(
     private FB: FormBuilder,
@@ -37,7 +38,7 @@ export class AddPropertyComponent implements OnInit {
 
   get f() {
     return this.serviceForm.controls;
-  } 
+  }
 
   createForm() {
     this.serviceForm = this.FB.group({
@@ -65,12 +66,15 @@ export class AddPropertyComponent implements OnInit {
 
   onSelectedGalleryImage(event) {
     this.imageLength = event.target.files.length;
-    for (var i = 0; i < event.target.files.length; i++) { 
+    for (var i = 0; i < event.target.files.length; i++) {
       this.myFiles.push(event.target.files[i]);
     }
   }
 
   onSelectedPropertyDoc(event) {
+    this.getDoc = ''
+    this.getDoc = event.target.files[0];
+    console.log('this.getDoc===============', this.getDoc)
     this.serviceForm.controls.property_doc.setValue(event.target.files[0]);
   }
 
@@ -93,11 +97,11 @@ export class AddPropertyComponent implements OnInit {
     if(this.rationBtnShow == false) {
       this.serviceForm.removeControl('add_new_project');
       this.serviceForm.removeControl('new_project_type');
-    } 
+    }
 
     if(this.serviceForm.invalid) return this.submitted = true;
     console.log("serviceForm===",this.serviceForm.value);
-    for (var i = 0; i < this.myFiles.length; i++) { 
+    for (var i = 0; i < this.myFiles.length; i++) {
       formData.append("property_image", this.myFiles[i]);
     }
 
@@ -113,12 +117,12 @@ export class AddPropertyComponent implements OnInit {
     formData.append('longitude', this.serviceForm.value.longitude);
     formData.append('latitude', this.serviceForm.value.latitude);
     formData.append('property_sqft', this.serviceForm.value.property_sqft);
-    formData.append('property_doc', this.serviceForm.value.property_doc);
+    formData.append('property_doc', this.getDoc);
     formData.append('property_details', this.serviceForm.value.property_details);
     formData.append('property_niceties', this.serviceForm.value.property_niceties);
     formData.append('property_services', this.serviceForm.value.property_services);
 
-    if(this.rationBtnShow == true) { 
+    if(this.rationBtnShow == true) {
       formData.append('add_new_project', this.serviceForm.value.add_new_project);
       formData.append('new_project_type', this.serviceForm.value.new_project_type);
     }
