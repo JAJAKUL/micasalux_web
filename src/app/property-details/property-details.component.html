@@ -129,7 +129,7 @@
                   </div>
                   <div>
 
-                    {{userData | json}}
+                    <!-- {{userData | json}} -->
                     <button *ngIf="propertyDetails?.create_by?._id != userData?._id" class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
                     <button *ngIf="propertyDetails?.create_by?._id != userData?._id" class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
                       </div>
