@@ -27,6 +27,10 @@ export class ManagePropertyComponent implements OnInit {
     private router: Router,
     private _dialog: MatDialog,
   ) {
+
+  }
+
+  ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if(this.userData != '' && this.userData != null) {
       if( this.userData.UserType == '2') {
@@ -41,8 +45,29 @@ export class ManagePropertyComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
 
+  removePropertyBtnClick(id) {
+    this.webService.createGet({ url: BaseUrl.apiUrl("removeProperty")+"?propertyId="+id, contentType: true, loading: true }).then(res => {
+      if (res["status"]) {
+        this.ngOnInit()
+        // this.propertyList.splice(i,1);
+        this.toastr.success(res["message"],"Success")
+      }else{
+        this.toastr.error(res["message"],"Error")
+      }
+    });
+  }
+
+  activeDeactivePropertyBtnClick(id) {
+    this.webService.createGet({ url: BaseUrl.apiUrl("activeAndDeactiveProperty")+"?propertyId="+id, contentType: true, loading: true }).then(res => {
+      if (res["status"]) {
+        this.ngOnInit()
+        // this.propertyList.splice(i,1);
+        this.toastr.success(res["message"],"Success")
+      }else{
+        this.toastr.error(res["message"],"Error")
+      }
+    });
   }
 
 
@@ -70,18 +95,20 @@ export class ManagePropertyComponent implements OnInit {
 
   addProperty() {
     console.log("addProperty click work.");
-    const dialogRef = this._dialog.open(AddPropertyComponent, {
-      width: '500px',
-      panelClass: 'AddPropertyComponent',
-      data: {},
-      // disableClose: true
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      //let found = false;
-      if (result && result.result === true) {
-          this.getPropertylist();
-      }
-  });
+    this.router.navigate(["/add-property"]);
+
+  //   const dialogRef = this._dialog.open(AddPropertyComponent, {
+  //     width: '500px',
+  //     panelClass: 'AddPropertyComponent',
+  //     data: {},
+  //     // disableClose: true
+  //   });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     //let found = false;
+  //     if (result && result.result === true) {
+  //         this.getPropertylist();
+  //     }
+  // });
   }
 
   getAgentTypelist() {

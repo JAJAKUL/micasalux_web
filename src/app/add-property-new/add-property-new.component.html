@@ -1,0 +1,136 @@
+<section class="inner-banner-wrap">
+  <div class="container"></div>
+</section>
+
+<div class="container ">
+
+
+  <h2 class="modal-title">Add Property</h2>
+  <form [formGroup]="serviceForm">
+      <div class="popbox-cmn">
+          <div class="row">
+              <div class="col-md-12 upload-mrtb-20">
+                  <label class="form-label">Image</label>
+                  <div class="control-fileupload">
+                      <input type="file" multiple placeholder="Product Image" (change)="onSelectedGalleryImage($event)">
+                  </div>
+                  <p *ngIf="imageLength" class="files-count-txt">{{imageLength}} file selected</p>
+                  <div class="image-tham">
+                    <span *ngFor="let item of base64Image">
+                      <img src="{{item}}" alt="No Preview">
+
+                    </span>
+                  </div>
+              </div>
+              <div class="col-md-12 upload-mrtb-20">
+                  <label class="form-label">Product document</label>
+                  <div class="control-fileupload">
+                      <input type="file" multiple placeholder="Product Image" (change)="onSelectedPropertyDoc($event)">
+                  </div>
+              </div>
+
+              <div class="col-md-12 checkbox-btm20">
+                  <mat-checkbox class="check-box-item" (change)="selectCheckBox($event.checked)" >New Projects</mat-checkbox>
+              </div>
+
+              <div *ngIf="rationBtnShow" class="col-md-12">
+                  <mat-radio-group class="button-group-custom" formControlName="new_project_type">
+                    <mat-radio-button value="Houses">Houses </mat-radio-button>
+                    <mat-radio-button value="Comercials">Comercials</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Property Name</mat-label>
+                  <input matInput formControlName="property_name" placeholder="Property Name">
+                  <mat-error *ngIf="submitted && f.property_name.errors" >
+                      <mat-error *ngIf="f.property_name.errors.required">Property name is required</mat-error>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Description</mat-label>
+                  <textarea  matInput formControlName="property_description" placeholder="Job description"></textarea>
+                  <mat-error *ngIf="submitted && f.property_description.errors" >
+                      <mat-error *ngIf="f.property_description.errors.required">Description is required</mat-error>
+                      <mat-error *ngIf="f.property_description.errors.maxlength">Description must be  upto 200 characters </mat-error>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Price($)</mat-label>
+                  <input matInput formControlName="property_price"  placeholder="Price">
+                  <mat-error *ngIf="submitted && f.property_price.errors" >
+                      <mat-error *ngIf="f.property_price.errors.required">Price is required</mat-error>
+                      <mat-error *ngIf="f.property_price.errors.pattern">Price only consists of number with 2 decimal point</mat-error>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Location</mat-label>
+                  <input type="text" matInput ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" formControlName="property_location"  placeholder="Location" >
+                  <mat-error *ngIf="submitted && f.property_location.errors" >
+                      <mat-error *ngIf="f.property_location.errors.required">Location is required</mat-error>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Categories</mat-label>
+                  <mat-select formControlName="property_category">
+                      <mat-option *ngFor="let item of propertyCategoryList" [value]="item._id">{{item.property_category_name}}</mat-option>
+                      <!-- <mat-option value="rent">Rent</mat-option>
+                      <mat-option value="sale">Sale</mat-option> -->
+                  </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Type</mat-label>
+                  <mat-select formControlName="property_type">
+                      <mat-option *ngFor="let typeitem of propertyTypeList" [value]="typeitem._id">{{typeitem.property_type_name}}</mat-option>
+                      <!-- <mat-option value="houses">Houses</mat-option>
+                      <mat-option value="apartements">Apartements</mat-option>
+                      <mat-option value="land(terraine)">Land(terraine)</mat-option>
+                      <mat-option value="commerce&office">Commerce / Office</mat-option> -->
+                  </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-4 custom-form-field">
+                  <mat-label>Room</mat-label>
+                  <input matInput formControlName="room_number" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-4 custom-form-field">
+                  <mat-label>Bed Rooms</mat-label>
+                  <input matInput formControlName="bed_room_number" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-4 custom-form-field">
+                  <mat-label>Square Feet</mat-label>
+                  <input matInput formControlName="property_sqft" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Property Details</mat-label>
+                  <input matInput formControlName="property_details"/>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Niceties</mat-label>
+                  <input matInput formControlName="property_niceties"/>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                  <mat-label>Services</mat-label>
+                  <input matInput formControlName="property_services" />
+              </mat-form-field>
+
+              <div class="col-md-12 text-center">
+                  <button style="margin-bottom: 10px;" button mat-button class="btn-submit btn-color" (click)="submitProduct()">Submit</button>
+              </div>
+          </div>
+
+  </div>
+  </form>
+
+
+</div>

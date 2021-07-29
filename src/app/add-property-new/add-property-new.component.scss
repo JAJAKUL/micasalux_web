@@ -1,0 +1,144 @@
+@import "../../styles.scss";
+
+.btn-submit{
+  font-size: 18px;
+  font-weight: 600;
+  font-family: $font-stack;
+  text-align: center;
+  @include border-radius(5px);
+  line-height: 60px;
+  min-width: 240px;
+  display: inline-block;
+  margin-top: 15px;
+}
+h2.modal-title{
+  text-align: center;
+  font-size: 30px;
+  font-weight:700;
+  color: #000000;
+  margin-bottom: 30px;
+}
+.task-header{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  top: -10px;
+  .close-btn{
+     display: inline-block;
+      width: 32px;
+      height: 32px;
+      border: 0;;
+      border-radius: 50%;
+      background-color: transparent;
+      background-image: url('../../assets/images/x-mark-medium-icon.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #DCDCDC;
+      &:focus{
+          outline: none;
+      }
+  }
+}
+.control-fileupload {
+	display: block;
+	border: 1px solid #d6d7d6;
+	background: #FFF;
+  @include border-radius(5px);
+	width: 100%;
+	height: 54px;
+	line-height: 54px;
+	padding: 0px 10px 2px 10px;
+  overflow: hidden;
+  position: relative;
+  font-size: 16px;
+  color: #A4A4A4;
+  /* File upload button */
+  &:before {
+    /* inherit from boostrap btn styles */
+    width: 130px;
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    background-color: #004aad;
+    @include border-radius(4px);
+    content: 'Browse';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    left: 3px;
+    line-height: 46px;
+    text-align: center;
+    cursor: pointer;
+  }
+    input[type=file] {
+        display: block !important;
+        right: 1px;
+        top: 1px;
+        height: 52px;
+        opacity: 0;
+        width: 100%;
+        background: none;
+        position: absolute;
+        overflow: hidden;
+        z-index: 2;
+    }
+    label{
+        margin: 0;
+    }
+}
+.upload-mrtb-20{
+  margin-bottom: 20px;
+}
+.form-label{
+  font-size: 15px;
+  color: #A5A5A5;
+}
+.checkbox-btm20{
+  margin-bottom: 20px;
+}
+.button-group-custom{
+  display: block;
+  margin-bottom: 10px;
+  mat-radio-button{
+    margin-right: 15px;
+  }
+}
+.files-count-txt{
+    font-size: 15px;
+    color: #A5A5A5;
+    margin-top: 5px;
+}
+
+.image-tham{
+  span{
+    img{
+      width: 35px;
+      height: 35px;
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+
+  }
+}
+@media(max-width:1024px){
+
+}
+@media(max-width:767px){
+  .btn-submit{
+      font-size: 16px;
+      line-height: 52px;
+      min-width: 180px;
+      margin-top: 8px;
+  }
+  h2.modal-title{
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+}
+@media(max-width:575px){
+  h2.modal-title{
+    font-size: 22px;
+  }
+}
+

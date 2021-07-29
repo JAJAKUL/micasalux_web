@@ -32,6 +32,8 @@ const apiEnd = {
   newsList: "newsList",
   searchPropertyAnyUser: "searchPropertyAnyUser",
   contactToAgent: "contactToAgent",
+  removeProperty: "remove_property",
+  activeAndDeactiveProperty: "activeAndDeactive_property",
 }
 
 exports.BaseUrl = {

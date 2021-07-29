@@ -11,15 +11,23 @@
     <div class="property-col" *ngFor="let propertyItem of propertyList">
         <div class="news-item">
             <!-- <div class="news-item-img" style="background-image:url('assets/images/property-img-1.png')"></div> [ngStyle]="propertyItem.property_image | backgroundImage : propertyItem.property_image : './assets/images/property-img-1.png' : 'small'" -->
-            <div class="news-item-img" >
-            <img style="width: 241px;" src="{{propertyItem.property_image ? propertyItem.property_image : './assets/images/property-img-1.png'}}" alt="">
+            <div class="news-item-img col-sm-3" >
+             <img style="width: 241px; margin: 15px;" src="{{propertyItem.property_image ? propertyItem.property_image : './assets/images/property-img-1.png'}}" alt="">
             </div>
 
-            <div class="news-item-info">
-                <h5>{{propertyItem.property_name}}</h5>
-                <p>{{propertyItem.property_description}}</p>
-                <p class="price">${{propertyItem.property_price}}</p>
-                <p class="pin-icon">{{propertyItem.property_location}}</p>
+            <div class="news-item-info col-sm-8">
+                <h5>{{propertyItem?.property_name}}</h5>
+
+              <h4  *ngIf="propertyItem?.property_category?.property_category_name == 'Sale'">Property Ref: <span class="price"> SL-{{propertyItem?.propertyId}}</span></h4>
+              <h4  *ngIf="propertyItem?.property_category?.property_category_name != 'Sale'">Property Ref: <span class="price"> RNT-{{propertyItem?.propertyId}}</span></h4>
+                <p>{{propertyItem?.property_description}}</p>
+                <p class="price">${{propertyItem?.property_price}}</p>
+                <p class="pin-icon">{{propertyItem?.property_location}}</p>
+            </div>
+            <div class="col-sm-1">
+              <i class="fa fa-trash " title="click for remove property" style="color: red;" (click)="removePropertyBtnClick(propertyItem?._id)"></i>
+              <!-- <i class="fa fa-edit " title="click for edit property" style="color: green" (click)="activeDeactivePropertyBtnClick(propertyItem?._id)"></i> -->
+              <mat-slide-toggle title="click for active deactive property" [(ngModel)]="propertyItem.status" (change)="activeDeactivePropertyBtnClick(propertyItem?._id)"></mat-slide-toggle>
             </div>
         </div>
     </div>

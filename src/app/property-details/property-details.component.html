@@ -1,106 +1,412 @@
 <section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-details-banner.png');">
-    <div class="container">
-        <!-- <h1 *ngIf="propertyDetails">{{propertyDetails.property_name}}</h1> -->
-    </div>
+  <div class="container">
+      <!-- <h1 *ngIf="propertyDetails">{{propertyDetails.property_name}}</h1> -->
+  </div>
 </section>
 
 <section class="paddtb-80">
-    <div class="container" *ngIf="propertyDetails">
-        <!-- <owl-carousel-o [options]="customOptions" class="property-detsils-slides" *ngIf="propertyDetails && propertyDetails.property_image">
-            <ng-template carouselSlide *ngFor="let item of propertyDetails.property_image"> -->
-                <!-- <div class="item" style="background-image:url(item.url);"></div> -->
-                <!-- <div class="item" [ngStyle]="item.url | backgroundImage : item.url : 'assets/images/property-img-1.png' : 'small'"></div>
-            </ng-template>   -->
-            <!-- <ng-template carouselSlide>
-                <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
-            </ng-template>   -->
-        <!-- </owl-carousel-o> -->
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="sample-img">
-                    <ul>
-                        <li *ngFor="let item of propertyDetails.property_image; let i = index" class="for-count">
+  <div class="container" *ngIf="propertyDetails">
+      <!-- <owl-carousel-o [options]="customOptions" class="property-detsils-slides" *ngIf="propertyDetails && propertyDetails.property_image">
+          <ng-template carouselSlide *ngFor="let item of propertyDetails.property_image"> -->
+              <!-- <div class="item" style="background-image:url(item.url);"></div> -->
+              <!-- <div class="item" [ngStyle]="item.url | backgroundImage : item.url : 'assets/images/property-img-1.png' : 'small'"></div>
+          </ng-template>   -->
+          <!-- <ng-template carouselSlide>
+              <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
+          </ng-template>
+          <ng-template carouselSlide>
+              <div class="item" style="background-image:url('assets/images/p-details-img-1.png');"></div>
+          </ng-template>   -->
+      <!-- </owl-carousel-o> -->
+
+      <div class="row">
+          <div class="col-md-12">
+              <div class="sample-img">
+                  <ul>
+                      <li *ngFor="let item of propertyDetails?.property_image; let i = index" class="for-count">
 
 
-                        <a class="example-image-link" [href]="item.url" data-lightbox="example-set"><img class="example-image" [src]="item.url"  alt="" /></a>
-                        <div class="count" *ngIf="i==2">
-                            +{{propertyDetails.property_image.length - 3}}
-                        </div>
+                      <a class="example-image-link" [href]="item.url" data-lightbox="example-set"><img class="example-image" [src]="item.url"  alt="" /></a>
+                      <div class="count" *ngIf="i==2">
+                          +{{propertyDetails?.property_image?.length - 3}}
+                      </div>
 
-                      </li>
+                    </li>
 
-                    </ul>
-                </div>
-            </div>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="pro-det-icon">
+            <li  data-toggle="modal" (click)="openGallery()" data-target="#property-info"><img src="./assets/images/cam-icon.png" alt="" ></li>
+            <li (click)="openMap()" data-toggle="modal" data-target="#property-info"> <img src="./assets/images/map-icon.png" alt="" ></li>
+             <li disabled data-toggle="modal" data-target="#property-info"><img src="./assets/images/loc-icon.png" alt="" ></li>
+            <li disabled data-toggle="modal" data-target="#property-info"><img src="./assets/images/thresix-icon.png" alt="" ></li>
+            <li (click)="openVideo()" data-toggle="modal" data-target="#property-info"><img src="./assets/images/video-icon.png" alt="" ></li>
+          </ul>
         </div>
-        <div class="row">
-          <div class="col-md-8">
-            <ul class="pro-det-icon">
-              <li  data-toggle="modal" data-target="#property-info"><img src="../../assets/images/cam-icon.png" alt="" ></li>
-              <li data-toggle="modal" data-target="#property-info"><img src="../../assets/images/map-icon.png" alt="" ></li>
-              <li data-toggle="modal" data-target="#property-info"><img src="../../assets/images/loc-icon.png" alt="" ></li>
-              <li data-toggle="modal" data-target="#property-info"><img src="../../assets/images/thresix-icon.png" alt="" ></li>
-              <li data-toggle="modal" data-target="#property-info"><img src="../../assets/images/video-icon.png" alt="" ></li>
-            </ul>
+        <div class="col-md-4">
+          <ul class="sear-det-icon">
+            <li>
+              <a href="javascript:void(0)" rel="noopener noreferrer">
+                <img src="./assets/images/wish-icon.png" alt="" >
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" data-toggle="modal" data-target="#Share-this-property">
+                <img src="./assets/images/share-icon.png" alt="" >
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" rel="noopener noreferrer">
+                <img src="./assets/images/noti-icon.png" alt="" >
+              </a>
+            </li>
+            <li>
+              <a href="./assets/images/pdf.pdf" target="_blank" rel="noopener noreferrer" download="">
+                <img src="./assets/images/file-icon.png" alt="" >
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" data-toggle="modal" data-target="#Reportp-an-error">
+                <img src="./assets/images/alt-icon.png" alt="" >
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+          <div class="property-details-info col-md-8" *ngIf="propertyDetails">
+              <h3>{{propertyDetails?.property_name}}</h3>
+              <h2>${{propertyDetails?.property_price}}</h2>
+              <div class="d-block mb-5">
+                <div class="property-icons">
+                  <div class="property-icons-item"><i class="icon bed-icon"></i><span>{{propertyDetails?.room_number}}</span></div>
+                  <div class="property-icons-item"><i class="icon bathtub-icon"></i><span>{{propertyDetails?.bed_room_number}}</span></div>
+                  <div class="property-icons-item"><i class="icon squre-icon"></i><span>{{propertyDetails?.property_sqft}} sqft</span></div>
+              </div>
+              </div>
+              <p>{{propertyDetails?.property_description}}</p>
+              <h4>Details</h4>
+              <p>{{propertyDetails?.property_details}}</p>
+              <!-- <p>2 and 3 Bedroom Town-houses</p>
+              <p>3 and 4 Bedroom Town-houses with Study</p> -->
+              <h4>Niceties</h4>
+              <p>{{propertyDetails?.property_niceties}}</p>
+              <h4>Services</h4>
+              <p>{{propertyDetails?.property_services}}</p>
+              <h4>Fiduciary Contact</h4>
+              <p>Call : {{propertyDetails?.create_by.Phone}}</p>
+              <p class="mb-3">Email : {{propertyDetails?.create_by.Email}}</p>
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/Zb6j186kvAg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="col-md-4">
-            <ul class="sear-det-icon">
-              <li> 
-                <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <img src="../../assets/images/wish-icon.png" alt="" >
-                </a> 
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-toggle="modal" data-target="#Share-this-property">
-                  <img src="../../assets/images/share-icon.png" alt="" >
-                </a> 
-              </li>
-              <li>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <img src="../../assets/images/noti-icon.png" alt="" >
-                </a>
-              </li>
-              <li>
-                <a href="../../assets/images/pdf.pdf" target="_blank" rel="noopener noreferrer" download="">
-                  <img src="../../assets/images/file-icon.png" alt="" >
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-toggle="modal" data-target="#Reportp-an-error">
-                  <img src="../../assets/images/alt-icon.png" alt="" >
-                </a>
-              </li>
-            </ul>
+            <div class="profile-details mb-3">
+              <div class="top-p-img mb-2">
+                <img src="./assets/images/agent-person-item-1.png" alt="">
+              </div>
+              <div class="pro-cont">
+                <h4>Jon Smith</h4>
+                <!-- <p>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                </p> -->
+                <p>
+                  But I must explain to you how all this mistaken idea of denouncing...
+                </p>
+              </div>
+            </div>
+              <div class="cont-info-details">
+
+                  <div class="contact-details">
+                      <p>{{propertyDetails?.create_by?.Address}}</p>
+                      <p><span>Phone</span> <a href="tel:+{{propertyDetails.create_by.Phone}}">{{propertyDetails?.create_by.Phone}}</a></p>
+                  </div>
+                  <div>
+
+                    {{userData | json}}
+                    <button *ngIf="propertyDetails?.create_by?._id != userData?._id" class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
+                    <button *ngIf="propertyDetails?.create_by?._id != userData?._id" class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
+                      </div>
+
+                  <!-- <a href="javascript:void(0);" data-toggle="modal" *ngIf="userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a>
+                  <a href="javascript:void(0);" data-toggle="modal" *ngIf="!userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a> -->
+
+              </div>
+          </div>
+      </div>
+
+      <div class="pd-bottom-section">
+          <div class="">
+              <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-color" (click)="property_doc_upload()">Download Property Document</a>
+              <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-gray-color" download="" (click)="viewPropertyAgentDetails()">View Property Agent's Detail</a>
+          </div>
+          <div class="btn-circleicons">
+              <a href="javascript:void(0);" mat-button class="btn-circleicon-cmn calculator-icon calculator-btn"></a>
+              <a href="javascript:void(0);" mat-button class="btn-circleicon-cmn comment-icon comment-btn"></a>
+              <div class="popbox-cmn" id="calculate-form">
+                  <i class="x-mark-icon calculate-close"></i>
+                  <div class="form-input-fields row">
+                      <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                          <mat-label>Property Cost</mat-label>
+                          <input matInput>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                          <mat-label>Interest Rate</mat-label>
+                          <input matInput>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                          <mat-label>Duration</mat-label>
+                          <input matInput>
+                      </mat-form-field>
+                      <div class="col-lg-12">
+                          <button mat-button class="btn-submit btn-color btn-color-1">Calculate</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="popbox-cmn" id="comment-form">
+                  <i class="x-mark-icon comment-close"></i>
+                  <div class="form-input-fields row">
+                      <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                          <mat-label>Name</mat-label>
+                          <input matInput>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                          <mat-label>Email</mat-label>
+                          <input matInput>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+                          <mat-label>Message</mat-label>
+                          <textarea rows="4" matInput></textarea>
+                      </mat-form-field>
+                      <div class="col-lg-12">
+                          <button mat-button class="btn-submit btn-color btn-color-2">Send Message</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+<!-- Contact -->
+<div class="modal fade mark-comm-form" id="Contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form class="" [formGroup]="contactForm">
+              <div class="form-group">
+                  <input type="text" class="form-control" formControlName="name"  [(ngModel)]="getData.name" placeholder="Enter Name">
+                  <p style="color: #e80358" *ngIf=" !contactForm.controls['name'].valid &&
+                    contactForm.controls['name'].touched " >
+                  This field is required.
+                </p>
+                </div>
+              <div class="form-group">
+                <input type="email" class="form-control" formControlName="email"  [(ngModel)]="getData.email" placeholder="Enter email">
+                <p style="color: #e80358" *ngIf=" !contactForm.controls['email'].valid &&
+                contactForm.controls['email'].touched " >
+              This field is required.
+            </p>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="phone"  [(ngModel)]="getData.phone" placeholder="Enter phone number">
+                <p style="color: #e80358" *ngIf=" !contactForm.controls['phone'].valid &&
+                  contactForm.controls['phone'].touched " >
+                This field is required.
+              </p>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="getData.subject" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" formControlName="message" [(ngModel)]="getData.message" placeholder="You message" rows="4"></textarea>
+                  <p style="color: #e80358" *ngIf=" !contactForm.controls['message'].valid &&
+                  contactForm.controls['message'].touched " >
+                This field is required.
+              </p>
+                </div>
+
+              <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid" (click)="addContact()">Submit</button>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Make-an-appointment  -->
+  <div class="modal fade mark-comm-form" id="Make-an-appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Make an appointment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form class="">
+                  <div class="form-group">
+                      <input type="text" class="form-control"  placeholder="Enter Name">
+                    </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control"  placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control"  placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Enter Date">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="Start time">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="End time">
+                    </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
           </div>
         </div>
-        <div class="row">
-            <div class="property-details-info col-md-8" *ngIf="propertyDetails">
-                <h3>{{propertyDetails.property_name}}</h3>
-                <h2>${{propertyDetails.property_price}}</h2>
-                <div class="d-block mb-5">
-                  <div class="property-icons">
-                    <div class="property-icons-item"><i class="icon bed-icon"></i><span>{{propertyDetails.room_number}}</span></div>
-                    <div class="property-icons-item"><i class="icon bathtub-icon"></i><span>{{propertyDetails.bed_room_number}}</span></div>
-                    <div class="property-icons-item"><i class="icon squre-icon"></i><span>{{propertyDetails.property_sqft}} sqft</span></div>
+      </div>
+    </div>
+
+
+
+    <!-- Report an error -->
+<div class="modal fade mark-comm-form" id="Reportp-an-error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reportp an error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form class="" [formGroup]="contactForm">
+              <div class="form-group">
+                  <input type="text" class="form-control" formControlName="name"  [(ngModel)]="getData.name" placeholder="Enter Name">
+                  <p style="color: #e80358" *ngIf=" !contactForm.controls['name'].valid &&
+                    contactForm.controls['name'].touched " >
+                  This field is required.
+                </p>
                 </div>
+              <div class="form-group">
+                <input type="email" class="form-control" formControlName="email"  [(ngModel)]="getData.email" placeholder="Enter email">
+                <p style="color: #e80358" *ngIf=" !contactForm.controls['email'].valid &&
+                contactForm.controls['email'].touched " >
+              This field is required.
+            </p>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="phone"  [(ngModel)]="getData.phone" placeholder="Enter phone number">
+                <p style="color: #e80358" *ngIf=" !contactForm.controls['phone'].valid &&
+                  contactForm.controls['phone'].touched " >
+                This field is required.
+              </p>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="getData.subject" placeholder="Subject">
                 </div>
-                <p>{{propertyDetails.property_description}}</p>
-                <h4>Details</h4>
-                <p>{{propertyDetails.property_details}}</p>
-                <!-- <p>2 and 3 Bedroom Town-houses</p>
-                <p>3 and 4 Bedroom Town-houses with Study</p> -->
-                <h4>Niceties</h4>
-                <p>{{propertyDetails.property_niceties}}</p>
-                <h4>Services</h4>
-                <p>{{propertyDetails.property_services}}</p>
-                <h4>Fiduciary Contact</h4>
-                <p>Call : {{propertyDetails.create_by.Phone}}</p>
-                <p class="mb-3">Email : {{propertyDetails.create_by.Email}}</p>
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/Zb6j186kvAg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="form-group">
+                  <textarea class="form-control" formControlName="message" [(ngModel)]="getData.message" placeholder="You message" rows="4"></textarea>
+                  <p style="color: #e80358" *ngIf=" !contactForm.controls['message'].valid &&
+                  contactForm.controls['message'].touched " >
+                This field is required.
+              </p>
+                </div>
+
+              <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid" (click)="addContact()">Submit</button>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+   <!-- Share this property -->
+   <div class="modal fade mark-comm-form" id="Share-this-property" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="    max-width: 300px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Share this property</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style=" margin-top: -40px;            margin-right: -40px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body Share-this-property">
+           <ul >
+             <li><i class="fa fa-facebook-square" aria-hidden="true"></i>                Facebook</li>
+             <li><i class="fa fa-comments-o" aria-hidden="true"></i>                Messenger</li>
+             <li><i class="fa fa-link" aria-hidden="true"></i>                Copy link</li>
+           </ul>
+           <button class="mat-focus-indicator btn-p-cmn btn-color mat-button mat-button-base btn-block mt-20" data-dismiss="modal" aria-label="Close">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Info -->
+  <div class="modal fade mark-comm-form" id="property-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="    min-width: 90%;">
+      <div class="modal-content">
+        <div class="modal-body propertyinfo">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="
+            margin-top: -40px; margin-right: -40px;     background: #fff;
+            opacity: 1;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row">
+            <div class="col-md-8">
+
+              <div class="row">
+
+                <div class="col-md-12" >
+                  <div class="map_div" *ngIf="mapOpen"   id="map_canvas"></div>
+                </div>
+                <div class="col-md-12" *ngIf="modalVideo">
+                  <iframe width="100%" height="400px" src="https://www.youtube.com/embed/Zb6j186kvAg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                </div>
+                <div class="row" *ngIf="galleryImage">
+                  <div class="col-md-12">
+                      <div class="sample-img">
+                          <ul>
+                              <li *ngFor="let item of propertyDetails?.property_image; let i = index" class="for-count">
+
+
+                              <a class="example-image-link" [href]="item.url" data-lightbox="example-set"><img class="example-image" [src]="item.url"  alt="" /></a>
+                              <div class="count" *ngIf="i==2">
+                                  +{{propertyDetails?.property_image?.length - 3}}
+                              </div>
+
+                            </li>
+
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              </div>
             </div>
             <div class="col-md-4">
               <div class="profile-details mb-3">
@@ -124,8 +430,8 @@
                 <div class="cont-info-details">
 
                     <div class="contact-details">
-                        <p>{{propertyDetails.create_by.Address}}</p>
-                        <p><span>Phone</span> <a href="tel:+{{propertyDetails.create_by.Phone}}">{{propertyDetails.create_by.Phone}}</a></p>
+                        <p>{{propertyDetails?.create_by?.Address}}</p>
+                        <p><span>Phone</span> <a href="tel:+{{propertyDetails?.create_by?.Phone}}">{{propertyDetails?.create_by?.Phone}}</a></p>
                     </div>
                     <div>
 
@@ -138,319 +444,36 @@
 
                 </div>
             </div>
-        </div>
-
-        <div class="pd-bottom-section">
-            <div class="">
-                <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-color" (click)="property_doc_upload()">Download Property Document</a>
-                <a href="javascript:void(0);" mat-button class="btn-p-cmn btn-gray-color" download="" (click)="viewPropertyAgentDetails()">View Property Agent's Detail</a>
+            <div class="col-md-8">
+              <ul class="pro-det-icon">
+                <li  (click)="openGallery()" ><img src="./assets/images/cam-icon.png" alt="" ></li>
+                <li (click)="openMap()"> <img src="./assets/images/map-icon.png" alt="" ></li>
+                <li disabled ><img src="./assets/images/loc-icon.png" alt="" ></li>
+                <li disabled ><img src="./assets/images/thresix-icon.png" alt="" ></li>
+                <li (click)="openVideo()"><img src="./assets/images/video-icon.png" alt="" ></li>
+              </ul>
             </div>
-            <div class="btn-circleicons">
-                <a href="javascript:void(0);" mat-button class="btn-circleicon-cmn calculator-icon calculator-btn"></a>
-                <a href="javascript:void(0);" mat-button class="btn-circleicon-cmn comment-icon comment-btn"></a>
-                <div class="popbox-cmn" id="calculate-form">
-                    <i class="x-mark-icon calculate-close"></i>
-                    <div class="form-input-fields row">
-                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
-                            <mat-label>Property Cost</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
-                            <mat-label>Interest Rate</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
-                            <mat-label>Duration</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                        <div class="col-lg-12">
-                            <button mat-button class="btn-submit btn-color btn-color-1">Calculate</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="popbox-cmn" id="comment-form">
-                    <i class="x-mark-icon comment-close"></i>
-                    <div class="form-input-fields row">
-                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
-                            <mat-label>Name</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
-                            <mat-label>Email</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
-                            <mat-label>Message</mat-label>
-                            <textarea rows="4" matInput></textarea>
-                        </mat-form-field>
-                        <div class="col-lg-12">
-                            <button mat-button class="btn-submit btn-color btn-color-2">Send Message</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4">
+              <ul class="sear-det-icon">
+                <li>
+                  <a href="javascript:void(0)" rel="noopener noreferrer">
+                    <img src="./assets/images/wish-icon.png" alt="" >
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#Share-this-property">
+                    <img src="./assets/images/share-icon.png" alt="" >
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#Reportp-an-error">
+                    <img src="./assets/images/alt-icon.png" alt="" >
+                  </a>
+                </li>
+              </ul>
             </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-  <!-- Contact -->
-  <div class="modal fade mark-comm-form" id="Contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form class="" [formGroup]="contactForm">
-                <div class="form-group">
-                    <input type="text" class="form-control" formControlName="name"  [(ngModel)]="getData.name" placeholder="Enter Name">
-                    <p style="color: #e80358" *ngIf=" !contactForm.controls['name'].valid &&
-                      contactForm.controls['name'].touched " >
-                    This field is required.
-                  </p>
-                  </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" formControlName="email"  [(ngModel)]="getData.email" placeholder="Enter email">
-                  <p style="color: #e80358" *ngIf=" !contactForm.controls['email'].valid &&
-                  contactForm.controls['email'].touched " >
-                This field is required.
-              </p>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" formControlName="phone"  [(ngModel)]="getData.phone" placeholder="Enter phone number">
-                  <p style="color: #e80358" *ngIf=" !contactForm.controls['phone'].valid &&
-                    contactForm.controls['phone'].touched " >
-                  This field is required.
-                </p>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="getData.subject" placeholder="Subject">
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control" formControlName="message" [(ngModel)]="getData.message" placeholder="You message" rows="4"></textarea>
-                    <p style="color: #e80358" *ngIf=" !contactForm.controls['message'].valid &&
-                    contactForm.controls['message'].touched " >
-                  This field is required.
-                </p>
-                  </div>
-
-                <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid" (click)="addContact()">Submit</button>
-              </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
-    <!-- Make-an-appointment  -->
-    <div class="modal fade mark-comm-form" id="Make-an-appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Make an appointment</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form class="">
-                    <div class="form-group">
-                        <input type="text" class="form-control"  placeholder="Enter Name">
-                      </div>
-                    <div class="form-group">
-                      <input type="email" class="form-control"  placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control"  placeholder="Subject">
-                      </div>
-                      <div class="form-group">
-                        <input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Enter Date">
-                      </div>
-                      <div class="form-group">
-                        <input class="form-control" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="Start time">
-                      </div>
-                      <div class="form-group">
-                        <input class="form-control" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" placeholder="End time">
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <!-- Report an error -->
-  <div class="modal fade mark-comm-form" id="Reportp-an-error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Reportp an error</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form class="" [formGroup]="contactForm">
-                <div class="form-group">
-                    <input type="text" class="form-control" formControlName="name"  [(ngModel)]="getData.name" placeholder="Enter Name">
-                    <p style="color: #e80358" *ngIf=" !contactForm.controls['name'].valid &&
-                      contactForm.controls['name'].touched " >
-                    This field is required.
-                  </p>
-                  </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" formControlName="email"  [(ngModel)]="getData.email" placeholder="Enter email">
-                  <p style="color: #e80358" *ngIf=" !contactForm.controls['email'].valid &&
-                  contactForm.controls['email'].touched " >
-                This field is required.
-              </p>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" formControlName="phone"  [(ngModel)]="getData.phone" placeholder="Enter phone number">
-                  <p style="color: #e80358" *ngIf=" !contactForm.controls['phone'].valid &&
-                    contactForm.controls['phone'].touched " >
-                  This field is required.
-                </p>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="getData.subject" placeholder="Subject">
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control" formControlName="message" [(ngModel)]="getData.message" placeholder="You message" rows="4"></textarea>
-                    <p style="color: #e80358" *ngIf=" !contactForm.controls['message'].valid &&
-                    contactForm.controls['message'].touched " >
-                  This field is required.
-                </p>
-                  </div>
-
-                <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid" (click)="addContact()">Submit</button>
-              </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-     <!-- Share this property -->
-     <div class="modal fade mark-comm-form" id="Share-this-property" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document" style="    max-width: 300px;">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Share this property</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style=" margin-top: -40px;            margin-right: -40px;">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body Share-this-property">
-             <ul >
-               <li><i class="fa fa-facebook-square" aria-hidden="true"></i>                Facebook</li>
-               <li><i class="fa fa-comments-o" aria-hidden="true"></i>                Messenger</li>
-               <li><i class="fa fa-link" aria-hidden="true"></i>                Copy link</li>
-             </ul>
-             <button class="mat-focus-indicator btn-p-cmn btn-color mat-button mat-button-base btn-block mt-20" data-dismiss="modal" aria-label="Close">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Property Info -->
-    <div class="modal fade mark-comm-form" id="property-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document" style="    min-width: 90%;">
-        <div class="modal-content">
-          <div class="modal-body propertyinfo">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style=" 
-              margin-top: -40px; margin-right: -40px;     background: #fff;
-    opacity: 1;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="row">
-              <div class="col-md-8">
-                <div class="row">
-                  <div class="col-md-12 mb-3">
-                    Coming Soon
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-8">
-                    <ul class="pro-det-icon">
-                      <li  data-toggle="modal" data-target="#property-info"><img src="../../assets/images/cam-icon.png" alt="" ></li>
-                      <li><img src="../../assets/images/map-icon.png" alt="" ></li>
-                      <li><img src="../../assets/images/loc-icon.png" alt="" ></li>
-                      <li><img src="../../assets/images/thresix-icon.png" alt="" ></li>
-                      <li><img src="../../assets/images/video-icon.png" alt="" ></li>
-                    </ul>
-                  </div>
-                  <div class="col-md-4">
-                    <ul class="sear-det-icon">
-                      <li> 
-                        <a href="http://" target="_blank" rel="noopener noreferrer">
-                          <img src="../../assets/images/wish-icon.png" alt="" >
-                        </a> 
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#Share-this-property">
-                          <img src="../../assets/images/share-icon.png" alt="" >
-                        </a> 
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#Reportp-an-error">
-                          <img src="../../assets/images/alt-icon.png" alt="" >
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="profile-details mb-3">
-                  <div class="top-p-img mb-2">
-                    <img src="./assets/images/agent-person-item-1.png" alt="">
-                  </div>
-                  <div class="pro-cont">
-                    <h4>Jon Smith</h4>
-                    <!-- <p>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
-                    </p> -->
-                    <p>
-                      But I must explain to you how all this mistaken idea of denouncing...
-                    </p>
-                  </div>
-                </div>
-                  <div class="cont-info-details">
-  
-                      <div class="contact-details">
-                          <p>{{propertyDetails.create_by.Address}}</p>
-                          <p><span>Phone</span> <a href="tel:+{{propertyDetails.create_by.Phone}}">{{propertyDetails.create_by.Phone}}</a></p>
-                      </div>
-                      <div>
-  
-                        <button class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
-                        <button class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
-                      </div>
-  
-                      <!-- <a href="javascript:void(0);" data-toggle="modal" *ngIf="userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a>
-                      <a href="javascript:void(0);" data-toggle="modal" *ngIf="!userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a> -->
-  
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>

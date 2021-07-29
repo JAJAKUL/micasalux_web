@@ -4,6 +4,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { WebService } from '../services/web.service';
 import { BaseUrl } from "../services/base.service";
+declare var google: any;
 declare var $:any;
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreateAppiontmentComponent } from '../shared/create-appiontment/create-appiontment.component';
@@ -20,6 +21,9 @@ export class PropertyDetailsComponent implements OnInit {
   getData:any
   contactForm: FormGroup;
   appointmentForm: FormGroup;
+  galleryImage = false
+  mapOpen = true
+  modalVideo = false
   constructor(
     private webService: WebService,
     private toastr: ToastrService,
@@ -58,9 +62,83 @@ export class PropertyDetailsComponent implements OnInit {
         $('#comment-form').slideUp();
     });
 
-    console.log('this.userData===========', this.userData)
-  }
 
+    // var mapOptions= {
+    //   center: {
+    //     lat: this.propertyDetails.location.coordinates[1],
+    //     lng: this.propertyDetails.location.coordinates[0]
+    //   },
+    //   // center: {
+    //   //   lat: 43.64344769999999,
+    //   //   lng: -79.380939
+    //   // },
+    //   disableDefaultUI: true,
+    //   zoom: 20,
+    //   mapTypeId: google.maps.MapTypeId.ROADMAP
+    // }
+    // var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+    // var	latLng = new google.maps.LatLng(43.64344769999999, -79.380939);
+    // console.log('latlng', latLng);
+    // var marker = new google.maps.Marker({
+    //   position: latLng,
+    //   map: map,
+    //   title: 'Andraw',
+    //   icon: 'assets/images/marker-icon.png',
+    // });
+    // $(window).on('load', function() {
+    //   var $grid = $('.grid').masonry({
+    //     itemSelector: '.grid-item',
+    //     // percentPosition: true,
+    //     // columnWidth: 180
+    //   });
+    // });
+
+  }
+  openGallery(){
+    this.mapOpen = false
+    this.modalVideo = false
+    this.galleryImage = true
+  }
+  openVideo(){
+    this.mapOpen = false
+    this.galleryImage = false
+    this.modalVideo = true
+  }
+  openMap(){
+    this.galleryImage = false
+    this.modalVideo = false
+    this.mapOpen = true
+    var mapOptions= {
+      center: {
+        lat: this.propertyDetails.location.coordinates[1],
+        lng: this.propertyDetails.location.coordinates[0]
+      },
+      // center: {
+      //   lat: 43.64344769999999,
+      //   lng: -79.380939
+      // },
+      disableDefaultUI: true,
+      zoom: 20,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+    var	latLng = new google.maps.LatLng(this.propertyDetails.location.coordinates[1], this.propertyDetails.location.coordinates[0]);
+    console.log('latlng', latLng);
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      title: 'Andraw',
+      icon: 'assets/images/marker-icon.png',
+    });
+    $(window).on('load', function() {
+      var $grid = $('.grid').masonry({
+        itemSelector: '.grid-item',
+        // percentPosition: true,
+        // columnWidth: 180
+      });
+      // this.mapOpen = false
+    });
+  }
   getPropertyDetails() {
     this.webService.createGet({ url: BaseUrl.apiUrl("propertyDetails")+"?propertyId="+this.propertyId, contentType: true, loading: true }).then(res => {
       console.log('response data ===================', res)
@@ -71,9 +149,41 @@ export class PropertyDetailsComponent implements OnInit {
             console.log("element.url===",element.url)
               element.url = BaseUrl.baseUrl+'/'+element.url
           });
+
         } else{
           this.propertyDetails.property_image[0].url = 'assets/images/image-not-available.png'
         }
+
+        var mapOptions= {
+          center: {
+            lat: this.propertyDetails.location.coordinates[1],
+            lng: this.propertyDetails.location.coordinates[0]
+          },
+          // center: {
+          //   lat: 43.64344769999999,
+          //   lng: -79.380939
+          // },
+          disableDefaultUI: true,
+          zoom: 20,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+        var	latLng = new google.maps.LatLng(this.propertyDetails.location.coordinates[1], this.propertyDetails.location.coordinates[0]);
+        console.log('latlng', latLng);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: 'Andraw',
+          icon: 'assets/images/marker-icon.png',
+        });
+        $(window).on('load', function() {
+          var $grid = $('.grid').masonry({
+            itemSelector: '.grid-item',
+            // percentPosition: true,
+            // columnWidth: 180
+          });
+          this.mapOpen = false
+        });
         console.log("propertyDetails===", this.propertyDetails);
       }else{
         this.toastr.error(res["message"],"Error")

@@ -9,6 +9,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { CustomPipeModule } from '../custom/custom-pipe/custom-pipe.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 @NgModule({
   declarations: [PropertyDetailsComponent],
   imports: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     CustomPipeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GooglePlaceModule
   ]
 })
 export class PropertyDetailsModule { }
