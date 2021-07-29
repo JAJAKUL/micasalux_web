@@ -344,6 +344,19 @@ ul.sear-det-icon {
         }
     }
 }
+.cont-in-det .btn-check {
+    opacity: 0;
+    width: 0;
+}
+.cont-in-det .btn.btn-primary:hover,
+.cont-in-det input.btn-check[type="radio"]:checked ~ .btn.btn-primary{
+    background: #c9e265 !important;
+    border: 1px solid #c9e265 !important;
+}
+.cont-in-det .btn.btn-primary{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
 @media only screen and (max-width: 991px) {
     .pd-bottom-section{
         display: block;
@@ -412,6 +425,12 @@ ul.sear-det-icon {
     .popbox-cmn{
         width: inherit;
         left: 0;
+    }
+}
+.pop-car-img{
+    img{
+        height: 450px;
+        object-fit: cover;
     }
 }
 @media only screen and (max-width: 575px) {

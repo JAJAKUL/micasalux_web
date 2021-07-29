@@ -208,8 +208,24 @@
         </button>
       </div>
       <div class="modal-body">
-          <form class="" [formGroup]="contactForm">
-              <div class="form-group">
+          <form class="cont-in-det" [formGroup]="contactForm">
+            <span>
+              <input type="radio" class="btn-check " name="options" id="option1" autocomplete="off" checked>
+               <label class="btn btn-primary" for="option1">More info</label>
+            </span>
+            <span>
+              <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+            <label class="btn btn-primary" for="option2">More photos</label>
+            </span>
+
+            <span>
+              <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+            <label class="btn btn-primary" for="option4">Be recalled</label>
+            </span>
+
+            
+
+            <div class="form-group">
                   <input type="text" class="form-control" formControlName="name"  [(ngModel)]="getData.name" placeholder="Enter Name">
                   <p style="color: #e80358" *ngIf=" !contactForm.controls['name'].valid &&
                     contactForm.controls['name'].touched " >
@@ -390,8 +406,24 @@
                 </div>
                 <div class="row" *ngIf="galleryImage">
                   <div class="col-md-12">
+                    <div id="carouselExampleControls" class="carousel slide pop-car-img" data-ride="carousel" >
+                      <div class="carousel-inner">
+                        <div [attr.data-slide-to]="i" [ngClass]="i == 0 ? 'carousel-item active ' : 'carousel-item'" *ngFor="let item of propertyDetails?.property_image; let i = index" >
+                          <img class="d-block w-100" [src]="item.url" alt="First slide">
+                        </div>
+                        
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
                       <div class="sample-img">
-                          <ul>
+                          <!-- <ul>
                               <li *ngFor="let item of propertyDetails?.property_image; let i = index" class="for-count">
 
 
@@ -402,7 +434,7 @@
 
                             </li>
 
-                          </ul>
+                          </ul> -->
                       </div>
                   </div>
               </div>
