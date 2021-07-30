@@ -105,20 +105,14 @@
           <div class="col-md-4">
             <div class="profile-details mb-3">
               <div class="top-p-img mb-2">
-                <img src="./assets/images/agent-person-item-1.png" alt="">
+                <!-- <img [src]="BaseUrl?.baseUrl+propertyDetails?.create_by?.profile" alt=""> -->
+                <img src="{{propertyDetails.create_by.profile}}" alt="">
               </div>
               <div class="pro-cont">
-                <h4>Jon Smith</h4>
-                <!-- <p>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
-                </p> -->
+                <h4>{{propertyDetails?.create_by?.FullName}}</h4>
                 <p>
-                  But I must explain to you how all this mistaken idea of denouncing...
-                </p>
+                  {{propertyDetails?.create_by?.description.length > 120 ? (propertyDetails?.create_by?.description | slice:0:120)+'...' : propertyDetails?.create_by?.description}}
+                  </p>
               </div>
             </div>
               <div class="cont-info-details">

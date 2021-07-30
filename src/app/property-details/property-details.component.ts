@@ -35,6 +35,9 @@ export class PropertyDetailsComponent implements OnInit {
     this.propertyId = decodeURIComponent(this.activeRoute.snapshot.queryParams['propertyId']);
 
     this.userData = JSON.parse(localStorage.getItem('userData'));
+    if(this.userData.profile){
+      this.userData.profile = BaseUrl.baseUrl+'/'+this.userData.profile
+    }
     this.contactForm = this.fb.group({
       name: ['', [Validators.required]],
       phone: ['', [Validators.required]],
@@ -153,6 +156,10 @@ export class PropertyDetailsComponent implements OnInit {
         } else{
           this.propertyDetails.property_image[0].url = 'assets/images/image-not-available.png'
         }
+        if(this.propertyDetails.create_by.profile){
+          this.propertyDetails.create_by.profile = BaseUrl.baseUrl+'/'+this.propertyDetails.create_by.profile
+        }
+
 
         var mapOptions= {
           center: {
