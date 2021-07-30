@@ -7,6 +7,7 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { BaseUrl } from 'src/app/services/base.service';
 import { Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-create-appiontment',
@@ -133,4 +134,29 @@ export class CreateAppiontmentComponent implements OnInit {
     })
   }
 
+
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    nav: false,
+    navText: [ '<i class="prev-icon"></i>', '<i class="next-icon"></i>' ],
+    autoplay:false,
+    autoHeight: true,
+    autoWidth: true,
+    responsive: {
+      0: {
+        items: 4,
+      },
+      500: {
+        items: 4,
+      },
+      1000: {
+        items: 5,
+      }
+    }
+  }
 }
