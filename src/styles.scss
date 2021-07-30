@@ -758,3 +758,52 @@ ngx-material-timepicker-container{
     }
 
 } 
+
+.Subscription {
+    button.close {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    h1{
+        color: #004AAD;
+        font-size: 36px;
+        font-weight: 700;
+        margin: 20px 0px 30px;
+        text-shadow: 0px 0px 16px #777;
+    }
+}
+.sub-des-details {
+    padding: 50px 30px;
+    box-shadow: 0px 0px 16px #ccc;
+    margin: 12px 0px;
+  
+    text-align: center;
+    
+    h2{
+        color: #004AAD;
+        font-weight: 700;
+        padding-left: 20px;
+        sup{
+            font-weight: 500;
+        }
+        small{
+            font-size: 14px;
+            font-weight: 400;
+        }
+        margin-bottom: 20px;
+    }
+    p{
+        margin-bottom: 20px;
+        color: #777;
+        font-weight: 400;
+    }
+    a.btn.btn-block {
+        background: #004AAD;
+        color: #fff;
+        padding: 12px;
+        &:hover{
+            background: #C9E265;
+        }
+    }
+}
