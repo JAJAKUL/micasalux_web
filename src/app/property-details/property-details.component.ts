@@ -35,7 +35,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.propertyId = decodeURIComponent(this.activeRoute.snapshot.queryParams['propertyId']);
 
     this.userData = JSON.parse(localStorage.getItem('userData'));
-    if(this.userData.profile){
+    if(this.userData){
       this.userData.profile = BaseUrl.baseUrl+'/'+this.userData.profile
     }
     this.contactForm = this.fb.group({

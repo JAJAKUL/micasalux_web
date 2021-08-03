@@ -42,30 +42,30 @@
           <ul class="pro-det-icon">
             <li  data-toggle="modal" (click)="openGallery()" data-target="#property-info"><img src="./assets/images/cam-icon.png" alt="" ></li>
             <li (click)="openMap()" data-toggle="modal" data-target="#property-info"> <img src="./assets/images/map-icon.png" alt="" ></li>
-             <li disabled data-toggle="modal" data-target="#property-info"><img src="./assets/images/loc-icon.png" alt="" ></li>
-            <li disabled data-toggle="modal" data-target="#property-info"><img src="./assets/images/thresix-icon.png" alt="" ></li>
+             <li class="disabled" data-toggle="modal" data-target="#property-info"><img src="./assets/images/loc-icon.png" alt="" ></li>
+            <li class="disabled" data-toggle="modal" data-target="#property-info"><img src="./assets/images/thresix-icon.png" alt="" ></li>
             <li (click)="openVideo()" data-toggle="modal" data-target="#property-info"><img src="./assets/images/video-icon.png" alt="" ></li>
           </ul>
         </div>
         <div class="col-md-4">
           <ul class="sear-det-icon">
-            <li>
+            <li *ngIf="userData">
               <a href="javascript:void(0)" rel="noopener noreferrer">
                 <img src="./assets/images/wish-icon.png" alt="" >
               </a>
             </li>
-            <li>
+            <li *ngIf="userData">
               <a href="javascript:void(0)" data-toggle="modal" data-target="#Share-this-property">
                 <img src="./assets/images/share-icon.png" alt="" >
               </a>
             </li>
-            <li>
+            <li *ngIf="userData">
               <a href="javascript:void(0)" rel="noopener noreferrer">
                 <img src="./assets/images/noti-icon.png" alt="" >
               </a>
             </li>
             <li>
-              <a href="./assets/images/pdf.pdf" target="_blank" rel="noopener noreferrer" download="">
+              <a href="javascript:void(0)" target="_blank" (click)="property_doc_upload()" rel="noopener noreferrer" download="">
                 <img src="./assets/images/file-icon.png" alt="" >
               </a>
             </li>
@@ -79,7 +79,15 @@
       </div>
       <div class="row">
           <div class="property-details-info col-md-8" *ngIf="propertyDetails">
+            <div class="row">
+            <div class="col-md-9">
               <h3>{{propertyDetails?.property_name}}</h3>
+            </div>
+            <div class="col-md-3">
+              <h4  *ngIf="propertyDetails?.property_category?.property_category_name == 'Sale'"> <span class="price"> SL-{{propertyDetails?.propertyId}}</span></h4>
+              <h4  *ngIf="propertyDetails?.property_category?.property_category_name != 'Sale'"><span class="price"> RN-{{propertyDetails?.propertyId}}</span></h4>
+            </div>
+          </div>
               <h2>${{propertyDetails?.property_price}}</h2>
               <div class="d-block mb-5">
                 <div class="property-icons">
@@ -110,7 +118,7 @@
               </div>
               <div class="pro-cont">
 
-                <h4>{{propertyDetails?.create_by?.FullName}}</h4>
+                <h4 data-toggle="modal" >{{propertyDetails?.create_by?.FullName}}</h4>
 
                 <p>
                   {{propertyDetails?.create_by?.description.length > 120 ? (propertyDetails?.create_by?.description | slice:0:120)+'...' : propertyDetails?.create_by?.description}}
@@ -420,18 +428,7 @@
                       </a>
                     </div>
                       <div class="sample-img">
-                          <!-- <ul>
-                              <li *ngFor="let item of propertyDetails?.property_image; let i = index" class="for-count">
 
-
-                              <a class="example-image-link" [href]="item.url" data-lightbox="example-set"><img class="example-image" [src]="item.url"  alt="" /></a>
-                              <div class="count" *ngIf="i==2">
-                                  +{{propertyDetails?.property_image?.length - 3}}
-                              </div>
-
-                            </li>
-
-                          </ul> -->
                       </div>
                   </div>
               </div>
@@ -443,17 +440,11 @@
                   <img src="./assets/images/agent-person-item-1.png" alt="">
                 </div>
                 <div class="pro-cont">
-                  <h4>Jon Smith</h4>
-                  <!-- <p>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                  </p> -->
+                  <h4>{{propertyDetails?.create_by?.FullName}}</h4>
+
                   <p>
-                    But I must explain to you how all this mistaken idea of denouncing...
-                  </p>
+                    {{propertyDetails?.create_by?.description.length > 120 ? (propertyDetails?.create_by?.description | slice:0:120)+'...' : propertyDetails?.create_by?.description}}
+                </p>
                 </div>
               </div>
                 <div class="cont-info-details">
@@ -464,8 +455,8 @@
                     </div>
                     <div>
 
-                      <button class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
-                      <button class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
+                      <button *ngIf="propertyDetails?.create_by?._id != userData?._id" class="btn btn-block bt-con" data-toggle="modal" data-target="#Contact">Contact</button>
+                      <button *ngIf="propertyDetails?.create_by?._id != userData?._id" class="btn btn-block bt-maa" (click)="openCreateAppoinmentForm()">Make an appointment</button>
                     </div>
 
                     <!-- <a href="javascript:void(0);" data-toggle="modal" *ngIf="userData" mat-button class="btn-viewdetails btn-color" (click)="openCreateAppoinmentForm()">Create Appiontment</a>
@@ -477,19 +468,19 @@
               <ul class="pro-det-icon">
                 <li  (click)="openGallery()" ><img src="./assets/images/cam-icon.png" alt="" ></li>
                 <li (click)="openMap()"> <img src="./assets/images/map-icon.png" alt="" ></li>
-                <li disabled ><img src="./assets/images/loc-icon.png" alt="" ></li>
-                <li disabled ><img src="./assets/images/thresix-icon.png" alt="" ></li>
+                <li class="disabled" ><img src="./assets/images/loc-icon.png" alt="" ></li>
+                <li class="disabled" (click)="openMap()"><img src="./assets/images/thresix-icon.png" alt="" ></li>
                 <li (click)="openVideo()"><img src="./assets/images/video-icon.png" alt="" ></li>
               </ul>
             </div>
             <div class="col-md-4">
               <ul class="sear-det-icon">
-                <li>
+                <li *ngIf="userData">
                   <a href="javascript:void(0)" rel="noopener noreferrer">
                     <img src="./assets/images/wish-icon.png" alt="" >
                   </a>
                 </li>
-                <li>
+                <li *ngIf="userData">
                   <a href="javascript:void(0)" data-toggle="modal" data-target="#Share-this-property">
                     <img src="./assets/images/share-icon.png" alt="" >
                   </a>

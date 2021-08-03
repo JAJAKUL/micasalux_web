@@ -22,6 +22,7 @@ export class AddPropertyNewComponent implements OnInit {
   imageLength: any;
   rationBtnShow: boolean = false;
   getDoc:any
+  getVideo:any
   base64Image = []
   constructor(
     private FB: FormBuilder,
@@ -61,13 +62,15 @@ export class AddPropertyNewComponent implements OnInit {
       property_niceties: ["",[Validators.required]],
       property_services: ["",[Validators.required]],
       add_new_project:[false],
-      new_project_type:[""]
+      new_project_type:[""],
+      property_video:[""]
     });
     //this.changeSubCategoryValidation();
   }
 
   onSelectedGalleryImage(event) {
     this.base64Image = []
+    this.myFiles = []
     this.imageLength = event.target.files.length;
     for (var i = 0; i < event.target.files.length; i++) {
       if (
@@ -79,10 +82,10 @@ export class AddPropertyNewComponent implements OnInit {
         return;
       }
       this.myFiles.push(event.target.files[i]);
+      console.log('.push(myFiles)', this.myFiles);
 
       const fr = new FileReader();
       fr.onloadend = (_loadEvent) => {
-        // console.log('.push(mainImage)');
 
         const mainImage = fr.result;
         // console.log('mainImage===========',mainImage);
@@ -103,10 +106,29 @@ console.log('base64Image==================', this.base64Image)
   }
 
   onSelectedPropertyDoc(event) {
+    if (
+      event.target.files[0].type !== 'application/pdf'
+    ) {
+      this.toastr.warning('Please upload pdf file')
+      return;
+    }
     this.getDoc = ''
     this.getDoc = event.target.files[0];
     console.log('this.getDoc===============', this.getDoc)
     this.serviceForm.controls.property_doc.setValue(event.target.files[0]);
+  }
+
+  onSelectedPropertyVideo(event) {
+    if (
+      event.target.files[0].type !== 'video/mp4'
+    ) {
+      this.toastr.warning('Please upload mp4 video file')
+      return;
+    }
+    this.getVideo = ''
+    this.getVideo = event.target.files[0];
+    console.log('this.getVideo===============', this.getVideo)
+    this.serviceForm.controls.property_video.setValue(event.target.files[0]);
   }
 
   onNoClick(): void {
@@ -149,6 +171,7 @@ console.log('base64Image==================', this.base64Image)
     formData.append('latitude', this.serviceForm.value.latitude);
     formData.append('property_sqft', this.serviceForm.value.property_sqft);
     formData.append('property_doc', this.getDoc);
+    formData.append('property_video', this.getVideo);
     formData.append('property_details', this.serviceForm.value.property_details);
     formData.append('property_niceties', this.serviceForm.value.property_niceties);
     formData.append('property_services', this.serviceForm.value.property_services);

@@ -7,8 +7,10 @@
         <div class="nav-right-bx">
             <div class="header-right-login">
                 <div class="right-icons">
-                    <a href="javascript:void(0);" class="search-icon"></a>
-                    <a href="javascript:void(0);" class="heart-icon"></a>
+                  <span *ngIf="userData?.expiry_date" style="    margin-right: 15px;
+                  color: #7be6ea;">Expiry Date  :  {{userData?.expiry_date | date:medium}}</span>
+                    <!-- <a href="javascript:void(0);" class="search-icon"></a> -->
+                    <!-- <a href="javascript:void(0);" class="heart-icon"></a> -->
                 </div>
                 <div class="login-btn-right" *ngIf=" !userData && userLogin == false">
                     <a href="javascript:void(0);" [routerLink]="['/login']" routerLinkActive="active"><i class="fa fa-sign-in" aria-hidden="true"></i><span>Login</span></a><span>/</span>
@@ -24,6 +26,7 @@
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 2" href="javascript:void(0);" [routerLink]="['/users/manage-account']">My Profile</a>
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 1" href="javascript:void(0);" [routerLink]="['view-appointments-by-customer']">Appointment List</a>
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 2" href="javascript:void(0);" [routerLink]="['view-appointments']">Appointment List</a>
+                            <a class="dropdown-item" *ngIf="userData && userData.UserType == 2" href="javascript:void(0);" [routerLink]="['manage-subscription']">Subscription List</a>
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 2" href="javascript:void(0);" [routerLink]="['manage-property']">Manage Property</a>
                             <a class="dropdown-item" *ngIf="userData && userData.UserType == 1" href="javascript:void(0);" [routerLink]="['wish-list']">Wish List</a>
                             <a class="dropdown-item" href="javascript:void(0);" (click)="logOut()">Logout</a>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
@@ -15,16 +15,17 @@ const routes: Routes = [
   { path: 'property-details', loadChildren: () => import('./property-details/property-details.module').then(m => m.PropertyDetailsModule) },
   { path: 'agent-details', loadChildren: () => import('./agent-details/agent-details.module').then(m => m.AgentDetailsModule) },
   { path: 'property-agent', loadChildren: () => import('./property-agent/property-agent.module').then(m => m.PropertyAgentModule) },
-  { path: 'view-appointments-by-customer', loadChildren: () => import('./view-appointments-by-customer/view-appointments-by-customer.module').then(m => m.ViewAppointmentsByCustomerModule) },
-  { path: 'wish-list', loadChildren: () => import('./wish-list/wish-list.module').then(m => m.WishListModule) },
-  { path: 'view-appointments', loadChildren: () => import('./provider-appointment-list/provider-appointment-list.module').then(m => m.ProviderAppointmentListModule) },
-  { path: 'manage-property', loadChildren: () => import('./manage-property/manage-property.module').then(m => m.ManagePropertyModule) },
-  { path: 'add-property', loadChildren: () => import('./add-property-new/add-property-new.module').then(m => m.AddPropertyNewModule) },
+  { path: 'view-appointments-by-customer', loadChildren: () => import('./view-appointments-by-customer/view-appointments-by-customer.module').then(m => m.ViewAppointmentsByCustomerModule), canActivate: [AuthGuard]  },
+  { path: 'wish-list', loadChildren: () => import('./wish-list/wish-list.module').then(m => m.WishListModule), canActivate: [AuthGuard]  },
+  { path: 'view-appointments', loadChildren: () => import('./provider-appointment-list/provider-appointment-list.module').then(m => m.ProviderAppointmentListModule), canActivate: [AuthGuard]  },
+  { path: 'manage-property', loadChildren: () => import('./manage-property/manage-property.module').then(m => m.ManagePropertyModule), canActivate: [AuthGuard]  },
+  { path: 'add-property', loadChildren: () => import('./add-property-new/add-property-new.module').then(m => m.AddPropertyNewModule), canActivate: [AuthGuard]  },
+  { path: 'manage-subscription', loadChildren: () => import('./manage-subscription/manage-subscription.module').then(m => m.ManageSubscriptionModule), canActivate: [AuthGuard] },
 
 ];
-
+// useHash: true
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'enabled', })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

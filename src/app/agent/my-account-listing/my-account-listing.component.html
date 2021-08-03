@@ -4,6 +4,9 @@
 
 <section class="paddtb-80">
     <div class="container">
+      <div style="text-align: right;">
+        <button class="btn btn-info"  data-toggle="modal" data-target="#subscriptionModal">Subscription</button>
+      </div>
         <div class="cmn-form-wrapper">
             <mat-tab-group mat-align-tabs="center" animationDuration="0ms" *ngIf="ownDetails">
                 <mat-tab label="My Account">
@@ -161,3 +164,34 @@
 </section>
 
 
+  <!-- Modal -->
+  <div class="modal fade Subscription" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="min-width: 90%;">
+      <div class="modal-content">
+        <div class="modal-body p-5">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center mb-3">Subscription</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4" *ngFor="let item of subscriptionList">
+              <div class="sub-des-details">
+                <h2>{{item?.duration}}</h2>
+                <h2><sup>$</sup>{{item?.price ? item?.price : 0}}<small> / {{item?.no_of_days}} Days</small></h2>
+                <p>{{item?.no_image}} image uploaded</p>
+                <p>{{item?.no_video}} video uploaded  </p>
+                <p>{{item?.description}}</p>
+                <a href="javascript:void()" (click)="BuySubscription(item)" class="btn btn-block">Subscribe Now</a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

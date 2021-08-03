@@ -4,10 +4,12 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmPasswordValidator } from 'src/app/services/confirm-password.validator';
 import { WebService } from 'src/app/services/web.service';
-import { BaseUrl } from 'src/app/services/base.service'; 
+import { BaseUrl } from 'src/app/services/base.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPropertyComponent } from 'src/app/shared/add-property/add-property.component';
+// import { $ } from 'protractor';
+declare var $:any;
 
 
 @Component({
@@ -31,6 +33,7 @@ export class MyAccountListingComponent implements OnInit {
   subAgentTypeList: any;
   profileImage: any;
   imageSrc: any;
+  subscriptionList: any;
 
   constructor(
     private FB: FormBuilder,
@@ -38,7 +41,7 @@ export class MyAccountListingComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private _dialog: MatDialog,
-  ) { 
+  ) {
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if(this.userData != '' && this.userData != null) {
       if( this.userData.UserType == '2') {
@@ -47,6 +50,7 @@ export class MyAccountListingComponent implements OnInit {
         this.createChangePasswordForm();
         this.getPropertylist();
         this.getCardDetails();
+        this.getSubscriptionlist()
       } else{
         this.router.navigate(["/home"]);
         this.toastr.info("Please login as a Property Agent")
@@ -57,7 +61,8 @@ export class MyAccountListingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
+
   }
 
   public hasError = (controlName: string, errorName: string) =>{
@@ -78,7 +83,7 @@ export class MyAccountListingComponent implements OnInit {
     formData.append('AgentType', this.editDetailsForm.value.AgentType);
     formData.append('subAgentType', this.editDetailsForm.value.subAgentType);
     formData.append('description', this.editDetailsForm.value.description)
-    
+
     this.webService.createPostWithImage({ url: BaseUrl.apiUrl("editDetails"), body: formData, contentType: true, loading: true }).then(res => {
       if (res["status"]) {
         this.getOwnDetails();
@@ -167,6 +172,46 @@ export class MyAccountListingComponent implements OnInit {
           }
         });
         console.log("this.propertyList===",this.propertyList);
+      }else{
+        console.log("res error");
+        this.toastr.error(res["message"],"Error")
+      }
+    })
+  }
+
+  getSubscriptionlist() {
+    this.webService.createGet({ url: BaseUrl.apiUrl("GetSubscriptionList"), contentType: true, loading: true }).then(res => {
+      console.log('res===================', res)
+      if (res["status"]) {
+        this.subscriptionList = res["data"];
+
+        console.log("this.subscriptionList===",this.subscriptionList);
+      }else{
+        console.log("res error");
+        this.toastr.error(res["message"],"Error")
+      }
+    })
+  }
+
+  BuySubscription(data) {
+    console.log(data)
+    var date = new Date()
+    var expiry_date = addDays(date, data.no_of_days)
+    var obj ={
+      expiry_date: expiry_date,
+      subscriptionId: data._id,
+      total_image: data.no_image,
+      total_video: data.no_video,
+      amount: data.price,
+      subscriptionType: data.duration
+    }
+    console.log('obj==============', obj)
+    this.webService.createPost({ url: BaseUrl.apiUrl("addUser_subscription"), body: obj, contentType: true, loading: true }).then(res => {
+      if (res["status"]) {
+        $("#subscriptionModal").modal("hide");
+        // $('#subscriptionModal').modal('hide')
+        console.log(res["status"])
+        this.toastr.success(res["message"],"Success");
       }else{
         console.log("res error");
         this.toastr.error(res["message"],"Error")
@@ -279,10 +324,15 @@ export class MyAccountListingComponent implements OnInit {
       reader.onload = (event) => {
         this.imageSrc = reader.result;
          console.log("this.imageSrc==", this.imageSrc);
-        
+
       }
     }
   }
 
 
+}
+function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
 }

@@ -26,7 +26,15 @@
                   <label class="form-label">Product document</label>
                   <div class="control-fileupload">
                       <input type="file" multiple placeholder="Product Image" (change)="onSelectedPropertyDoc($event)">
-                  </div>
+                  <p>{{getDoc ? getDoc : ''}}</p>
+                    </div>
+              </div>
+              <div class="col-md-12 upload-mrtb-20">
+                  <label class="form-label">Video</label>
+                  <div class="control-fileupload">
+                      <input type="file" multiple placeholder="Product Image" (change)="onSelectedPropertyVideo($event)">
+                      <p>{{getVideo ? getVideo : ''}}</p>
+                    </div>
               </div>
 
               <div class="col-md-12 checkbox-btm20">

@@ -18,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-
+import {Location, PathLocationStrategy} from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +39,19 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     SocialLoginModule,
     GooglePlaceModule
   ],
+
+  // Location,
+  // {
+  //   provide: LocationStrategy,
+  //   useClass: PathLocationStrategy
+  // },
+
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
+
     CookieService,
     {
       provide: 'SocialAuthServiceConfig',

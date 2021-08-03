@@ -14,7 +14,7 @@
                 <div class="row">
                     <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
                         <mat-label>Email</mat-label>
-                        <input matInput formControlName="Email">
+                        <input matInput formControlName="Email" >
                         <mat-icon matSuffix class="email-icon icon"></mat-icon>
 
                         <mat-error *ngIf="submitted && f.Email.errors">
@@ -23,10 +23,10 @@
                         </mat-error>
 
                     </mat-form-field>
-                    
+
                     <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput formControlName="Password">
+                        <input type="password" matInput formControlName="Password" autocomplete="off">
                         <mat-icon matSuffix class="lock-icon icon"></mat-icon>
 
                         <mat-error *ngIf="submitted && f.Password.errors">

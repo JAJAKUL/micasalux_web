@@ -34,6 +34,9 @@ const apiEnd = {
   contactToAgent: "contactToAgent",
   removeProperty: "remove_property",
   activeAndDeactiveProperty: "activeAndDeactive_property",
+  addUser_subscription: "addUser_subscription",
+  UserSubscriptionList: "UserSubscriptionList",
+  GetSubscriptionList: "GetSubscriptionList",
 }
 
 exports.BaseUrl = {

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private cookieService: CookieService,
     private authService: SocialAuthService
-  ) { 
+  ) {
    this.createLoginForm();
    this.rememberMeGenerate();
    this.agentDetails = localStorage.getItem('agentDetails');
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         let GoogleLoginObj = {
           FullName: user.name,
           Email: user.email,
-          oauth_id: user.id, 
+          oauth_id: user.id,
           UserType: this.f.UserType.value
         }
         console.log("GoogleLoginObj==",GoogleLoginObj)
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
 
   get f() {
     return this.signInForm.controls;
-  } 
+  }
 
   createLoginForm() {
     this.signInForm = this.fb.group({
@@ -161,7 +161,7 @@ export class LoginComponent implements OnInit {
       this.f.Password.setValue(Password);
       this.remberValue = true;
      }
-  
+
   }
 
   signInWithGoogle(): void {
@@ -171,7 +171,7 @@ export class LoginComponent implements OnInit {
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
-  
+
   signOut(): void {
     this.authService.signOut();
   }

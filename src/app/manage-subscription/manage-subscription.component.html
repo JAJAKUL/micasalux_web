@@ -1,0 +1,40 @@
+<section class="inner-banner-wrap">
+  <div class="container"></div>
+</section>
+
+<section class="paddtb-80">
+  <div class="container" *ngIf="subscriptionList?.length">
+      <div class="property-agent-item"  >
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Subscription Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Number Of Image</th>
+              <th scope="col">Number Of Video</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">Expiry Date</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of subscriptionList">
+            <tr>
+              <th scope="row">{{item?.subscriptionId?.duration}} Subscription</th>
+              <td>{{item?.subscriptionId?.price ? item?.subscriptionId?.price : 0}}</td>
+              <td>{{item?.subscriptionId?.no_image}}</td>
+              <td>{{item?.subscriptionId?.no_video}}</td>
+              <td>{{item?.start_date | date:'mediumDate'}}</td>
+              <td>{{item?.expiry_date| date:'mediumDate'}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+
+  </div>
+  <div *ngIf="!subscriptionList?.length">
+    <h2 style="text-align: center;">No Data Found !!!</h2>
+  </div>
+</section>
+
+

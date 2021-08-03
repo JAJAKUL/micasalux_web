@@ -19,7 +19,7 @@
                 <h5>{{propertyItem?.property_name}}</h5>
 
               <h4  *ngIf="propertyItem?.property_category?.property_category_name == 'Sale'">Property Ref: <span class="price"> SL-{{propertyItem?.propertyId}}</span></h4>
-              <h4  *ngIf="propertyItem?.property_category?.property_category_name != 'Sale'">Property Ref: <span class="price"> RNT-{{propertyItem?.propertyId}}</span></h4>
+              <h4  *ngIf="propertyItem?.property_category?.property_category_name != 'Sale'">Property Ref: <span class="price"> RN-{{propertyItem?.propertyId}}</span></h4>
                 <p>{{propertyItem?.property_description}}</p>
                 <p class="price">${{propertyItem?.property_price}}</p>
                 <p class="pin-icon">{{propertyItem?.property_location}}</p>
