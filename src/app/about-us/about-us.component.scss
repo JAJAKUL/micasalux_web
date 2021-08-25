@@ -215,8 +215,15 @@ margin-bottom: 8px;
     }
 }
 section.inner-banner-2-wrap {
-    min-height: 125px;
-    height: 125px;
+    // min-height: 125px;
+    // height: 125px;
+}
+img.abt-img.w-100 {
+    padding: 1px;
+    border: 6px double #ccc;
+    box-shadow: 4px 6px 6px #ccc;
+    height: 450px;
+    object-fit: cover;
 }
 .for-count{
     position: relative;

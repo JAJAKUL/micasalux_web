@@ -215,8 +215,15 @@ margin-bottom: 8px;
     }
 }
 section.inner-banner-2-wrap {
-    min-height: 125px;
-    height: 125px;
+    // min-height: 125px;
+    // height: 125px;
+}
+img.abt-img.w-100 {
+    padding: 1px;
+    border: 6px double #ccc;
+    box-shadow: 4px 6px 6px #ccc;
+    height: 450px;
+    object-fit: cover;
 }
 .for-count{
     position: relative;
@@ -447,4 +454,59 @@ ul.sear-det-icon {
 .disabled {
   pointer-events:none; //This makes it not clickable
   opacity:0.6;         //This grays it out to look disabled
+}
+
+.con-inf-det .form-control {
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding-left: 0px;
+    box-shadow: none !important;
+    outline: none;
+    min-height: 52px;
+}
+.have-project-bx{
+    margin-top: 30px;
+    p{
+        font-size: 16px;
+        color: #737373;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+    .row{
+        margin-left: -8px;
+        margin-right: -8px;
+        .col-md-12,
+        .col-md-4{
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+    }
+}
+.btn-sens-message{
+    margin-top: 15px;
+    font-family: $font-stack; 
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 25px;
+    @include border-radius(52px);
+    line-height: 52px;
+    border: 2px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    &:hover{
+        border-color: #C9E265;
+    }
+    &:focus{
+        outline: 0;
+    }
+    .arrow-right{
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+        width: 12px;
+        height: 12px;
+        background: url('../../assets/images/right-arrow.png') center no-repeat;
+    }
 }
