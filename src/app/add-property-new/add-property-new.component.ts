@@ -22,8 +22,11 @@ export class AddPropertyNewComponent implements OnInit {
   imageLength: any;
   rationBtnShow: boolean = false;
   getDoc:any
+  get360:any
   getVideo:any
   base64Image = []
+  subscriptionList
+  userData
   constructor(
     private FB: FormBuilder,
     private webService: WebService,
@@ -36,7 +39,36 @@ export class AddPropertyNewComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.checkLogin()
     this.getPropertyCategoryList();
+    this.getsubscriptionList()
+  }
+  getsubscriptionList() {
+    this.webService.createGet({ url: BaseUrl.apiUrl("UserSubscriptionList"), contentType: true, loading: true }).then(res => {
+      if (res["status"]) {
+        this.subscriptionList = res["data"];
+
+        console.log("subscriptionList===", this.subscriptionList);
+      }else{
+        this.toastr.error(res["message"],"Error")
+      }
+    })
+  }
+  checkLogin() {
+    if (this.webService.getLocalData("token") && this.webService.getLocalData("userData")) {
+
+      this.userData = this.webService.getLocalData("userData");
+      if(this.userData.expiry_date){
+        var date = new Date()
+        if(new Date(this.userData.expiry_date) < new Date())
+        {
+          alert("Your Subscription was expired, please renew subscription");
+          this.router.navigate(["/add-property"]);
+          return ;
+        }
+      }
+      console.log("userData header local===",this.userData);
+    }
   }
 
   get f() {
@@ -63,6 +95,7 @@ export class AddPropertyNewComponent implements OnInit {
       property_services: ["",[Validators.required]],
       add_new_project:[false],
       new_project_type:[""],
+      youtube_link:[""],
       property_video:[""]
     });
     //this.changeSubCategoryValidation();
@@ -72,6 +105,10 @@ export class AddPropertyNewComponent implements OnInit {
     this.base64Image = []
     this.myFiles = []
     this.imageLength = event.target.files.length;
+    if(this.imageLength > this.subscriptionList.no_image){
+      this.toastr.warning('You can image upload maximum '+ this.subscriptionList.no_image +' per property!!!', 'Warning')
+      return;
+    }
     for (var i = 0; i < event.target.files.length; i++) {
       if (
         event.target.files[i].type !== 'image/jpeg' &&
@@ -105,11 +142,30 @@ console.log('base64Image==================', this.base64Image)
 
   }
 
+  onSelectedProperty360(event) {
+    // if (
+    //   event.target.files[0].type !== 'application/pdf' &&
+    //   event.target.files[0].type !== 'image/jpeg' &&
+    //   event.target.files[0].type !== 'image/png' &&
+    //   event.target.files[0].type !== 'image/jpg'
+    // ) {
+    //   this.toastr.warning('Please upload image file')
+    //   return;
+    // }
+    this.get360 = ''
+    this.get360 = event.target.files[0];
+    console.log('this.get360===============', this.getDoc)
+    this.serviceForm.controls.property_360.setValue(event.target.files[0]);
+  }
+
   onSelectedPropertyDoc(event) {
     if (
-      event.target.files[0].type !== 'application/pdf'
+      event.target.files[0].type !== 'application/pdf' &&
+      event.target.files[0].type !== 'image/jpeg' &&
+      event.target.files[0].type !== 'image/png' &&
+      event.target.files[0].type !== 'image/jpg'
     ) {
-      this.toastr.warning('Please upload pdf file')
+      this.toastr.warning('Please upload image file')
       return;
     }
     this.getDoc = ''
@@ -145,6 +201,10 @@ console.log('base64Image==================', this.base64Image)
   }
 
    submitProduct() {
+    if(this.subscriptionList.no_properties){
+      this.toastr.warning('You can add property maximum '+ this.subscriptionList.no_properties , 'Warning')
+      return;
+    }
     console.log("rationBtnShow===",this.rationBtnShow);
     let formData = new FormData();
     if(this.rationBtnShow == false) {
@@ -171,9 +231,14 @@ console.log('base64Image==================', this.base64Image)
     formData.append('latitude', this.serviceForm.value.latitude);
     formData.append('property_sqft', this.serviceForm.value.property_sqft);
     formData.append('property_doc', this.getDoc);
+    if(this.get360){
+
+      formData.append('property_360', this.get360);
+    }
     formData.append('property_video', this.getVideo);
     formData.append('property_details', this.serviceForm.value.property_details);
     formData.append('property_niceties', this.serviceForm.value.property_niceties);
+    formData.append('youtube_link', this.serviceForm.value.youtube_link);
     formData.append('property_services', this.serviceForm.value.property_services);
 
     if(this.rationBtnShow == true) {

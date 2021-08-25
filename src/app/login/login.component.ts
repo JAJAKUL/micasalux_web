@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
     this.webService.createPost({ url: BaseUrl.apiUrl("sociaLogin"), body: GoogleLoginObj, contentType: true, loading: true }).then(res => {
       if (res["status"]) {
         let userData = res["data"];
+        console.log('userData---------------', userData)
         this.socialLogin = true;
         this.authService.signOut();
         this.webService.saveLocalData("userData", userData);
@@ -110,6 +111,7 @@ export class LoginComponent implements OnInit {
     this.webService.createPost({ url: BaseUrl.apiUrl("login"), body: this.signInForm.value, contentType: true, loading: true }).then(res => {
       if (res["status"]) {
         let userData = res["data"];
+        console.log('userData---------------', userData)
         this.webService.saveLocalData("userData", userData);
         this.webService.saveLocalData("token", res["token"]);
         this.webService.sendLoggedData(res["data"]);

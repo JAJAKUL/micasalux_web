@@ -77,6 +77,14 @@ export class HeaderComponent implements OnInit {
     if (this.webService.getLocalData("token") && this.webService.getLocalData("userData")) {
       this.userLogin = true;
       this.userData = this.webService.getLocalData("userData");
+      if(this.userData.expiry_date){
+        var date = new Date()
+        if(new Date(this.userData.expiry_date) < new Date())
+        {
+          alert("Your Subscription was expired, please renew subscription");
+          return ;
+        }
+      }
       console.log("userData header local===",this.userData);
     } else {
       this.userLogin = false;

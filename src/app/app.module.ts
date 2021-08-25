@@ -19,6 +19,7 @@ import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-logi
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import {Location, PathLocationStrategy} from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,

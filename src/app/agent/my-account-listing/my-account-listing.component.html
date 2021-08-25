@@ -182,10 +182,11 @@
               <div class="sub-des-details">
                 <h2>{{item?.duration}}</h2>
                 <h2><sup>$</sup>{{item?.price ? item?.price : 0}}<small> / {{item?.no_of_days}} Days</small></h2>
-                <p>{{item?.no_image}} image uploaded</p>
-                <p>{{item?.no_video}} video uploaded  </p>
+                <p *ngIf="item?.no_properties">You can add {{item?.no_properties}} property</p>
+                <p>{{item?.no_image}} images per property</p>
+                <p>{{item?.no_video}} video per property</p>
                 <p>{{item?.description}}</p>
-                <a href="javascript:void()" (click)="BuySubscription(item)" class="btn btn-block">Subscribe Now</a>
+                <button href="javascript:void()" (click)="BuySubscription(item)"[disabled]="item?.buttonDisabled" class="btn btn-block">Subscribe Now</button>
               </div>
 
             </div>

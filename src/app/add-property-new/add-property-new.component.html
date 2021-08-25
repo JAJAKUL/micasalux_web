@@ -10,7 +10,7 @@
       <div class="popbox-cmn">
           <div class="row">
               <div class="col-md-12 upload-mrtb-20">
-                  <label class="form-label">Image</label>
+                  <label class="form-label">Images</label>
                   <div class="control-fileupload">
                       <input type="file" multiple placeholder="Product Image" (change)="onSelectedGalleryImage($event)">
                   </div>
@@ -23,10 +23,17 @@
                   </div>
               </div>
               <div class="col-md-12 upload-mrtb-20">
-                  <label class="form-label">Product document</label>
+                  <label class="form-label">Product document (Pdf/Docs/Jpg)</label>
                   <div class="control-fileupload">
                       <input type="file" multiple placeholder="Product Image" (change)="onSelectedPropertyDoc($event)">
                   <p>{{getDoc ? getDoc : ''}}</p>
+                    </div>
+              </div>
+              <div class="col-md-12 upload-mrtb-20">
+                  <label class="form-label">360° Media</label>
+                  <div class="control-fileupload">
+                      <input type="file" multiple placeholder="Product Image" (change)="onSelectedProperty360($event)">
+                  <p>{{get360 ? get360 : ''}}</p>
                     </div>
               </div>
               <div class="col-md-12 upload-mrtb-20">
@@ -36,6 +43,10 @@
                       <p>{{getVideo ? getVideo : ''}}</p>
                     </div>
               </div>
+              <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
+                <mat-label>YouTube Link</mat-label>
+                <input matInput formControlName="youtube_link"/>
+            </mat-form-field>
 
               <div class="col-md-12 checkbox-btm20">
                   <mat-checkbox class="check-box-item" (change)="selectCheckBox($event.checked)" >New Projects</mat-checkbox>

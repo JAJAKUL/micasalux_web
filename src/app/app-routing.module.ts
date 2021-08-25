@@ -21,6 +21,10 @@ const routes: Routes = [
   { path: 'manage-property', loadChildren: () => import('./manage-property/manage-property.module').then(m => m.ManagePropertyModule), canActivate: [AuthGuard]  },
   { path: 'add-property', loadChildren: () => import('./add-property-new/add-property-new.module').then(m => m.AddPropertyNewModule), canActivate: [AuthGuard]  },
   { path: 'manage-subscription', loadChildren: () => import('./manage-subscription/manage-subscription.module').then(m => m.ManageSubscriptionModule), canActivate: [AuthGuard] },
+  { path: 'about-us', loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule) },
+  { path: 'contact-us', loadChildren: () => import('./contact-us/contact-us.module').then(m => m.ContactUsModule) },
+  { path: 'property-agent-list', loadChildren: () => import('./property-agent-list/property-agent-list.module').then(m => m.PropertyAgentListModule) },
+  { path: 'property-agent-details', loadChildren: () => import('./property-agent-details/property-agent-details.module').then(m => m.PropertyAgentDetailsModule) },
 
 ];
 // useHash: true

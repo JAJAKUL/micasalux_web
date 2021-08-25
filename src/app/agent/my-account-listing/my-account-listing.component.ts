@@ -34,7 +34,7 @@ export class MyAccountListingComponent implements OnInit {
   profileImage: any;
   imageSrc: any;
   subscriptionList: any;
-
+  userSubscription
   constructor(
     private FB: FormBuilder,
     private webService: WebService,
@@ -50,6 +50,7 @@ export class MyAccountListingComponent implements OnInit {
         this.createChangePasswordForm();
         this.getPropertylist();
         this.getCardDetails();
+        this.getUsersubscriptionList()
         this.getSubscriptionlist()
       } else{
         this.router.navigate(["/home"]);
@@ -184,6 +185,13 @@ export class MyAccountListingComponent implements OnInit {
       console.log('res===================', res)
       if (res["status"]) {
         this.subscriptionList = res["data"];
+        this.subscriptionList.forEach(element => {
+          if(element._id == this.userSubscription.subscriptionId) {
+            element.buttonDisabled = true;
+          } else{
+            element.buttonDisabled = false;
+          }
+        });
 
         console.log("this.subscriptionList===",this.subscriptionList);
       }else{
@@ -192,7 +200,17 @@ export class MyAccountListingComponent implements OnInit {
       }
     })
   }
+  getUsersubscriptionList() {
+    this.webService.createGet({ url: BaseUrl.apiUrl("UserSubscriptionList"), contentType: true, loading: true }).then(res => {
+      if (res["status"]) {
+        this.userSubscription = res["data"];
 
+        console.log("userSubscription===", this.userSubscription);
+      }else{
+        this.toastr.error(res["message"],"Error")
+      }
+    })
+  }
   BuySubscription(data) {
     console.log(data)
     var date = new Date()
@@ -200,9 +218,13 @@ export class MyAccountListingComponent implements OnInit {
     var obj ={
       expiry_date: expiry_date,
       subscriptionId: data._id,
-      total_image: data.no_image,
-      total_video: data.no_video,
-      amount: data.price,
+      no_image: data.no_image,
+      no_video: data.no_video,
+      price: data.price,
+      duration: data.duration,
+      no_of_days:data.no_of_days,
+      no_properties:data.no_properties,
+      description:data.description,
       subscriptionType: data.duration
     }
     console.log('obj==============', obj)

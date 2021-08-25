@@ -26,7 +26,7 @@ export class ManageSubscriptionComponent implements OnInit {
       if (res["status"]) {
         this.subscriptionList = res["data"];
 
-        console.log("propertyCategoryList===", this.subscriptionList);
+        console.log("subscriptionList===", this.subscriptionList);
       }else{
         this.toastr.error(res["message"],"Error")
       }

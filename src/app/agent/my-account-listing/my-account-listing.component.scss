@@ -70,7 +70,7 @@
     .plus-icon{
         width: 40px;
         height: 40px;
-        @include border-radius(50%); 
+        @include border-radius(50%);
         background-color: #C9E265;
         position: absolute;
         bottom: 13px;
@@ -112,4 +112,14 @@
             bottom: 0;
         }
     }
+}
+
+.sub-des-details{
+  button{
+
+      background-color: #004aad;
+      color: #fff;
+      padding: 12px;
+
+  }
 }

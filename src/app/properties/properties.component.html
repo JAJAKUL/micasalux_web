@@ -41,16 +41,16 @@
                         </div>
                     </div>
                     <div class="property-item-info">
-                        <h5 class="title" (click)="gotoPropertyDetails(item._id)">{{item.property_name}}</h5>
-                        <p class="price">${{item.property_price}}</p>
+                        <h5 class="title" (click)="gotoPropertyDetails(item?._id)">{{item?.property_name}}</h5>
+                        <p class="price">${{item?.property_price}}</p>
                         <!-- <p>{{(item.excerpt | limitTo: 100) + (item.excerpt.length > 100 ? '...' : '')}}</p> -->
                         <div class="description-info">
-                            <p>{{(item.property_description.length > 75) ? (item.property_description | slice:0:75)+'...' : item.property_description}} </p>
+                            <p>{{(item?.property_description?.length > 75) ? (item?.property_description | slice:0:75)+'...' : item?.property_description}} </p>
                         </div>
                         <div class="property-icons">
-                            <div class="property-icons-item"><i class="icon bed-icon"></i><span>{{item.room_number}}</span></div>
-                            <div class="property-icons-item"><i class="icon bathtub-icon"></i><span>{{item.bed_room_number}}</span></div>
-                            <div class="property-icons-item"><i class="icon squre-icon"></i><span>{{item.property_sqft}} sqft</span></div>
+                            <div class="property-icons-item"><i class="icon bed-icon"></i><span>{{item?.room_number}}</span></div>
+                            <div class="property-icons-item"><i class="icon bathtub-icon"></i><span>{{item?.bed_room_number}}</span></div>
+                            <div class="property-icons-item"><i class="icon squre-icon"></i><span>{{item?.property_sqft}} sqft</span></div>
                         </div>
                         <a href="javascript:void(0);" mat-button class="btn-viewdetails btn-color" (click)="gotoPropertyDetails(item._id)">View Details</a>
                     </div>
