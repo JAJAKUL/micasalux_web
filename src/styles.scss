@@ -740,13 +740,16 @@ ngx-material-timepicker-container{
         width: 100%;
     }    
 }
-.slider-date-select mat-checkbox{
-    .mat-checkbox-inner-container {
-        position: absolute;
-        right: 0;
-        top: -35px;
+.slider-date-select mat-radio-button{
+    .mat-radio-label{
+        position: relative;
     }
-    &.mat-checkbox-checked{
+    .mat-radio-container {
+        position: absolute;
+        right:6px;
+        top: 6px;
+    }
+    &.mat-radio-checked{
         .date-det {
             background-color: #004AAD !important;
             border: 3px solid #004AAD;

@@ -63,7 +63,7 @@ h2.modal-title{
 
 
 .cont-ap-det .btn.btn-primary:hover,
-.cont-ap-det .btn-check.mat-checkbox-checked ~ .btn.btn-primary{
+.cont-ap-det .mat-radio-button.mat-radio-checked ~ .btn.btn-primary{
     background: #c9e265 !important;
     border: 1px solid #c9e265 !important;
     color: #fff;
@@ -88,7 +88,7 @@ h2.modal-title{
     color: #777;
     font-size: 16px;
 }
-.slider-date-select mat-checkbox {
+.slider-date-select mat-radio-button {
     position: relative;
 }
 .date-det .date {
