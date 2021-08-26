@@ -576,6 +576,7 @@ ul.sear-det-icon {
                     font-family: $font-stack;
                     text-align: center;
                     min-width: 136px;
+                    
                     @include border-radius(42px);
                     line-height: 42px;
                     margin-top: 15px;
