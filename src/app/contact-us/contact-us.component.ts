@@ -7,9 +7,6 @@ declare var $:any;
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
-
-  
-
   @ViewChild('map') mapElement: ElementRef;
   step = 0;
   propertyCategoryList: any;
