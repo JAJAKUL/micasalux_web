@@ -22,6 +22,14 @@ export class CreateAppiontmentComponent implements OnInit {
   selectedTime: any;
   propertyCategoryList: any;
   customerData:any
+  day1:any
+  day2:any
+  day3:any
+  day4:any
+  day5:any
+  day6:any
+  dateArr:any = []
+  bookingDate:any
   constructor(
     private FB: FormBuilder,
     private webService: WebService,
@@ -35,6 +43,9 @@ export class CreateAppiontmentComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    var date = new Date()
+    this.getAppointDate()
+
     this.customerData = JSON.parse(localStorage.getItem('userData'));
     if(this.customerData != '' && this.customerData != null) {
 
@@ -43,7 +54,37 @@ export class CreateAppiontmentComponent implements OnInit {
     this.createAppionmentForm();
     this.getPropertyCategoryList();
   }
+  selectTime(item){
 
+  }
+getAppointDate(){
+  var date = new Date()
+  this.dateArr = []
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var d = new Date();
+  var dayName = days[d.getDay()];
+  // console.log('day1==============', dayName )
+  for(let i=0;i<7;i++){
+    var date1 = new Date()
+    var compDate = new Date()
+    var dat = new Date(compDate.setDate(date.getDate() + i))
+    console.log('days[d.getDay()]================', days[dat.getDay()])
+    if(days[dat.getDay()] != 'Sunday'){
+      this.dateArr.push({date :new Date(date1.setDate(date1.getDate() + i)),isChecked:false})
+    }
+  }
+  console.log('this.dateArr==============', this.dateArr )
+
+
+}
+selectDate(data){
+
+  data.isChecked = true
+  this.bookingDate = ''
+  this.bookingDate = data
+  console.log('this.data ====================', data )
+  console.log('this.bookingDate ====================', this.bookingDate )
+}
   createAppionmentForm() {
     this.createAppoinmentForm = this.FB.group({
       customer_name: [this.userData && this.userData.FullName != undefined ? this.userData.FullName: "" , [Validators.required]],
@@ -63,12 +104,17 @@ export class CreateAppiontmentComponent implements OnInit {
   }
 
   submitCreateAppoinmentForm(){
-    console.log("createAppoinmentForm===",this.createAppoinmentForm.value);
     if(this.customerData != '' && this.customerData != null) {
 
       this.createAppoinmentForm.controls.userId.setValue(this.customerData._id);
 
     }
+    if(this.bookingDate != '' && this.bookingDate != null) {
+
+      this.createAppoinmentForm.controls.bookingDate.setValue(this.bookingDate);
+
+    }
+    console.log("createAppoinmentForm===",this.createAppoinmentForm.value);
     this.webService.createPost({ url: BaseUrl.apiUrl("bookingProperty"),  body: this.createAppoinmentForm.value, loading: true }).then(res => {
       if (res["status"]) {
         this.toastr.success(res["message"],"Success");

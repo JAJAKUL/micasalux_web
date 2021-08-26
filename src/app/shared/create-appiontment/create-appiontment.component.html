@@ -10,89 +10,20 @@
             </div>
             <div class="col-md-12 slider-date-select">
                 <owl-carousel-o [options]="customOptions">
-                    <ng-template carouselSlide><mat-checkbox class="example-margin">
+                    <ng-template carouselSlide *ngFor="let item of dateArr; let i = index">
+                      <mat-radio-button class="example-margin"  (change)="selectDate(item)">
                             <div class="date-det">
                                 <div class="date">
-                                    7<br>
-                                    august
+                                    {{item?.date  | date: 'dd'}}<br>
+                                    {{item?.date  | date: 'MMMM'}}
                                 </div>
                                 <div class="day">
-                                    Saturday
+                                  {{item?.date  | date: 'EEEE'}}
                                 </div>
                             </div>
-                        </mat-checkbox>
+                        </mat-radio-button>
                     </ng-template>
-                    <ng-template carouselSlide><mat-checkbox class="example-margin">
-                        <div class="date-det">
-                            <div class="date">
-                                8<br>
-                                august
-                            </div>
-                            <div class="day">
-                                Saturday
-                            </div>
-                        </div>
-                    </mat-checkbox></ng-template>
-                    <ng-template carouselSlide><mat-checkbox class="example-margin">
-                        <div class="date-det">
-                            <div class="date">
-                                9<br>
-                                august
-                            </div>
-                            <div class="day">
-                                Saturday
-                            </div>
-                        </div>
-                    </mat-checkbox></ng-template>
-                    <ng-template carouselSlide><mat-checkbox class="example-margin">
-                        <div class="date-det">
-                            <div class="date">
-                                10<br>
-                                august
-                            </div>
-                            <div class="day">
-                                Saturday
-                            </div>
-                        </div>
-                    </mat-checkbox></ng-template>
-                    <ng-template carouselSlide><mat-checkbox class="example-margin">
-                        <div class="date-det">
-                            <div class="date">
-                                10<br>
-                                august
-                            </div>
-                            <div class="day">
-                                Saturday
-                            </div>
-                        </div>
-                    </mat-checkbox></ng-template>
-                    <ng-template carouselSlide><mat-checkbox class="example-margin"><div class="date-det">
-                        <div class="date">
-                            11<br>
-                            august
-                        </div>
-                        <div class="day">
-                            Saturday
-                        </div>
-                    </div></mat-checkbox></ng-template>
-                    <ng-template carouselSlide><mat-checkbox class="example-margin"><div class="date-det">
-                        <div class="date">
-                            12<br>
-                            august
-                        </div>
-                        <div class="day">
-                            Saturday
-                        </div>
-                    </div></mat-checkbox></ng-template>
-                    <ng-template carouselSlide><mat-checkbox class="example-margin"><div class="date-det">
-                        <div class="date">
-                            13<br>
-                            august
-                        </div>
-                        <div class="day">
-                            Saturday
-                        </div>
-                    </div></mat-checkbox></ng-template>
+
                   </owl-carousel-o>
             </div>
 
@@ -103,21 +34,21 @@
             <div class="form-group col-md-12">
 
                 <span>
-                    <mat-checkbox class="example-margin btn-check" checked></mat-checkbox>
+                    <mat-checkbox class="example-margin btn-check" (change)="selectTime('item')"></mat-checkbox>
                     <!-- <input type="checkbox" class="btn-check " name="options" id="option13" autocomplete="off" checked> -->
                      <label class="btn btn-primary" for="option13">9th - 12th</label>
                   </span>
                   <span>
-                    <mat-checkbox class="example-margin btn-check"></mat-checkbox>
-                  <label class="btn btn-primary" for="option22">12th - 14th</label>
+                    <mat-checkbox class="example-margin btn-check" (change)="selectTime('item')"></mat-checkbox>
+                    <label class="btn btn-primary" for="option22">12th - 14th</label>
                   </span>
 
                   <span>
-                    <mat-checkbox class="example-margin btn-check"></mat-checkbox>
+                    <mat-checkbox class="example-margin btn-check" (change)="selectTime('item')"></mat-checkbox>
                     <label class="btn btn-primary" for="option11">14th - 17th</label>
                   </span>
                   <span>
-                    <mat-checkbox class="example-margin btn-check"></mat-checkbox>
+                    <mat-checkbox class="example-margin btn-check" (change)="selectTime('item')"> </mat-checkbox>
                     <label class="btn btn-primary" for="option11">17th - 19th</label>
                   </span>
               </div>
