@@ -448,3 +448,239 @@ ul.sear-det-icon {
   pointer-events:none; //This makes it not clickable
   opacity:0.6;         //This grays it out to look disabled
 }
+
+.popatry-ag{
+    width: 100%;
+    text-align: center;
+    img{
+        width: 100%;
+        max-width: 250px;
+        max-height: 250px;
+        object-fit: cover;
+
+    }
+}
+.prt-ag-details{
+    h3{
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    p{
+        &.des{
+            color: #777;
+            font-size: 14px;
+            line-height: 24px;
+        }
+    }
+    p.lis-icon{
+        margin-bottom: 8px;
+        font-weight: 700;
+        i{
+            width: 40px;
+            font-size: 20px;
+        }
+        span{
+            width: calc(100% - 40px);
+        }
+    }
+}
+
+
+.property-item-ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    padding: 0;
+    list-style: none;
+    li {
+        padding:20px 15px;
+        width: 33.33333%;
+        .property-item {
+            position: relative;
+            .fav-icon {
+                background: url("../../assets/images/heart-icon-white.png") center no-repeat;
+                width: 20px;
+                height: 20px;
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                z-index: 11;
+                cursor: pointer;
+                &.fav-redicon {
+                    background-image: url("../../assets/images/heart-icon-red.png") !important;
+                }
+            }
+            .property-item-img {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover; //cover
+                height: 200px;
+                width: 100%;
+                // @include border-radius(5px 5px 0 0);
+                position: relative;
+                .hover-effect{
+                    position: absolute;		
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    z-index: 10;
+                    opacity: 0;
+                    transition: all 0.8s ease;		
+                    // @include border-radius(5px 5px 0 0);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .plus-icon{
+                        font-size: 30px;
+                       font-weight: 400;	
+                       color: #fff;
+                    }
+                }
+                &:hover .hover-effect {
+                    opacity: 1;
+                    background: rgba(0, 0, 0, 0.6);
+                    cursor: pointer;
+                }
+            }
+            .property-item-info {
+                padding: 20px;
+                border: 1px solid #d7d7d7;
+                border-top: 0;
+                // @include border-radius(0 0 5px 5px);
+                .title {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    margin-bottom: 7px;
+                    color: #4E4D4D;
+                    font-size: 23px;
+                    font-weight: 700;
+                }
+                p {
+                    color: #717171;
+                    font-size: 16px;
+                    font-weight: 400;
+                    &.price {
+                        color: #004AAD;
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin-bottom: 10px;
+                    }
+                }
+                .btn-viewdetails{
+                    font-size: 16px;
+                    font-weight: 400;
+                    font-family: $font-stack;
+                    text-align: center;
+                    min-width: 136px;
+                    @include border-radius(42px);
+                    line-height: 42px;
+                    margin-top: 15px;
+                    padding: 8px 16px;
+                }
+                .property-icons{
+                    display: flex;
+                    margin: 15px 0;
+                    .property-icons-item{
+                        display: flex;
+                        align-items: flex-end;
+                        margin-right: 15px;
+                        .icon{
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                            width: 20px;
+                            height: 20px;
+                            &.bed-icon{
+                                background-image: url("../../assets/images/bed-icon.png");
+                            }
+                            &.bathtub-icon{
+                                background-image: url("../../assets/images/bathtub-icon.png");
+                            }
+                            &.squre-icon{
+                                background-image: url("../../assets/images/squre-icon.png");
+                            }
+                        }
+                        span{
+                            font-size: 15px;
+                            font-weight: 400;
+                            font-family: $font-stack;
+                            color: #898989;
+                            margin-left: 7px;
+                            display: inline-block;
+                            line-height: 11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.description-info{
+    min-height: 55px;
+}
+@media only screen and (max-width: 991px) {
+    .property-item-ul {
+        li {
+            width: 50%;
+        }
+    }
+    .description-info{
+        min-height: 75px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .p-header-title{
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .property-item-ul {
+        margin: 15px -8px 0 -8px;
+        li {
+            padding:12px 8px;
+            .property-item {
+                .property-item-img{
+                    height: 200px;
+                }
+                .property-item-info {
+                    padding: 15px;
+                    .title {
+                        font-size: 18px;
+                    }
+                    p {
+                        font-size: 15px;
+                        &.price {
+                            font-size: 18px;
+                        }
+                    }
+                    .btn-viewdetails{
+                        font-size: 15px;
+                    }
+                    .property-icons{
+                        margin: 10px 0;
+                        .property-icons-item{
+                            margin-right: 12px;
+                            span{
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 575px) {
+    .property-item-ul {
+        li {
+            width: 100%;
+        }
+    }
+    .description-info{
+        min-height: inherit;
+    }
+}
