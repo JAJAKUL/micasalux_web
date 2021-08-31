@@ -177,7 +177,7 @@ export class PropertyDetailsComponent implements OnInit {
           });
 
         } else{
-          this.propertyDetails.property_image[0].url = 'assets/images/image-not-available.png'
+          this.propertyDetails.property_image[0].url = './assets/images/image-not-available.png'
         }
         if(this.propertyDetails.create_by.profile){
           this.propertyDetails.create_by.profile = BaseUrl.baseUrl+'/'+this.propertyDetails.create_by.profile

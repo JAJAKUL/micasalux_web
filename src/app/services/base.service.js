@@ -37,6 +37,10 @@ const apiEnd = {
   addUser_subscription: "addUser_subscription",
   UserSubscriptionList: "UserSubscriptionList",
   GetSubscriptionList: "GetSubscriptionList",
+  contactUs: "contactUs",
+  aboutUs: "aboutUs",
+  getAgentList: "getAgentList",
+  getAgentAndPropertyList: "getAgentAndPropertyList",
 }
 
 exports.BaseUrl = {

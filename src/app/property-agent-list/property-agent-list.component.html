@@ -1,6 +1,6 @@
 
 <section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-details-banner.png');">
- 
+
 </section>
 <section>
   <div class="container">
@@ -15,94 +15,36 @@
               <option value="3">Developers</option>
             </select>
           </div>
-          <div class="mb-3 fllis">
+          <!-- <div class="mb-3 fllis">
             <input type="search" class="form-control" id="exampleInputPassword1" placeholder="Search by location">
-          </div>
-          <div class="mb-3 fllis">
+          </div> -->
+          <!-- <div class="mb-3 fllis">
             <input type="search" class="form-control" id="exampleInputPassword1" placeholder="Search By name">
-          </div>
+          </div> -->
         </form>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="row" *ngIf="propertyList?.length">
+      <div class="col-md-4 mb-3" *ngFor="let item of propertyList">
         <div class="popatry-ag">
-          <a href="javscript:void();" [routerLink]="['/property-agent-details']"><img src="../../assets/images/agent-person.png" alt=""></a>
-          <h3 [routerLink]="['/property-agent-details']">
-            Biplab Karmakar
+          <a href="javscript:void();" [routerLink]="['/property-agent-details', item?._id]"><img src="{{item?.profile}}" alt=""></a>
+          <h3 [routerLink]="['/property-agent-details', item?._id]">
+            {{item?.FullName}}
           </h3>
           <p>
             <small>
-                Kolkata, West Bengal, India
+              {{item?.Address}}
             </small>
           </p>
           <p class="des">
-            My self represent as private agencies
+            {{item?.description}}
           </p>
         </div>
       </div>
-      <div class="col-md-4 mb-3">
-        <div class="popatry-ag">
-          <a href="javscript:void();" [routerLink]="['/property-agent-details']"><img src="../../assets/images/agent-person-item-3.png" alt=""></a>
-          <h3 [routerLink]="['/property-agent-details']">
-            Biplab Karmakar
-          </h3>
-          <p>
-            <small>
-                Kolkata, West Bengal, India
-            </small>
-          </p>
-          <p class="des">
-            My self represent as private agencies
-          </p>
-        </div>
+    </div>
+    <div *ngIf="!propertyList?.length">
+      <h2 style="text-align: center; margin-bottom: 15px;">Data Not Found</h2>
       </div>
-      <div class="col-md-4 mb-3">
-        <div class="popatry-ag">
-          <a href="javscript:void();" [routerLink]="['/property-agent-details']"><img src="../../assets/images/agent-person-item-4.png" alt=""></a>
-          <h3 [routerLink]="['/property-agent-details']">
-            Biplab Karmakar
-          </h3>
-          <p>
-            <small>
-                Kolkata, West Bengal, India
-            </small>
-          </p>
-          <p class="des">
-            My self represent as private agencies
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <div class="popatry-ag">
-          <a href="javscript:void();" [routerLink]="['/property-agent-details']"><img src="../../assets/images/agent-person-item-5.png" alt=""></a>
-          <h3 [routerLink]="['/property-agent-details']">
-            Biplab Karmakar
-          </h3>
-          <p>
-            <small>
-                Kolkata, West Bengal, India
-            </small>
-          </p>
-          <p class="des">
-            My self represent as private agencies
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <div class="popatry-ag">
-          <a href="javscript:void();" [routerLink]="['/property-agent-details']"><img src="../../assets/images/agent-person-item-6.png" alt=""></a>
-          <h3 [routerLink]="['/property-agent-details']">
-            Biplab Karmakar
-          </h3>
-          <p>
-            <small>
-                Kolkata, West Bengal, India
-            </small>
-          </p>
-          <p class="des">
-            My self represent as private agencies
-          </p>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>

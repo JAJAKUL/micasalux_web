@@ -43,7 +43,7 @@
             <li  data-toggle="modal" (click)="openGallery()" data-target="#property-info"><img src="./assets/images/cam-icon.png" alt="" ></li>
             <li (click)="openMap()" data-toggle="modal" data-target="#property-info"> <img src="./assets/images/map-icon.png" alt="" ></li>
              <li class="disabled" data-toggle="modal" data-target="#property-info"><img src="./assets/images/loc-icon.png" alt="" ></li>
-            <li class="disabled" data-toggle="modal" data-target="#property-info"><img src="./assets/images/thresix-icon.png" alt="" ></li>
+            <li (click)="openVideo()" data-toggle="modal" data-target="#property-info"><img src="./assets/images/thresix-icon.png" alt="" ></li>
             <li (click)="openVideo()" data-toggle="modal" data-target="#property-info"><img src="./assets/images/video-icon.png" alt="" ></li>
           </ul>
         </div>
@@ -477,7 +477,7 @@
                 <li  (click)="openGallery()" ><img src="./assets/images/cam-icon.png" alt="" ></li>
                 <li (click)="openMap()"> <img src="./assets/images/map-icon.png" alt="" ></li>
                 <li class="disabled" ><img src="./assets/images/loc-icon.png" alt="" ></li>
-                <li class="disabled" (click)="openMap()"><img src="./assets/images/thresix-icon.png" alt="" ></li>
+                <li (click)="openVideo()" (click)="openMap()"><img src="./assets/images/thresix-icon.png" alt="" ></li>
                 <li (click)="openVideo()"><img src="./assets/images/video-icon.png" alt="" ></li>
               </ul>
             </div>

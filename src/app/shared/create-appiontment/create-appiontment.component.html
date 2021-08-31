@@ -32,7 +32,7 @@
             </div>
             <div class="form-group col-md-12">
 
-                <span>
+                <span >
                     <mat-radio-button class="example-margin btn-check" (change)="selectTime('item')"></mat-radio-button>
                     <!-- <input type="checkbox" class="btn-check " name="options" id="option13" autocomplete="off" checked> -->
                      <label class="btn btn-primary" for="option13">9th - 12th</label>
@@ -66,8 +66,8 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="col-md-12 custom-form-field">
                 <mat-label>Property Category</mat-label>
-                <mat-select disabled formControlName="property_category">
-                    <mat-option *ngFor="let item of propertyCategoryList" [value]="item._id">{{item.property_category_name}}</mat-option>
+                <mat-select  formControlName="property_category">
+                    <mat-option *ngFor="let item of propertyCategoryList" [value]="item?._id">{{item?.property_category_name}}</mat-option>
                     <!-- <mat-option value="rent">Rent</mat-option>
                     <mat-option value="sale">Sale</mat-option> -->
                 </mat-select>
@@ -80,7 +80,7 @@
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="customer_email">
             </mat-form-field>
-            <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
+            <!-- <mat-form-field appearance="outline" class="col-lg-12 custom-form-field">
                 <mat-label>Date</mat-label>
                 <input matInput [matDatepicker]="myPicker" (dateChange)="addEvent($event)"  placeholder="date">
                 <mat-datepicker-toggle class="date-icon-btn" matSuffix [for]="myPicker"></mat-datepicker-toggle>
@@ -91,7 +91,7 @@
                 <input matInput [ngxTimepicker]="timePicker">
                 <ngx-material-timepicker-toggle class="time-icon-btn" matSuffix [for]="timePicker"></ngx-material-timepicker-toggle>
                 <ngx-material-timepicker #timePicker (timeSet)="timeChangeData($event)"></ngx-material-timepicker>
-            </mat-form-field>
+            </mat-form-field> -->
             <div class="col-lg-12 text-center">
                 <button mat-button class="btn-submit btn-color" (click)="submitCreateAppoinmentForm()">Submit</button>
             </div>

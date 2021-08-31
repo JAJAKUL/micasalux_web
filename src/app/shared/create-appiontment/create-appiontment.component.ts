@@ -81,8 +81,8 @@ selectDate(data){
 
   data.isChecked = true
   this.bookingDate = ''
-  this.bookingDate = data
-  console.log('this.data ====================', data )
+  this.bookingDate = data.date
+  console.log('this.data ====================', data.date )
   console.log('this.bookingDate ====================', this.bookingDate )
 }
   createAppionmentForm() {

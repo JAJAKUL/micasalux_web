@@ -48,7 +48,10 @@ export class HeaderComponent implements OnInit {
       property_location: ''
       }
   }
-
+  getAgentlist(data){
+    console.log('data===================', data)
+    this.router.navigate(['/property-agent-list', data]) .then(() => window.location.reload());;
+  }
   getPropertyCategoryList() {
     this.webService.createGet({ url: BaseUrl.apiUrl("propertyCategoryList"), contentType: true, loading: true }).then(res => {
       if (res["status"]) {
