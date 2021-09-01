@@ -811,3 +811,9 @@ ngx-material-timepicker-container{
         }
     }
 }
+
+.deactive-ed-det {
+    .mat-slide-toggle-bar {
+        background: #ccc !important;
+    }
+}

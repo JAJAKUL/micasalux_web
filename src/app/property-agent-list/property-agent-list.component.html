@@ -23,24 +23,27 @@
           </div> -->
         </form>
       </div>
-      <div class="row" *ngIf="propertyList?.length">
-      <div class="col-md-4 mb-3" *ngFor="let item of propertyList">
-        <div class="popatry-ag">
-          <a href="javscript:void();" [routerLink]="['/property-agent-details', item?._id]"><img src="{{item?.profile}}" alt=""></a>
-          <h3 [routerLink]="['/property-agent-details', item?._id]">
-            {{item?.FullName}}
-          </h3>
-          <p>
-            <small>
-              {{item?.Address}}
-            </small>
-          </p>
-          <p class="des">
-            {{item?.description}}
-          </p>
+      <div class="col-md-12">
+        <div class="row" *ngIf="propertyList?.length">
+          <div class="col-md-4 mb-3" *ngFor="let item of propertyList">
+            <div class="popatry-ag">
+              <a href="javscript:void();" [routerLink]="['/property-agent-details', item?._id]"><img src="{{item?.profile}}" alt=""></a>
+              <h3 [routerLink]="['/property-agent-details', item?._id]">
+                {{item?.FullName}}
+              </h3>
+              <p class="address">
+                <small>
+                  {{item?.Address}}
+                </small>
+              </p>
+              <p class="des">
+                {{item?.description}}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      
     <div *ngIf="!propertyList?.length">
       <h2 style="text-align: center; margin-bottom: 15px;">Data Not Found</h2>
       </div>

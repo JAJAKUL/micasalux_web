@@ -121,3 +121,42 @@
 ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
   background-color: skyblue;  /*replace with your color*/
 }
+
+.news-item {
+    border: 1px solid #f2f2f2;
+    padding: 16px;
+    box-shadow: 0px 0px 10px #ccc;
+    position: relative;
+    .news-item-img{
+        img{
+            width: 100%;
+        }
+    }
+    .deactive-ed-det {
+        
+        position: absolute;
+        right: 16px;
+        top: 8px;
+        i{
+            margin-left: 16px;
+            &.fa-trash{
+                color: rgb(214, 40, 40);
+            }
+            &.fa-edit{
+                color: rgb(33, 161, 1);
+            }
+        }
+    }
+    .socail-Share {
+        position: absolute;
+        right: 16px;
+        top: 40px;
+        color: #777;
+        span {
+            font-weight: 700;
+        }
+        i{
+            margin-left:8px;
+        }
+    }
+}
