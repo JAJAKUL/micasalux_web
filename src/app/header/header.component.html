@@ -51,7 +51,7 @@
                         <a class="nav-link dropdown-toggle" routerLinkActive="active" data-toggle="dropdown">Agences</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="javascript:void(0)" (click)="getAgentlist('Agencies')"  >Agencies</a>
-                            <a class="dropdown-item" href="javascript:void(0)"(click)="getAgentlist('Architects')" >Architects</a>
+                            <!-- <a class="dropdown-item" href="javascript:void(0)"(click)="getAgentlist('Architects')" >Architects</a> -->
                             <a class="dropdown-item" href="javascript:void(0)"(click)="getAgentlist('Developers')"  >Developers</a>
                             <a class="dropdown-item" href="javascript:void(0)" (click)="getAgentlist('Realtors')"  >Realtors</a>
                         </div>
@@ -67,14 +67,14 @@
                         <a class="nav-link dropdown-toggle" routerLinkActive="active" data-toggle="dropdown">New Projects</a>
                         <div class="dropdown-menu">
                             <!-- <a class="dropdown-item" routerLinkActive="active" *ngFor="let item of propertyTypeList"  (click)="newProjectList(item._id)">{{item.property_type_name}}</a> -->
-                            <a class="dropdown-item" routerLinkActive="active" (click)="newProjectList('houses')">Houses</a>
+                            <a class="dropdown-item" routerLinkActive="active" (click)="newProjectList('Houses')">Houses</a>
                             <a class="dropdown-item" routerLinkActive="active" (click)="newProjectList('Comercials')">Comercials</a>
                         </div>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link"  [routerLink]="['/about-us']" routerLinkActive="active">About us</a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/property-agent']" routerLinkActive="active">Property Agents</a>
                     </li> -->
