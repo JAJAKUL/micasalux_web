@@ -47,10 +47,10 @@ export class MyAccountListingComponent implements OnInit {
       if( this.userData.UserType == '2') {
         this.getOwnDetails();
         this.getAgentTypelist();
-        this.createChangePasswordForm();
-        this.getPropertylist();
-        this.getCardDetails();
         this.getUsersubscriptionList()
+        this.createChangePasswordForm();
+        // this.getPropertylist();
+        this.getCardDetails();
         this.getSubscriptionlist()
       } else{
         this.router.navigate(["/home"]);
@@ -62,7 +62,12 @@ export class MyAccountListingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // if(confirm("Are you sure to delete ")) {
+    //   console.log("Implement delete functionality here");
+    // }else{
+    //   console.log("Implement delete functionality here false");
 
+    // }
 
   }
 
@@ -231,7 +236,12 @@ export class MyAccountListingComponent implements OnInit {
     this.webService.createPost({ url: BaseUrl.apiUrl("addUser_subscription"), body: obj, contentType: true, loading: true }).then(res => {
       if (res["status"]) {
         $("#subscriptionModal").modal("hide");
-        // $('#subscriptionModal').modal('hide')
+        if(this.webService.getLocalData("userData")){
+          this.userData = this.webService.getLocalData("userData");
+          this.userData.expiry_date = res["data"].expiry_date
+          this.webService.saveLocalData("userData", this.userData);
+        }
+        // $('#subscriptionModal').modal('hide')  this.webService.saveLocalData("userData", userData);
         console.log(res["status"])
         this.toastr.success(res["message"],"Success");
       }else{

@@ -6,7 +6,7 @@ import { WebService } from 'src/app/services/web.service';
 import { BaseUrl } from 'src/app/services/base.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPropertyComponent } from 'src/app/shared/add-property/add-property.component';
-
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-manage-property',
@@ -45,18 +45,47 @@ export class ManagePropertyComponent implements OnInit {
     }
   }
 
-
   removePropertyBtnClick(id) {
-    this.webService.createGet({ url: BaseUrl.apiUrl("removeProperty")+"?propertyId="+id, contentType: true, loading: true }).then(res => {
-      if (res["status"]) {
-        this.ngOnInit()
-        // this.propertyList.splice(i,1);
-        this.toastr.success(res["message"],"Success")
-      }else{
-        this.toastr.error(res["message"],"Error")
-      }
-    });
+    swal
+      .fire({
+        title: "Are you sure?",
+        text: "You will not be able to recover this data",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, keep it",
+      })
+      .then((result) => {
+        if (result.value) {
+
+          this.webService.createGet({ url: BaseUrl.apiUrl("removeProperty")+"?propertyId="+id, contentType: true, loading: true }).then(res => {
+            if (res["status"]) {
+              this.ngOnInit()
+              // this.propertyList.splice(i,1);
+              this.toastr.success(res["message"],"Success")
+            }else{
+              this.toastr.error(res["message"],"Error")
+            }
+          });
+        }
+      });
   }
+
+  // removePropertyBtnClick(id) {
+
+
+  //   this.webService.createGet({ url: BaseUrl.apiUrl("removeProperty")+"?propertyId="+id, contentType: true, loading: true }).then(res => {
+  //     if (res["status"]) {
+  //       this.ngOnInit()
+  //       // this.propertyList.splice(i,1);
+  //       this.toastr.success(res["message"],"Success")
+  //     }else{
+  //       this.toastr.error(res["message"],"Error")
+  //     }
+  //   });
+
+
+  // }
 
   activeDeactivePropertyBtnClick(id) {
     this.webService.createGet({ url: BaseUrl.apiUrl("activeAndDeactiveProperty")+"?propertyId="+id, contentType: true, loading: true }).then(res => {

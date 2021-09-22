@@ -84,7 +84,7 @@ export class HeaderComponent implements OnInit {
         var date = new Date()
         if(new Date(this.userData.expiry_date) < new Date())
         {
-          alert("Your Subscription was expired, please renew subscription");
+          alert("Your Subscription was expired, please renew subscription!!!");
           return ;
         }
       }
