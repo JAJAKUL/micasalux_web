@@ -41,6 +41,9 @@ const apiEnd = {
   aboutUs: "aboutUs",
   getAgentList: "getAgentList",
   getAgentAndPropertyList: "getAgentAndPropertyList",
+  getHomePagePropertylist: "get-HomePageProperty-list",
+  getPropertylist: "getPropertylist",
+  getPropertyAnyUser: "getPropertyAnyUser",
 }
 
 exports.BaseUrl = {

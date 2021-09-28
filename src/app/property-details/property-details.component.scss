@@ -448,3 +448,60 @@ ul.sear-det-icon {
   pointer-events:none; //This makes it not clickable
   opacity:0.6;         //This grays it out to look disabled
 }
+.calculate-wrapper{
+    margin-top: 30px;
+    .nav-tabs{
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 20px;
+        li{
+            a{
+                padding: 13px 20px;
+                font-weight: 500;
+                color: #000;
+            }
+        }
+    }
+}
+.btn-calculate-wrap{
+    text-align: right;
+    .btn-submit{
+        height: 48px;
+        font-size: 16px;
+        min-width: 130px;
+        font-family: "Poppins", sans-serif;
+    }
+}
+.table-calculate{
+    margin-top: 20px;
+    border-radius: 4px;
+    box-shadow: 0 3px 8px 0 rgb(105 118 132 / 30%);
+    padding: 30px;
+    .table-item-calculate{
+        display: flex;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+        &:last-child{
+            border-bottom: 0;
+        }
+        .th-calculate{
+            width: 200px;
+            font-weight: 500;
+        }
+        .td-calculate{
+            width: calc(100% - 200px);
+        }
+    }
+}
+@media only screen and (max-width: 575px) {
+    .table-calculate{
+        padding: 20px;
+        .table-item-calculate{
+            flex-direction: column;
+            .th-calculate,
+            .td-calculate{
+                width: 100%;
+            }
+        }
+    }
+}

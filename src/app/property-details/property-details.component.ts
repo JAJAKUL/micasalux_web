@@ -27,6 +27,8 @@ export class PropertyDetailsComponent implements OnInit {
   modalVideo = false
   controllerSrc
   userLoginStatus: boolean = false;
+  calData
+  EMIAmount
   constructor(
     private webService: WebService,
     private toastr: ToastrService,
@@ -54,6 +56,7 @@ export class PropertyDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData = {}
+    this.calData = {}
     this.getPropertyDetails();
     $('.calculator-btn').click(function() {
       $('#calculate-form').slideToggle();
@@ -101,7 +104,36 @@ export class PropertyDetailsComponent implements OnInit {
     // });
 
   }
+  onCalculation(){
+    console.log('calData===================', this.calData)
+    var obj = {
+      rate : parseFloat(this.calData.rate),
+      year : parseInt(this.calData.year),
+      propertyAmount : parseInt(this.calData.propertyAmount),
+      advancedAmount : this.calData.advancedAmount ? parseInt(this.calData.advancedAmount) : 0
+    }
+    console.log('obj===================',obj)
+if(!this.calData.year){
+  this.toastr.warning('Please select year','Warning');
+  return
+}
+if(!this.calData.rate){
+  this.toastr.warning('Please select rate','Warning');
+  return
+}
+    var rate = parseFloat(this.calData.rate),
+        year = this.calData.year ? parseInt(this.calData.year) : 1,
+        propertyAmount = parseInt(this.calData.propertyAmount),
+        advancedAmount = this.calData.advancedAmount ? parseInt(this.calData.advancedAmount) : 0
 
+    var interestRateMonthly = (rate / (100 * 12))
+    var totalPropertyAmount = propertyAmount - advancedAmount
+    this.EMIAmount = (totalPropertyAmount * interestRateMonthly * Math.pow((1+interestRateMonthly),(year * 12))/(Math.pow((1+interestRateMonthly),(year * 12))-1))
+    this.EMIAmount = this.EMIAmount.toFixed(2)
+    console.log('interestRateMonthly===================',interestRateMonthly)
+    console.log('EMI===================',this.EMIAmount)
+
+  }
   getSafeUrl(url) {
     if (!url) { return ''; }
     if(url){
@@ -170,6 +202,8 @@ export class PropertyDetailsComponent implements OnInit {
       console.log('response data ===================', res)
       if (res["status"]) {
         this.propertyDetails = res["data"];
+        this.calData.propertyAmount = this.propertyDetails.property_price
+
         if(this.propertyDetails.property_image != null && this.propertyDetails.property_image != "" && this.propertyDetails.property_image != undefined && this.propertyDetails.property_image.length > 0) {
           this.propertyDetails.property_image.forEach(element => {
             console.log("element.url===",element.url)
@@ -228,6 +262,7 @@ export class PropertyDetailsComponent implements OnInit {
       console.log('response data ===================', res)
       if (res["status"]) {
         this.propertyDetails = res["data"];
+        this.calData.propertyAmount = this.propertyDetails.property_price
         if(this.propertyDetails.property_image != null && this.propertyDetails.property_image != "" && this.propertyDetails.property_image != undefined && this.propertyDetails.property_image.length > 0) {
           this.propertyDetails.property_image.forEach(element => {
             console.log("element.url===",element.url)

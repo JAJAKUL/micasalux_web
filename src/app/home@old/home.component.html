@@ -116,18 +116,17 @@
         </div>
         <div class="grid">
             <div class="grid-sizer"></div>
-            <div class="grid-item" *ngFor="let item of homePropertyList">
-                <div class="gallery-items" (click)="gotoPropertyDetails(item?._id)">
+            <div class="grid-item">
+                <div class="gallery-items">
                     <div class="gallery-caption">
-                        <span class="category-txt">{{item?.property_category?.property_category_name}}</span>
-                        <h5>{{item?.property_name}}</h5>
+                        <span class="category-txt">Artwork</span>
+                        <h5>Luxury Home</h5>
                         <span class="plus-icon">+</span>
                     </div>
-                    <img src="{{item?.property_image}}" />
+                    <img src="assets/images/gallery-img-1.png" />
                 </div>
             </div>
-
-            <!-- <div class="grid-item">
+            <div class="grid-item">
                 <div class="gallery-items">
                     <div class="gallery-caption">
                         <span class="category-txt">Artwork</span>
@@ -166,11 +165,7 @@
                     </div>
                     <img src="assets/images/gallery-img-5.png" />
                 </div>
-            </div> -->
-        </div>
-
-        <div class="btn-property-more text-center">
-            <a mat-button class="btn-sens-message" [routerLink]="['/property-list']">View More</a>
+            </div>
         </div>
     </div>
 </section>

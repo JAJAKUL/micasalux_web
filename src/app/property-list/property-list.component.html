@@ -1,0 +1,49 @@
+<section class="inner-banner-2-wrap" style="background-image:url('assets/images/property-banner.png');">
+    <div class="container">
+        <h1>Property list</h1>
+    </div>
+</section>
+
+
+
+
+<section class="paddtb-80">
+  <div class="container">
+      <h2 class="p-header-title" *ngIf="propertyList?.length">Our Properties</h2>
+      <ul class="property-item-ul" *ngIf="propertyList?.length">
+          <li *ngFor="let item of propertyList | paginate: { itemsPerPage: itemPerPage, currentPage: p,  totalItems: totalItems  };;let i=index;">
+              <div class="property-item">
+                  <div class="fav-icon" *ngIf="!item.wishProperty" (click)="wishBtnClick(item._id,i)"></div>
+                  <div class="fav-icon fav-redicon" *ngIf="item.wishProperty" (click)="removeWishBtnClick(item.wishProperty,i)"></div>
+
+                  <div class="property-item-img" [ngStyle]="item.property_image | backgroundImage : item.property_image : 'assets/images/property-img-1.png' : 'small'">
+                      <div class="hover-effect">
+                          <span class="plus-icon">+</span>
+                      </div>
+                  </div>
+                  <div class="property-item-info">
+                      <h5 class="title" (click)="gotoPropertyDetails(item?._id)">{{item?.property_name}}</h5>
+                      <p class="price">${{item?.property_price}}</p>
+                      <div class="description-info">
+                          <p>{{(item?.property_description?.length > 75) ? (item?.property_description | slice:0:75)+'...' : item?.property_description}} </p>
+                      </div>
+                      <div class="property-icons">
+                          <div class="property-icons-item"><i class="icon bed-icon"></i><span>{{item?.room_number}}</span></div>
+                          <div class="property-icons-item"><i class="icon bathtub-icon"></i><span>{{item?.bed_room_number}}</span></div>
+                          <div class="property-icons-item"><i class="icon squre-icon"></i><span>{{item?.property_sqft}} sqft</span></div>
+                      </div>
+                      <a href="javascript:void(0);" mat-button class="btn-viewdetails btn-color" (click)="gotoPropertyDetails(item._id)">View Details</a>
+                  </div>
+              </div>
+            </li>
+
+          </ul>
+          <pagination-controls (pageChange)="pageChange($event)"></pagination-controls>
+
+      <div *ngIf="!propertyList?.length">
+        <h2 style="text-align: center;">No Data Found !!!</h2>
+      </div>
+  </div>
+</section>
+
+

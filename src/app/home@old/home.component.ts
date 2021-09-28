@@ -22,19 +22,18 @@ export class HomeComponent implements OnInit {
   searchData: any;
   property_category: any;
   newsList: any;
-  homePropertyList
+
   constructor(
     private webService: WebService,
     private toastr: ToastrService,
     private router: Router
-  ) {
+  ) { 
     this.getPropertyCategoryList();
     this.getPropertyTypeList();
     this.getNewsList();
   }
 
   ngOnInit(): void {
-    this.getHomePagePropertylist()
     var mapOptions= {
       center: {
         lat: 43.64344769999999,
@@ -43,7 +42,7 @@ export class HomeComponent implements OnInit {
       disableDefaultUI: true,
       zoom: 20,
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+    } 
     var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
     var	latLng = new google.maps.LatLng(43.64344769999999, -79.380939);
     console.log('latlng', latLng);
@@ -53,16 +52,7 @@ export class HomeComponent implements OnInit {
       title: 'Andraw',
       icon: 'assets/images/marker-icon.png',
     });
-
     $(window).on('load', function() {
-      var $grid = $('.grid').masonry({
-        itemSelector: '.grid-item',
-        // percentPosition: true,
-        // columnWidth: 180
-      });
-    });
-
-    $( document ).ready(function() {
       var $grid = $('.grid').masonry({
         itemSelector: '.grid-item',
         // percentPosition: true,
@@ -81,33 +71,6 @@ export class HomeComponent implements OnInit {
     property_location: ''
     }
 
-  }
-
-  gotoPropertyDetails(propertyId){
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        "propertyId" : encodeURIComponent(propertyId)
-      }
-    }
-    this.router.navigate(['/property-details'],navigationExtras);
-   }
-  getHomePagePropertylist() {
-    this.webService.createGet({ url: BaseUrl.apiUrl("getHomePagePropertylist"), contentType: true, loading: true }).then(res => {
-      console.log("res[data]==========", res["data"]);
-
-      if (res["status"]) {
-        this.homePropertyList = res["data"];
-        this.homePropertyList.forEach(element => {
-          if(element.property_image) {
-            element.property_image = BaseUrl.baseUrl+'/'+element.property_image[0].url
-          } else{
-            element.property_image = 'assets/images/image-not-available.png'
-          }
-        });
-      }else{
-        this.toastr.error(res["message"],"Error")
-      }
-    })
   }
 
   getPropertyCategoryList() {
