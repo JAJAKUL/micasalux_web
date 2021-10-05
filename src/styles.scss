@@ -2,7 +2,12 @@
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
-$font-stack: 'Poppins', sans-serif; 
+
+// @import '~ngx-sharebuttons/themes/material/material-dark-theme';
+// @import '~ngx-sharebuttons/themes/modern/modern-light-theme';
+// @import '~ngx-sharebuttons/themes/circles/circles-dark-theme';
+
+$font-stack: 'Poppins', sans-serif;
 $primary-color: #333;
 $black-color:#000000;
 $blue-color:#004AAD;
@@ -29,12 +34,12 @@ $ft-bg-color: #1D1922;
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
 }
-html, body { 
-    height: 100%; 
+html, body {
+    height: 100%;
 }
-body { 
-    margin: 0; 
-    font-family: $font-stack; 
+body {
+    margin: 0;
+    font-family: $font-stack;
 }
 a:focus,
 a:hover{
@@ -55,7 +60,7 @@ ul, ol{
     margin: 0;
     padding: 0;
     list-style: none;
-    font-family: $font-stack; 
+    font-family: $font-stack;
 }
 #home-slider{
     .owl-theme {
@@ -91,7 +96,7 @@ ul, ol{
 }
 .custom-form-field.mat-form-field-appearance-outline {
     width: 100%;
-    font-family: $font-stack; 
+    font-family: $font-stack;
     font-weight: 400;
     font-size: 15px;
     .mat-form-field-outline-start {
@@ -158,7 +163,7 @@ ul, ol{
 }
 .custom-form-field.mat-form-field-appearance-legacy {
     width: 100%;
-    font-family: $font-stack; 
+    font-family: $font-stack;
     font-weight: 400;
     font-size: 15px;
     .mat-form-field-underline {
@@ -197,7 +202,7 @@ ul, ol{
 }
 .form-slider-field{
     mat-label{
-        font-family: $font-stack; 
+        font-family: $font-stack;
         font-weight: 400;
         font-size: 15px;
         color: #A5A5A5;
@@ -236,7 +241,7 @@ ul, ol{
     h2{
         font-size: 36px;
         font-weight: 500;
-        color: #000000; 
+        color: #000000;
     }
 }
 mat-accordion{
@@ -247,7 +252,7 @@ mat-accordion{
             color: #000000;
             font-weight: 500;
             font-size: 16px;
-            font-family: $font-stack; 
+            font-family: $font-stack;
         }
     }
     .mat-expansion-panel {
@@ -276,7 +281,7 @@ mat-accordion{
         font-size: 16px;
         color: #898989;
         font-weight: 400;
-        font-family: $font-stack; 
+        font-family: $font-stack;
     }
     .mat-checkbox-inner-container{
         width: 18px;
@@ -298,7 +303,7 @@ mat-accordion{
         font-size: 16px;
         color: #000000;
         font-weight: 400;
-        font-family: $font-stack; 
+        font-family: $font-stack;
     }
     .mat-radio-outer-circle {
         border-color:#898989;
@@ -332,7 +337,7 @@ mat-accordion{
         border-radius: 5px;
         font-weight: 500;
         font-size: 18px;
-        font-family: $font-stack; 
+        font-family: $font-stack;
         text-transform: uppercase;
         color: #FFFFFF;
         border: 0;
@@ -365,7 +370,7 @@ mat-tab-group{
             color: #898989;
             font-weight: 500;
             font-size: 18px;
-            font-family: $font-stack; 
+            font-family: $font-stack;
             height: 53px;
             min-width: inherit;
             padding:0;
@@ -400,7 +405,7 @@ mat-tab-group{
         top: 0;
         bottom: 0;
         background: rgba(28, 28, 28, 0.65);
-    }   
+    }
     h1{
         font-size: 68px;
         font-weight: 500;
@@ -441,7 +446,7 @@ mat-tab-group{
     .owl-theme {
         .owl-nav{
             margin-top: 0;
-            .owl-next, 
+            .owl-next,
             .owl-prev{
                 width:68px;
                 height: 68px;
@@ -692,7 +697,7 @@ ngx-material-timepicker-container{
                 align-items: center;
                 justify-content: center;
                 margin-top: 15px;
-                .owl-next, 
+                .owl-next,
                 .owl-prev{
                     width:46px;
                     height: 46px;
@@ -738,7 +743,7 @@ ngx-material-timepicker-container{
     }
     label.mat-checkbox-layout {
         width: 100%;
-    }    
+    }
 }
 .slider-date-select mat-radio-button{
     .mat-radio-label{
@@ -749,7 +754,7 @@ ngx-material-timepicker-container{
         right:6px;
         top: 6px;
     }
-    
+
     &.mat-radio-checked{
         .date-det {
             background-color: #004AAD !important;
@@ -761,7 +766,7 @@ ngx-material-timepicker-container{
         }
     }
 
-} 
+}
 
 .Subscription {
     button.close {
@@ -781,9 +786,9 @@ ngx-material-timepicker-container{
     padding: 50px 30px;
     box-shadow: 0px 0px 16px #ccc;
     margin: 12px 0px;
-  
+
     text-align: center;
-    
+
     h2{
         color: #004AAD;
         font-weight: 700;

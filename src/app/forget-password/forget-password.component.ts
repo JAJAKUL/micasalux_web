@@ -13,13 +13,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ForgetPasswordComponent implements OnInit {
   forgetForm: FormGroup;
   submitted: Boolean = false;
-  
+
   constructor(
     private FB: FormBuilder,
     private webService: WebService,
     private toastr: ToastrService,
     private router: Router,
-  ) { 
+  ) {
     this.createForm();
   }
 
@@ -28,7 +28,7 @@ export class ForgetPasswordComponent implements OnInit {
 
   get f() {
     return this.forgetForm.controls;
-  } 
+  }
 
   createForm() {
     this.forgetForm = this.FB.group({
@@ -38,6 +38,7 @@ export class ForgetPasswordComponent implements OnInit {
 
   submitForm() {
     this.webService.createPut({ url: BaseUrl.apiUrl("forgotPassword"), body: this.forgetForm.value, contentType: true, loading: true }).then(res => {
+      console.log('response====================', res)
       if (res["status"]) {
         this.toastr.success(res["message"],"Success");
         this.router.navigate(['/login']);

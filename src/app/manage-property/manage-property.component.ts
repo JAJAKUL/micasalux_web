@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { WebService } from 'src/app/services/web.service';
 import { BaseUrl } from 'src/app/services/base.service';
@@ -99,6 +99,15 @@ export class ManagePropertyComponent implements OnInit {
     });
   }
 
+
+  editProperty(propertyId){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "propertyId" : encodeURIComponent(propertyId)
+      }
+    }
+    this.router.navigate(['/edit-property'],navigationExtras);
+   }
 
   getPropertylist() {
     this.webService.createGet({ url: BaseUrl.apiUrl("propertylist"), contentType: true, loading: true }).then(res => {

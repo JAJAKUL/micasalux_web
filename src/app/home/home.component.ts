@@ -54,21 +54,21 @@ export class HomeComponent implements OnInit {
       icon: 'assets/images/marker-icon.png',
     });
 
-    $(window).on('load', function() {
-      var $grid = $('.grid').masonry({
-        itemSelector: '.grid-item',
-        // percentPosition: true,
-        // columnWidth: 180
-      });
-    });
+    // $(window).on('load', function() {
+    //   var $grid = $('.grid').masonry({
+    //     itemSelector: '.grid-item',
+    //     // percentPosition: true,
+    //     // columnWidth: 180
+    //   });
+    // });
 
-    $( document ).ready(function() {
-      var $grid = $('.grid').masonry({
-        itemSelector: '.grid-item',
-        // percentPosition: true,
-        // columnWidth: 180
-      });
-    });
+    // $( document ).ready(function() {
+    //   var $grid = $('.grid').masonry({
+    //     itemSelector: '.grid-item',
+    //     // percentPosition: true,
+    //     // columnWidth: 180
+    //   });
+    // });
 
     this.searchData = {
     longitude: 0,

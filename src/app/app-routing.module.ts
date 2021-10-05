@@ -26,11 +26,12 @@ const routes: Routes = [
   { path: 'property-agent-list/:id', loadChildren: () => import('./property-agent-list/property-agent-list.module').then(m => m.PropertyAgentListModule) },
   { path: 'property-agent-details/:id', loadChildren: () => import('./property-agent-details/property-agent-details.module').then(m => m.PropertyAgentDetailsModule) },
   { path: 'property-list', loadChildren: () => import('./property-list/property-list.module').then(m => m.PropertyListModule) },
+  { path: 'edit-property', loadChildren: () => import('./edit-property/edit-property.module').then(m => m.EditPropertyModule) },
 
 ];
 // useHash: true
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'enabled', })],
+  imports: [RouterModule.forRoot(routes,{ scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

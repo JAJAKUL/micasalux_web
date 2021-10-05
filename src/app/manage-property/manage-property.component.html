@@ -26,14 +26,55 @@
             </div>
             <div class="deactive-ed-det"><!-- <i class="fa fa-edit " title="click for edit property" style="color: green" (click)="activeDeactivePropertyBtnClick(propertyItem?._id)"></i> -->
               <mat-slide-toggle title="click for active deactive property" [(ngModel)]="propertyItem.status" (change)="activeDeactivePropertyBtnClick(propertyItem?._id)"></mat-slide-toggle>
-              <i class="fa fa-edit " title="click for edit property" ></i>
+              <i class="fa fa-edit " (click)="editProperty(propertyItem?._id)" title="click for edit property" ></i>
               <i class="fa fa-trash " title="click for remove property" (click)="removePropertyBtnClick(propertyItem?._id)"></i>
             </div>
             <div class="socail-Share">
               <span>Share : </span>
+              <share-buttons [theme]="'material-dark'"
+                [include]="['facebook','twitter','linkedin','pinterest','reddit','mix','vk','telegram','messenger','whatsapp','xing','line','sms','email','copy']"
+                [show]="9"
+                [size]="1"
+                [url]="'https://www.eduforbetterment.com/generate-qr-code-in-angular/'"
+                [image] ="'https://www.eduforbetterment.com/wp-content/uploads/2020/08/qrcode.jpg'"
+                [autoSetMeta]="false"
+              ></share-buttons>
               <i class="fa fa-facebook-square" title="Facebook" aria-hidden="true"></i>
               <i class="fa fa-twitter-square" title="Twitter" aria-hidden="true"></i>
               <i class="fa fa-instagram" title="Instagram" aria-hidden="true"></i>
+            </div>
+            <div class="container-fluid">
+              <h1>Angular Share Buttons</h1>
+
+              <share-buttons theme="circles-dark"
+                [include]="['copy', 'facebook', 'email', 'messenger', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
+                [showIcon]="true"
+                [showText]="false"
+                url="https://rodrigo.kamada.com.br/"
+                description="Angular Share Buttons"
+                twitterAccount="rodrigokamada"
+                class="pt-5">
+              </share-buttons>
+
+              <share-buttons theme="modern-dark"
+                [include]="['copy', 'facebook', 'email', 'messenger', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
+                [showIcon]="true"
+                [showText]="true"
+                url="https://rodrigo.kamada.com.br/"
+                description="Angular Share Buttons"
+                twitterAccount="rodrigokamada"
+                class="pt-5">
+              </share-buttons>
+
+              <share-buttons theme="modern-dark"
+                [include]="['copy', 'facebook', 'email', 'messenger', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
+                [showIcon]="false"
+                [showText]="true"
+                url="https://rodrigo.kamada.com.br/"
+                description="Angular Share Buttons"
+                twitterAccount="rodrigokamada"
+                class="pt-5">
+              </share-buttons>
             </div>
         </div>
     </div>

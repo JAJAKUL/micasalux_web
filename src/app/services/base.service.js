@@ -44,6 +44,7 @@ const apiEnd = {
   getHomePagePropertylist: "get-HomePageProperty-list",
   getPropertylist: "getPropertylist",
   getPropertyAnyUser: "getPropertyAnyUser",
+  editProperty: "editProperty",
 }
 
 exports.BaseUrl = {

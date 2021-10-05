@@ -253,6 +253,8 @@
 
 .grid {
    margin: 0 -15px;
+   display: flex;
+   flex-wrap: wrap;
    &:after {
     content: '';
     display: block;
@@ -260,7 +262,6 @@
   }
   .grid-item {
     width: 33.3333%;
-    float: left;
     padding: 15px;
     img{
         max-width: 100%;
@@ -270,6 +271,12 @@
 
 .gallery-items {
     position: relative;
+    .gallery-img-box{
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height:260px;
+    }
     .gallery-caption{
         position: absolute;		
         top: 0;
@@ -437,6 +444,9 @@
     }
     .gallery-items {
         position: relative;
+        .gallery-img-box{
+            height:180px;
+        }
         .gallery-caption{
             outline-offset: -10px;
             h5 {		
